@@ -1,0 +1,106 @@
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+</head>
+<div class="header">
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a [routerLink]="['']"><img src="assets/images/logo.png" alt="logo" width="125px"></a>
+            </div>
+            <nav>
+                <ul id="MenuItems">
+
+                        <li><a [routerLink]="['/authors']">Yazarlar</a></li> 
+                        <li><a [routerLink]="['/products']">Products</a></li>
+                        <li><a [routerLink]="['']">About</a></li>
+                        <li><a [routerLink]="['']">Contact</a></li>
+                        <li><a [routerLink]="['/account']">Account</a></li>
+                        <li> <div class="search-container">
+                            
+                            <input type="text" id="search" placeholder="Ara...">
+                            <button id="search-button"><i class="fas fa-search"></i></button>
+                        </div></li>               
+                </ul>
+            </nav>
+            <a [routerLink]="['/cart']"><img src="assets/images/cart.png" width="30px" height="30px"></a>
+            <img src="assets/images/menu.png" class="menu-icon" id="menutoggle">
+        </div>
+     </div>
+</div>
+
+<div class="projcard-container">
+    
+    <div class="projcard projcard-blue">
+      <div class="projcard-innerbox">
+        <img class="projcard-img" src="https://img1-kidega.mncdn.com/UPLOAD/yazarlar/sait-faik-abasiyanik-kidega-Ab.jpg" />
+        <div class="projcard-textbox">
+          <div class="projcard-title">Sait Faik Abasıyanık</div>
+          <div class="projcard-bar"></div>
+          <div class="projcard-description">Sait Faik Abasıyanık, Türk hikâye ve roman yazarı, şair. Türk hikâyeciliğinin önde gelen yazarlarından birisi olan Sait Faik, çağdaş hikâyeciliğe yaptığı katkılar nedeniyle Türk edebiyatının köşe taşlarından biri olarak kabul edilir.</div>
+          <div class="projcard-tagbox">
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="projcard projcard-red">
+      <div class="projcard-innerbox">
+        <img class="projcard-img" src="https://www.suleymanpasa.bel.tr/icerikresimleri/img/namikkemalkapak.jpg" />
+        <div class="projcard-textbox">
+          <div class="projcard-title">Namık Kemal</div>
+          <div class="projcard-bar"></div>
+          <div class="projcard-description">Namık Kemal, Türk milliyetçiliğine esin kaynağı olmuş, Genç Osmanlı hareketine bağlı yazar, gazeteci, devlet adamı ve şairdir. Yurtseverlik, özgürlük, ulus kavramlarına bağlı bir Tanzimat aydınıdır. Bu kavramları Türk düşün hayatına ve edebiyatına sokan kişi kabul edilir.</div>
+          <div class="projcard-tagbox">
+                     </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="projcard projcard-green">
+      <div class="projcard-innerbox">
+        <img class="projcard-img" src="https://admin.biyografya.com/_docs/photos/d2e1012370f74d236a48e5483710a411.jpg" />
+        <div class="projcard-textbox">
+          <div class="projcard-title">Halide Edip Adıvar</div>
+          <div class="projcard-bar"></div>
+          <div class="projcard-description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</div>
+          <div class="projcard-tagbox">
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="projcard projcard-customcolor" style="--projcard-color: #F5AF41;">
+      <div class="projcard-innerbox">
+        <img class="projcard-img" src="https://www.turkedebiyatcilar.net/wp-content/uploads/2021/10/20211026_200416.jpg" />
+        <div class="projcard-textbox">
+          <div class="projcard-title">Mehmet Rauf</div>
+          <div class="projcard-bar"></div>
+          <div class="projcard-description">Mehmet Rauf, Türk hikâyeci ve romancı. Mehmet Rauf'un dışında, Rauf Vicdani, Besim Rauf, Cemil Jüpon, Ali Necdet, Mehmet Nafiz imzalarını da kullandı. İstanbul'da doğmuş ve küçük yaşta edebiyat ile ilgilenmeye başlamıştır.</div>
+          <div class="projcard-tagbox">
+                     </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  <footer>
+    <div class="footer">
+      <div>
+        <img class="img" src="assets/images/logo-white.png">
+      </div>
+    
+    <div class="row">
+    <ul>
+    <li><a href="#">Contact us</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Books</a></li>
+    <li><a href="#">Authors</a></li>
+    <li><a href="#">Account</a></li>
+    </ul>
+    </div>
+    
+    <div class="row">
+    INFERNO Copyright © 2021 Inferno - All rights reserved || Designed By: Mahesh 
+    </div>
+    </div>
+    </footer>
