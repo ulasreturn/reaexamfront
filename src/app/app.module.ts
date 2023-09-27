@@ -3,13 +3,15 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './Anasayfa/home.component';
+import { HomeComponent } from './homepage/home.component';
 import { CartComponent } from './cart/cart.component';
 import { AccountComponent } from './account/account.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { AuthorsComponent } from './authors/authors.component';
 import { ContactComponent } from './contact/contact.component';
+import { FavouritesComponent } from './favourites/favourites.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { ContactComponent } from './contact/contact.component';
     ProductsComponent,
     ProductDetailsComponent,
     AuthorsComponent,
-    ContactComponent
+    ContactComponent,
+    FavouritesComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

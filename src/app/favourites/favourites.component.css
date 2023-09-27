@@ -1,5 +1,10 @@
-.form-container {
-    height: 70vh ;
+*{
+    text-decoration: none;
+    list-style-type: none;
+    list-style: none;
+  }
+  a{
+    color: black;
   }
   body{
     margin:0;

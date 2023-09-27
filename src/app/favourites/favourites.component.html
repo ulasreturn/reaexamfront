@@ -1,0 +1,101 @@
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <div class="navbar" style="background-color: aquamarine;">
+      <div class="logo">
+          <a [routerLink]="['']"><img src="assets/images/logo.png" alt="logo" width="125px"></a>
+      </div>
+      <nav style="margin: 2%;" >
+          <ul id="MenuItems" >
+              <li><a [routerLink]="['']">Home</a></li>
+              <li><a [routerLink]="['/products']">Products</a></li>
+              <li><a [routerLink]="['']">About</a></li>
+              <li><a [routerLink]="['']">Contact</a></li>
+              <li><a [routerLink]="['/account']">Account</a></li>
+          </ul>
+      </nav>
+      <a [routerLink]="['/cart']"><img src="assets/images/cart.png" width="30px" height="30px"></a>
+      <img src="assets/images/menu.png" class="menu-icon" id="menutoggle">
+  </div>
+
+  <div class="container">
+<!-- sidebar aşağısı -->
+<div class="container mt-5">
+  <h1 class="mb-5">Favoriler</h1>
+  <div class="">
+      <div class="w-100">
+          <div class="card mb-3 d-flex flex-row-reverse">
+                  <div class="card-body">
+                      <h5 class="card-title">Rüyadan Daha Derin</h5>
+                      <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, necessitatibus.</p>
+                      <a href="#" class="btn" style="background-color: aquamarine;">Detaylar</a>
+                  </div>
+                  <div class="col-md-4 p-3">
+                      <img src="assets/images/book1.webp" class="card-img-top" style="height: 250px; width: 250px;" alt="Etkinlik 1">
+                  </div>
+          </div>
+      </div>
+
+      <div class="w-100">
+        <div class="card mb-3 d-flex flex-row-reverse">
+                <div class="card-body">
+                    <h5 class="card-title">Bir Varmış Bir Yokmuş</h5>
+                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, necessitatibus.</p>
+                    <a href="#" class="btn" style="background-color: aquamarine;">Detaylar</a>
+                </div>
+                <div class="col-md-4 p-3">
+                    <img src="assets/images/book2.webp" class="card-img-top" style="height: 250px; width: 250px;" alt="Etkinlik 1">
+                </div>
+        </div>
+    </div>
+
+    <div class="w-100 ">
+      <div class="card mb-3 d-flex flex-row-reverse">
+              <div class="card-body">
+                  <h5 class="card-title">Mavi Ateş</h5>
+                  <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, necessitatibus.</p>
+                  <a href="#" class="btn" style="background-color: aquamarine;">Detaylar</a>
+              </div>
+              <div class="col-md-4 p-3">
+                  <img src="assets/images/book3.webp" class="card-img-top" style="height: 250px; width: 250px;" alt="Etkinlik 1">
+              </div>
+      </div>
+  </div>
+
+  <div class="w-100">
+    <div class="card mb-3 d-flex flex-row-reverse">
+            <div class="card-body">
+                <h5 class="card-title">Büyük Bir Fikir</h5>
+                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, necessitatibus.</p>
+                <a href="#" class="btn" style="background-color: aquamarine;">Detaylar</a>
+            </div>
+            <div class="col-md-4 p-3">
+                <img src="assets/images/book4.webp" class="card-img-top" style="height: 250px; width: 250px;" alt="Etkinlik 1">
+            </div>
+    </div>
+</div>
+  </div>
+</div>
+</div>
+<footer>
+    <div class="footer">
+      <div>
+        <img class="img" src="assets/images/logo-white.png">
+      </div>
+    
+    <div class="row">
+    <ul>
+    <li><a href="#">Contact us</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Books</a></li>
+    <li><a href="#">Authors</a></li>
+    <li><a href="#">Account</a></li>
+    </ul>
+    </div>
+    
+    <div class="row">
+    INFERNO Copyright © 2021 Inferno - All rights reserved || Designed By: Mahesh 
+    </div>
+    </div>
+    </footer>
+

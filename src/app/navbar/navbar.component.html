@@ -1,0 +1,40 @@
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+</head>
+        <div class="navbar">
+            <div class="logo">
+                <a [routerLink]="['']"><img src="assets/images/logo.png" alt="logo" width="125px"></a>
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                        <li><a [routerLink]="['']">Anasayfa</a></li>
+                        <li class="dropdown">
+                            <a href="#">Kategoriler <i class="fas fa-caret-down"></i></a>
+                            <div class="dropdown-content">
+                              <a [routerLink]="['/roman']">Roman</a>
+                              <a [routerLink]="['/bilimkurgu']">Bilim Kurgu</a>
+                              <a [routerLink]="['/kurgu']">Korku</a>
+                              <a [routerLink]="['/polisiye']">Polisiye</a>
+                              <a [routerLink]="['/fantastik']">Fantastik</a>
+                              <a [routerLink]="['/macera']">Macera</a>
+                              <!-- Diğer kategorileri burada listele -->
+                            </div>
+                          </li>
+                        <li><a [routerLink]="['/products']">Products</a></li>
+                        <li><a [routerLink]="['/authors']">Yazarlar</a></li> 
+                        <li><a [routerLink]="['/about']">About</a></li>
+                        <li><a [routerLink]="['/contact']">Contact</a></li>
+                        
+                        <li> <div class="search-container">
+                            
+                            <input type="text" id="search" placeholder="Ara...">
+                            <button id="search-button"><i class="fas fa-search"></i></button>
+                            
+                        </div></li>               
+                </ul>
+            </nav>
+            <div class="link-container">
+                <a style="margin-right: 0.8%;" [routerLink]="['/cart']"><img src="assets/images/cart.png" width="30px" height="30px"></a>
+                <a [routerLink]="['/account']">Giriş Yap/Kayıt Ol</a>
+              </div>
+        </div>

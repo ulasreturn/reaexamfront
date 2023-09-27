@@ -1,93 +1,69 @@
-<div class="container">
-    <div class="navbar">
-        <div class="logo">
-            <a [routerLink]="['']"><img src="assets/images/logo.png" alt="logo" width="125px"></a>
-        </div>
-        <nav>
-            <ul id="MenuItems">
-                <li><a [routerLink]="['']">Home</a></li>
-                <li><a [routerLink]="['/products']">Products</a></li>
-                <li><a [routerLink]="['']">About</a></li>
-                <li><a [routerLink]="['']">Contact</a></li>
-                <li><a [routerLink]="['/account']">Account</a></li>
-            </ul>
-        </nav>
-        <a [routerLink]="['/cart']"><img src="assets/images/cart.png" width="30px" height="30px"></a>
-        <img src="assets/images/menu.png" class="menu-icon" id="menutoggle">
-    </div>
-</div>
-
-<!-- Account Page -->
-<div class="account-page">
+<div class="header">
     <div class="container">
-        <div class="row">
+    <app-navbar></app-navbar>
+    
+    
+    
+        <div class="container">
+          <div class="row">
             <div class="col-2">
+              <div class="col-2">
                 <img src="assets/images/image1.png" width="100%">
+              </div>
+              <!-- İstediğiniz diğer içerikler buraya gelebilir -->
             </div>
             <div class="col-2">
-                <div class="form-container">
-                    <div class="form-btn">
-                        <span id="loginBtn">Login</span>
-                        <span id="registerBtn">Register</span>
-                        <hr id="Indicator">
-                    </div>
-                    <form id="LoginForm">
-                        <input type="text" placeholder="Username">
-                        <input type="password" placeholder="Password">
-                        <button type="submit" class="btn">Login</button>
-                        <a href="">Forget Password</a>
-                    </form>
-
-                    <form id="RegForm">
-                        <input type="text" placeholder="Username">
-                        <input type="email" placeholder="Email">
-                        <input type="password" placeholder="Password">
-                        <button type="submit" class="btn">Register</button>
-                    </form>
+              <div class="form-container">
+                <div class="form-btn">
+                  <span [ngClass]="{'active': showLogin}" (click)="showLogin = true; updateIndicatorPosition()">Login</span>
+                  <span [ngClass]="{'active': !showLogin}" (click)="showLogin = false; updateIndicatorPosition()">Register</span>
+                  <div id="Indicator" [ngStyle]="{'transform': 'translateX(' + indicatorPosition + '%)'}"></div>
                 </div>
+                <form *ngIf="showLogin" (submit)="login()">
+                  <input type="email" placeholder="Email">
+                  <input type="password" placeholder="Password">
+                  <button type="submit" class="btn">Login</button>
+                  <a href="">Forget Password</a>
+                </form>
+                <form *ngIf="!showLogin" (submit)="register()">
+                    <input type="text" placeholder="Username">
+                    <input type="text" placeholder="User Surname">
+                    <input type="text" placeholder="Country"> 
+                    <input type="text" placeholder="City"> 
+                    <input type="text" placeholder="Telephone"> 
+                    <input type="email" placeholder="Email">
+                    <input type="password" placeholder="Password">
+                  <button type="submit" class="btn">Register</button>
+                </form>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
+    
     </div>
-</div>
-
-
-<!-- Footer -->
-<div class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="footer-col-1">
-                <h3>Download Our App</h3>
-                <p>Download App for Android and ios mobile phone.</p>
-                <div class="app-logo">
-                    <img src="assets/images/play-store.png">
-                    <img src="assets/images/app-store.png">
-                </div>
-            </div>
-            <div class="footer-col-2">
-                <img src="assets/images/logo-white.png">
-                <p>Our Purpose Is To Sustainably Make the Pleasure and Benefits of Sports Accessible to the Many.
-                </p>
-            </div>
-            <div class="footer-col-3">
-                <h3>Useful Links</h3>
-                <ul>
-                    <li>Coupons</li>
-                    <li>Blog Post</li>
-                    <li>Return Policy</li>
-                    <li>Join Affiliate</li>
-                </ul>
-            </div>
-            <div class="footer-col-4">
-                <h3>Follow Us</h3>
-                <ul>
-                    <li>Facebook</li>
-                    <li>Twitter</li>
-                    <li>Instagram</li>
-                    <li>Youtube</li>
-                </ul>
-            </div>
+      
+    
+    
+    <!-- Footer -->
+    <footer>
+      <div class="footer">
+        <div>
+          <img class="img" src="assets/images/logo-white.png">
         </div>
-        <hr>
-        <p class="copyright">Copyright 2023 - Jassa</p>
-    </div>
-</div>
+      
+      <div class="row">
+      <ul>
+      <li><a href="#">Contact us</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Books</a></li>
+      <li><a href="#">Authors</a></li>
+      <li><a href="#">Account</a></li>
+      </ul>
+      </div>
+      
+      <div class="row">
+      INFERNO Copyright © 2021 Inferno - All rights reserved || Designed By: Mahesh 
+      </div>
+      </div>
+      </footer>
