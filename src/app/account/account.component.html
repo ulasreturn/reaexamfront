@@ -1,9 +1,9 @@
 <div class="header">
     <div class="container">
     <app-navbar></app-navbar>
-    
-    
-    
+
+
+
         <div class="container">
           <div class="row">
             <div class="col-2">
@@ -20,17 +20,17 @@
                   <div id="Indicator" [ngStyle]="{'transform': 'translateX(' + indicatorPosition + '%)'}"></div>
                 </div>
                 <form *ngIf="showLogin" (submit)="login()">
-                  <input type="email" placeholder="Email">
-                  <input type="password" placeholder="Password">
-                  <button type="submit" class="btn">Login</button>
+                  <input [(ngModel)]="loginRequest.Email" name="UserName" [ngModelOptions]="{standalone: true}" type="email" placeholder="Email">
+                  <input [(ngModel)]="loginRequest.PasswordSalt" name="Password" [ngModelOptions]="{standalone: true}" type="password" placeholder="Password">
+                  <button (click)="login()" type="submit" class="btn">Login</button>
                   <a href="">Forget Password</a>
                 </form>
                 <form *ngIf="!showLogin" (submit)="register()">
                     <input type="text" placeholder="Username">
                     <input type="text" placeholder="User Surname">
-                    <input type="text" placeholder="Country"> 
-                    <input type="text" placeholder="City"> 
-                    <input type="text" placeholder="Telephone"> 
+                    <input type="text" placeholder="Country">
+                    <input type="text" placeholder="City">
+                    <input type="text" placeholder="Telephone">
                     <input type="email" placeholder="Email">
                     <input type="password" placeholder="Password">
                   <button type="submit" class="btn">Register</button>
@@ -40,18 +40,18 @@
           </div>
         </div>
       </div>
-    
+
     </div>
-      
-    
-    
+
+
+
     <!-- Footer -->
     <footer>
       <div class="footer">
         <div>
           <img class="img" src="assets/images/logo-white.png">
         </div>
-      
+
       <div class="row">
       <ul>
       <li><a href="#">Contact us</a></li>
@@ -61,9 +61,9 @@
       <li><a href="#">Account</a></li>
       </ul>
       </div>
-      
+
       <div class="row">
-      INFERNO Copyright © 2021 Inferno - All rights reserved || Designed By: Mahesh 
+      INFERNO Copyright © 2021 Inferno - All rights reserved || Designed By: Mahesh
       </div>
       </div>
       </footer>
