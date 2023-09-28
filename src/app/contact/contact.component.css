@@ -63,7 +63,12 @@
 #search-button:hover {
   background-color: #b700ff;
 }
+.link-container {
+  display:contents;
+  padding-left: 50px;
+  margin-left: 50px;
 
+}
 .landing_page * {
   font-family: Nunito, sans-serif;
 }

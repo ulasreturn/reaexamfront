@@ -1,37 +1,9 @@
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="products.component.css">
+
 
 <div class="header">
-<div class="container">
-    <div class="navbar ">
-        <div class="logo">
-            <a [routerLink]="['']"><img src="assets/images/logo.png" alt="logo" width="125px"></a>
-        </div>
-        <nav>
-            <ul id="MenuItems">
-                    <li><a [routerLink]="['']">Home</a></li>
-                    <li class="dropdown">
-                        <a href="#">Kategoriler</a>
-                      </li>
-                    <li><a [routerLink]="['/anasayfa']">Yazarlar</a></li>
-                    <li><a [routerLink]="['/products']">Products</a></li>
-                    <li><a [routerLink]="['']">About</a></li>
-                    <li><a [routerLink]="['']">Contact</a></li>
-                    <li><a [routerLink]="['/account']">Account</a></li>
-                    <li> <div class="search-container">
-
-                        <input type="text" id="search" placeholder="Ara...">
-                        <button id="search-button"><i class="fas fa-search"></i></button>
-                    </div></li>
-            </ul>
-        </nav>
-        <a [routerLink]="['/cart']"><img src="assets/images/cart.png" width="30px" height="30px"></a>
-        <img src="assets/images/menu.png" class="menu-icon" id="menutoggle">
-    </div>
+    <div class="container">
+    <app-navbar></app-navbar>
 
 
 <!-- slider -->

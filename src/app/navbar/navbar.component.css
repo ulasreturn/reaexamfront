@@ -21,13 +21,13 @@ a {
     background-color: #fff; /* Arka plan rengi */
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     font-size: 14px; /* Gölge efekti */
+    z-index: 5;
   }
   
   /* Kategoriye hover yapıldığında alt menüyü göster */
   .dropdown:hover .dropdown-content {
     display: block;
   }
-  
   /* Alt menüyü stilize etmek için gereken diğer stiller */
   .dropdown-content a {
    

@@ -1,21 +1,6 @@
-<div class="container">
-    <div class="navbar">
-        <div class="logo">
-            <a [routerLink]="['']"><img src="assets/images/logo.png" alt="logo" width="125px"></a>
-        </div>
-        <nav>
-            <ul id="MenuItems">
-                <li><a [routerLink]="['']">Home</a></li>
-                <li><a [routerLink]="['/products']">Products</a></li>
-                <li><a [routerLink]="['']">About</a></li>
-                <li><a [routerLink]="['']">Contact</a></li>
-                <li><a [routerLink]="['/account']">Account</a></li>
-            </ul>
-        </nav>
-        <a [routerLink]="['/cart']"><img src="assets/images/cart.png" width="30px" height="30px"></a>
-        <img src="assets/images/menu.png" class="menu-icon" id="menutoggle">
-    </div>
-</div>
+<div class="header">
+    <div class="container">
+    <app-navbar></app-navbar>
 
 <!-- Cart items details -->
 <div class="small-container cart-page">
@@ -88,7 +73,7 @@
         </table>
     </div>
 </div>
-
+    </div>
 <!-- Footer -->
 <div class="footer">
     <div class="container">
