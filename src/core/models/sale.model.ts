@@ -1,4 +1,4 @@
-export interface Sale{
+export interface Sale {
   SaleID: number,
   PaymentMethod: string,
   Buyer: string,

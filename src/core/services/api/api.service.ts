@@ -16,7 +16,7 @@ ve AuthService tarafından kullanılarak kullanıcı girişi, kaydı, token yeni
 
  @Injectable({
    providedIn: 'root',
- })
+})
  export class ApiService {
    private endpoint = environment.api_url;
 

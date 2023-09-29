@@ -1,4 +1,4 @@
-export interface Orders{
+export interface Orders {
   OrderID: number,
   OrderDate: number,
   PaymentMethod: string,

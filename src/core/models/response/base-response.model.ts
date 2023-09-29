@@ -3,7 +3,7 @@ export interface BaseResponse {
   status: ResponseStatus;
 }
 
-export enum ResponseStatus {
+export enum ResponseStatus{
   Ok,
   Error,
   Forbidden,

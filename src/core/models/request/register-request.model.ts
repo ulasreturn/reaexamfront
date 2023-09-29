@@ -1,4 +1,4 @@
-export interface RegisterRequest {
+export interface RegisterRequest{
   UserID: number;
   UserName: string;
   UserSurname: string;

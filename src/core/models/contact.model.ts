@@ -1,5 +1,4 @@
-export interface Contact
-{
+export interface Contact{
   ContactID: number,
   UserID: number,
   UserName: string,

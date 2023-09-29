@@ -68,7 +68,7 @@ export class AuthService {
         .toPromise();
       status = profileResponse!.status;
       /* Profil bilgileri yanıtı başarılı ise, bu bilgileri sessionStorage'e kaydeder
-       ve currentUserSubject'e yeni bir değer olarak atar.
+      ve currentUserSubject'e yeni bir değer olarak atar.
  İşlem başarısız olursa, logOut işlevini çağırarak oturumu sonlandırır.*/
       if (status == ResponseStatus.Ok) {
         sessionStorage.setItem('current_user', JSON.stringify(profileResponse!.data));

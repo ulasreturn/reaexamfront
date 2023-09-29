@@ -1,4 +1,4 @@
-export interface Address {
+export interface Address{
   AddressID: number;
   AddressTitle: string;
   Country: string;
