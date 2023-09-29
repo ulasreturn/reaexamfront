@@ -12,6 +12,8 @@ import { AuthorsComponent } from './authors/authors.component';
 import { ContactComponent } from './contact/contact.component';
 import { FavouritesComponent } from './favourites/favourites.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { AboutComponent } from './about/about.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { NavbarComponent } from './navbar/navbar.component';
     AuthorsComponent,
     ContactComponent,
     FavouritesComponent,
-    NavbarComponent
+    NavbarComponent,
+    AboutComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,7 @@ import { ProductsComponent } from './products/products.component';
 import { AccountComponent } from './account/account.component';
 import { AuthorsComponent } from './authors/authors.component';
 import { ContactComponent } from './contact/contact.component';
+import { AboutComponent } from './about/about.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'cart', component: CartComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'account', component: AccountComponent },
   {path:'authors',component:AuthorsComponent},
   {path:'contact',component:ContactComponent},
+  {path:'about',component:AboutComponent}
 ];
 
 @NgModule({
