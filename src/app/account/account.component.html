@@ -1,9 +1,9 @@
 <div class="header">
     <div class="container">
     <app-navbar></app-navbar>
-    
-    
-    
+
+
+
         <div class="container">
           <div class="row">
             <div class="col-2">
@@ -20,17 +20,17 @@
                   <div id="Indicator" [ngStyle]="{'transform': 'translateX(' + indicatorPosition + '%)'}"></div>
                 </div>
                 <form *ngIf="showLogin" (submit)="login()">
-                  <input type="email" placeholder="Email">
-                  <input type="password" placeholder="Password">
-                  <button type="submit" class="btn">Login</button>
+                  <input [(ngModel)]="loginRequest.Email" name="UserName" [ngModelOptions]="{standalone: true}" type="email" placeholder="Email">
+                  <input [(ngModel)]="loginRequest.PasswordSalt" name="Password" [ngModelOptions]="{standalone: true}" type="password" placeholder="Password">
+                  <button (click)="login()" type="submit" class="btn">Login</button>
                   <a href="">Forget Password</a>
                 </form>
                 <form *ngIf="!showLogin" (submit)="register()">
                     <input type="text" placeholder="Username">
                     <input type="text" placeholder="User Surname">
-                    <input type="text" placeholder="Country"> 
-                    <input type="text" placeholder="City"> 
-                    <input type="text" placeholder="Telephone"> 
+                    <input type="text" placeholder="Country">
+                    <input type="text" placeholder="City">
+                    <input type="text" placeholder="Telephone">
                     <input type="email" placeholder="Email">
                     <input type="password" placeholder="Password">
                   <button type="submit" class="btn">Register</button>
@@ -40,10 +40,10 @@
           </div>
         </div>
       </div>
-    
+
     </div>
-      
-    
-    
+
+
+
     <!-- Footer -->
 <app-footer></app-footer>
