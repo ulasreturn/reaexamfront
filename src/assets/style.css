@@ -450,7 +450,7 @@ form a{
 }
 
 /* Media query for menu */
-@media only screen and (max-width: 800px){
+@media only screen and (max-width: 768px){
 
     nav ul{
         position: absolute;

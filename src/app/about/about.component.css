@@ -1,0 +1,124 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+.container {
+    
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+
+.content {
+    
+    padding: 30px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.content h1 {
+    font-size: 20px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.content p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+
+
+.content li {
+    margin-bottom: 10px;
+}
+.content li:hover {
+    color: #000000;
+    
+}
+
+.kart-container {
+    display: flex; /* Kartları yan yana göstermek için */
+}
+
+.kart {
+    flex: 1; /* Kartların eşit genişlikte olmasını sağlar */
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 5px;
+    transition: transform 0.3s;
+}
+
+.kart:hover {
+    transform: scale(1.05);
+}
+.titlenew{
+    text-align: center;
+    margin: 0 auto 10px;
+    position: relative;
+    
+    color: #555;
+    font-size: 30px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+h2 {
+    margin: 10px 0;
+    font-size: 20px;
+}
+
+p {
+    font-size: 16px;
+    color: #888;
+}
+
+
+    @media screen and (max-width: 768px) {
+        .content {
+            padding: 15px; /* İçerik padding'ini küçültmek */
+        }
+    
+        .kart-container {
+            flex-direction: column; /* Kartları dikey sıralamak */
+            align-items: center; /* Kartları merkeze hizalamak */
+        }
+    
+        .kart {
+            width: 100%; /* Kartların tam genişlikte olması */
+            margin: 10px 0; /* Kartlar arasındaki boşluğu ayarlamak */
+        }
+        
+        .titlenew {
+            font-size: 24px; /* Başlık font boyutunu küçültmek */
+        }
+        
+        img {
+            width: 80px;
+            height: 80px; /* İkon boyutunu küçültmek */
+        }
+    
+        h2 {
+            font-size: 18px; /* Başlık font boyutunu küçültmek */
+        }
+    
+        p {
+            font-size: 14px; /* Paragraf font boyutunu küçültmek */
+        }
+    }
+    
+

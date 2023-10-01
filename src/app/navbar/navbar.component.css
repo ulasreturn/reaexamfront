@@ -8,8 +8,7 @@ a {
 
 .link-container {
   display:contents;
-  padding-left: 50px;
-  margin-left: 50px;
+  position: absolute;
 
 }
 
@@ -90,3 +89,86 @@ a {
 #search-button:hover {
     background-color: #000000;
 }
+/* Ekran genişliği 768 piksel veya daha küçükse, navbarı responsive hale getir */
+
+/* Bu kısmı değiştirmeyin */
+
+/* Ekran genişliği 768 piksel veya daha küçükse, navbarı responsive hale getir */
+@media screen and (max-width: 768px) {
+  .link-container {
+      padding-left: 0;
+      margin-left: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+  
+  /* Dropdown menüsünü tam genişlik yap */
+  .dropdown-content {
+      width: 100%;
+  }
+  
+  /* Genel arama kutusu container'ı tam genişlik yap */
+  .search-container {
+      width: 100%;
+      padding: 10px 0;
+      justify-content: center;
+  }
+  
+  /* Arama kutusu ve butonlarının stillerini ayarla */
+  #search {
+      width: 70%;
+  }
+  
+  #search-button {
+      width: 30%;
+      margin-top: 10px;
+  }
+
+  .menu-icon {
+      display: block;
+      text-align: right;
+      cursor: pointer;
+      font-size: 24px;
+  }
+
+  .menu-icon i {
+      transform: scaleY(-1);
+  }
+
+  #menu-toggle {
+      display: none;
+  }
+
+  #menu-toggle:checked + .menu-icon i {
+      transform: scaleY(1);
+  }
+
+  #menu-toggle:checked ~ nav ul {
+      display: block;
+  }
+
+  nav ul {
+      display: none;
+      background: #333;
+      width: 100%;
+      position: absolute;
+      top: 56px;
+      left: 0;
+  }
+
+  nav ul li {
+      display: block;
+      text-align: center;
+      padding: 10px 0;
+  }
+
+  nav ul li a {
+      color: #fff;
+  }
+
+  nav ul li a:hover {
+      background-color: #555;
+  }
+}
+

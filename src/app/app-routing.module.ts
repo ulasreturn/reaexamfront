@@ -10,6 +10,7 @@ import { AuthorsComponent } from './authors/authors.component';
 import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
 import { FooterComponent } from './footer/footer.component';
+import { NavbarComponent } from './navbar/navbar.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'cart', component: CartComponent },
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path:'authors',component:AuthorsComponent},
   {path:'contact',component:ContactComponent},
   {path:'about',component:AboutComponent},
-  {path:'footer', component:FooterComponent}
+  {path:'footer', component:FooterComponent},
+  {path:'navbar', component:NavbarComponent}
 ];
 
 @NgModule({
