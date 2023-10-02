@@ -1,16 +1,12 @@
 export interface RegisterRequest{
-  UserID: number;
+  Email: string;
   UserName: string;
   UserSurname: string;
-  PasswordSalt: string;
+  Password: string;
+  Telephone: string;
   Country: string;
   City: string;
-  Email: string;
-  Telephone: string;
-  BasketID: number;
-  UserType: UserType;
+
+
 }
-export enum UserType {
-  Admin,
-  User,
-}
+

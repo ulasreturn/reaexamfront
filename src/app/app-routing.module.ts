@@ -12,6 +12,7 @@ import { AboutComponent } from './about/about.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AdminComponent } from './admin/admin.component';
+import { LoginComponent } from './login/login.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'homepage',component: HomeComponent},
@@ -25,7 +26,7 @@ const routes: Routes = [
   {path:'footer', component:FooterComponent},
   {path:'navbar', component:NavbarComponent},
   {path:'admin', component:AdminComponent},
-
+  {path:'login',component:LoginComponent}
 ];
 
 @NgModule({

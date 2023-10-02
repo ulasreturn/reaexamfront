@@ -15,6 +15,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { RegisterRequest } from 'src/core/models/request/register-request.model';
 
 @Injectable({
   providedIn: 'root',
@@ -71,6 +72,33 @@ export class AuthService {
       ve currentUserSubject'e yeni bir değer olarak atar.
  İşlem başarısız olursa, logOut işlevini çağırarak oturumu sonlandırır.*/
       if (status == ResponseStatus.Ok) {
+        sessionStorage.setItem('current_user', JSON.stringify(profileResponse!.data));
+        this.currentUserSubject.next(profileResponse!.data);
+      } else {
+        await this.logOut();
+      }
+    }
+
+    return status;
+  }
+
+
+
+
+  public async register(request: RegisterRequest): Promise<ResponseStatus> {
+    const registerResponse = await this.apiService.register(request).toPromise();
+    let status = registerResponse!.status;
+
+    if (status === ResponseStatus.Ok) {
+      this.router.navigate(['/homepage']);
+      this.setToken(registerResponse!.data);
+
+      // Kayıt işlemi başarılıysa, kullanıcının profil bilgilerini almak için apiService.getProfileInfo işlevini çağırın.
+      const profileResponse = await this.apiService.getProfileInfo().toPromise();
+      status = profileResponse!.status;
+
+      if (status === ResponseStatus.Ok) {
+        // Profil bilgilerini kaydedin ve kullanıcıyı oturum açık olarak işaretleyin.
         sessionStorage.setItem('current_user', JSON.stringify(profileResponse!.data));
         this.currentUserSubject.next(profileResponse!.data);
       } else {

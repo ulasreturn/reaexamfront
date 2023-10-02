@@ -18,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgFor} from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminComponent } from './admin/admin.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { AdminComponent } from './admin/admin.component';
     NavbarComponent,
     AboutComponent,
     FooterComponent,
-    AdminComponent
+    AdminComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,7 @@ import { AdminComponent } from './admin/admin.component';
     NgFor,
     HttpClientModule,
   ],
-  
+
   providers: [],
   bootstrap: [AppComponent]
 })
