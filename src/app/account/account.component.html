@@ -20,7 +20,7 @@
                   <div id="Indicator" [ngStyle]="{'transform': 'translateX(' + indicatorPosition + '%)'}"></div>
                 </div>
                 <form *ngIf="showLogin" (submit)="login()">
-                  <input [(ngModel)]="loginRequest.Email" name="UserName" [ngModelOptions]="{standalone: true}" type="email" placeholder="Email">
+                  <input [(ngModel)]="loginRequest.UserName" name="UserName" [ngModelOptions]="{standalone: true}" type="email" placeholder="Email">
                   <input [(ngModel)]="loginRequest.PasswordSalt" name="Password" [ngModelOptions]="{standalone: true}" type="password" placeholder="Password">
                   <button (click)="login()" type="submit" class="btn">Login</button>
                   <a href="">Forget Password</a>

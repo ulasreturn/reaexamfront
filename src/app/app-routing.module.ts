@@ -10,6 +10,7 @@ import { AuthorsComponent } from './authors/authors.component';
 import { ContactComponent } from './contact/contact.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'homepage',component: HomeComponent},
   { path: 'cart', component: CartComponent },
   { path: 'product-details', component: ProductDetailsComponent },
   { path: 'products', component: ProductsComponent },
