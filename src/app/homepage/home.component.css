@@ -1,58 +1,174 @@
-body{
-  margin:0;
-  overflow-x:hidden;
+.heart-icon {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: white;
+  font-size: 24px;
+  z-index: 1;
+}
+
+/* Ürün resminin stillemesi (Opsiyonel) */
+.product-link{
+  position: relative;
+  display: inline-block;
+}
+
+.product-link img {
+  max-width: 100%;
+  height: auto;
+}
+
+ 
+
+.margin-top{
+  margin-top: 30px;
+}
+.row{
+  display: flex;
+  align-items: center;
+  flex-wrap:nowrap;
+  justify-content: space-around;
+}
+.col-3{
+  margin-right: 4%;
+}
+/* Genel stiller */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Navbar stilleri */
+.navbar {
+  background-color: #333;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 125px;
+}
+
+/* Menü stilleri */
+nav {
+  display: flex;
+}
+
+#MenuItems {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+#MenuItems li {
+  margin-right: 20px;
+}
+
+#MenuItems a {
+  text-decoration: none;
+  color: #fff;
+}
+
+/* Dropdown menü stilleri */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  z-index: 5;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  color: #333;
+  text-decoration: none;
+  display: block;
+  padding: 12px 16px;
+}
+
+.dropdown-content a:hover {
+  background-color: #f2f2f2;
+}
+
+/* Arama kutusu stilleri */
+.search-container {
+  display: flex;
+  align-items: center;
+  background-color: #f1f1f1;
+  border-radius: 25px;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-right: 20px;
+}
+
+#search {
+  border: none;
+  outline: none;
+  padding: 8px;
+  background-color: transparent;
+  font-size: 14px;
+  width: 100%;
+}
+
+#search-button {
+  background-color: #585858;
+  border: none;
+  color: #fff;
+  border-radius: 15px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+/* Mobil menü ikonu stilleri */
+.menu-icon {
+  display: none;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Responsive stiller */
+@media only screen and (max-width: 768px) {
+  .menu-icon {
+      display: block;
+      margin: 10px 0;
   }
+
+  nav ul {
+      position: absolute;
+      top: 70px;
+      left: 0;
+      background: #333;
+      width: 100%;
+      overflow: hidden;
+      transition: max-height 0.5s;
+  }
+
+  nav ul li {
+      display: block;
+      margin-right: 50px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+  }
+
+  nav ul li a {
+      color: white;
+  }
+}
+
   
-  .footer{
-  background:#000;
-  padding:30px 0px;
-  font-family: 'Play', sans-serif;
-  text-align:center;
-  }
   
-  .footer .row{
-  width:100%;
-  margin:1% 0%;
-  padding:0.6% 0%;
-  color:gray;
-  font-size:0.8em;
-  }
-  
-  .footer .row a{
-  text-decoration:none;
-  color:gray;
-  transition:0.5s;
-  }
-  
-  .footer .row a:hover{
-  color:#fff;
-  }
-  
-  .footer .row ul{
-  width:100%;
-  }
-  
-  .footer .row ul li{
-  display:inline-block;
-  margin:0px 30px;
-  }
-  
-  .footer .row a i{
-  font-size:2em;
-  margin:0% 1%;
-  }
-  
-  @media (max-width:720px){
-  .footer{
-  text-align:left;
-  padding:5%;
-  }
-  .footer .row ul li{
-  display:block;
-  margin:10px 0px;
-  text-align:left;
-  }
-  .footer .row a i{
-  margin:0% 3%;
-  }
-  }

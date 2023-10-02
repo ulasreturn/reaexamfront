@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './homepage/home.component';
@@ -12,11 +11,13 @@ import { AuthorsComponent } from './authors/authors.component';
 import { ContactComponent } from './contact/contact.component';
 import { FavouritesComponent } from './favourites/favourites.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { AboutComponent } from './about/about.component';
+import { FooterComponent } from './footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgFor} from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-
+import { AdminComponent } from './admin/admin.component';
 
 
 @NgModule({
@@ -30,7 +31,10 @@ import { HttpClientModule } from '@angular/common/http';
     AuthorsComponent,
     ContactComponent,
     FavouritesComponent,
-    NavbarComponent
+    NavbarComponent,
+    AboutComponent,
+    FooterComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +44,7 @@ import { HttpClientModule } from '@angular/common/http';
     NgFor,
     HttpClientModule,
   ],
+  
   providers: [],
   bootstrap: [AppComponent]
 })
