@@ -11,16 +11,20 @@ import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
-<<<<<<< HEAD
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
+import { NewUserComponent } from './admin/user/new-user/new-user.component';
+import { DeleteUserComponent } from './admin/user/delete-user/delete-user.component';
+import { EditUserComponent } from './admin/user/edit-user/edit-user.component';
+import { NewBookComponent } from './admin/book/new-book/new-book.component';
+import { DeleteBookComponent } from './admin/book/delete-book/delete-book.component';
+import { EditBookComponent } from './admin/book/edit-book/edit-book.component';
+import { CommentsComponent } from './admin/comments/comments.component';
+import { ContactsComponent } from './admin/contacts/contacts.component';
+import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
 
-=======
-import { AdminComponent } from './admin/admin.component';
-import { LoginComponent } from './login/login.component';
->>>>>>> d7088d23fc2fe499d3c50db0311ee1a6b0cf7f34
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'homepage',component: HomeComponent},
+  { path: 'home', component: HomeComponent },
   { path: 'cart', component: CartComponent },
   { path: 'product-details', component: ProductDetailsComponent },
   { path: 'products', component: ProductsComponent },
@@ -30,14 +34,16 @@ const routes: Routes = [
   {path:'about',component:AboutComponent},
   {path:'footer', component:FooterComponent},
   {path:'navbar', component:NavbarComponent},
-<<<<<<< HEAD
-  {path:'admin/home', component:AdminHomeComponent}
-
-
-=======
-  {path:'admin', component:AdminComponent},
-  {path:'login',component:LoginComponent}
->>>>>>> d7088d23fc2fe499d3c50db0311ee1a6b0cf7f34
+   {path:'admin/home', component:AdminHomeComponent},
+  { path: 'admin/new-user', component: NewUserComponent },
+  { path: 'admin/edit-user', component: EditUserComponent },
+  { path: 'admin/delete-user', component: DeleteUserComponent },
+  { path: 'admin/new-book', component: NewBookComponent },
+  { path: 'admin/edit-book', component: EditBookComponent },
+  { path: 'admin/delete-book', component: DeleteBookComponent },
+  { path: 'admin/comments', component: CommentsComponent },
+  { path: 'admin/contacts', component: ContactsComponent },
+  { path: 'admin/profile', component: AdminProfileComponent },
 ];
 
 @NgModule({
