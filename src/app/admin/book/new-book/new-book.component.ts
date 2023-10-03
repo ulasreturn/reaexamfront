@@ -12,6 +12,7 @@ interface gearType {
 interface oilType {
   name: string;
 }
+
 @Component({
   selector: 'app-new-book',
   templateUrl: './new-book.component.html',

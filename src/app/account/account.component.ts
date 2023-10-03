@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { LoginRequest } from 'src/core/models/request/login-request.model';
 import { AuthService } from 'src/core/services/auth/auth.service';
 import { ResponseStatus } from 'src/core/models/response/base-response.model';
+import { RegisterRequest } from 'src/core/models/request/register-request.model';
 
 @Component({
   selector: 'app-account',
@@ -24,6 +25,8 @@ import { ResponseStatus } from 'src/core/models/response/base-response.model';
     private readonly router: Router
   ) { }
 
+  public registerRequest: RegisterRequest =<RegisterRequest>{};
+
   ngOnInit(): void {
   }
 
@@ -42,9 +45,16 @@ import { ResponseStatus } from 'src/core/models/response/base-response.model';
 
 
 
-    register() {
-      // Register işlemleri burada gerçekleştirilir.
+    async register() {
+      const status = await this.authService.register(this.registerRequest);
+
+      if (status === ResponseStatus.Ok) {
+        console.log('giriş başarılı');
+      } else {
+        console.log('giriş yapılamadı');
+      }
     }
+
 }
 
 

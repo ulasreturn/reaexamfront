@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgFor} from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+<<<<<<< HEAD
 import { MessagesModule } from 'primeng/messages';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
@@ -30,6 +31,11 @@ import { NewUserComponent } from './admin/user/new-user/new-user.component';
 import { DeleteBookComponent } from './admin/book/delete-book/delete-book.component';
 import { EditBookComponent } from './admin/book/edit-book/edit-book.component';
 import { NewBookComponent } from './admin/book/new-book/new-book.component';
+=======
+import { AdminComponent } from './admin/admin.component';
+import { LoginComponent } from './login/login.component';
+
+>>>>>>> d7088d23fc2fe499d3c50db0311ee1a6b0cf7f34
 
 @NgModule({
   declarations: [
@@ -45,6 +51,7 @@ import { NewBookComponent } from './admin/book/new-book/new-book.component';
     NavbarComponent,
     AboutComponent,
     FooterComponent,
+<<<<<<< HEAD
     AdminHomeComponent,
     AdminProfileComponent,
     BarComponent,
@@ -56,6 +63,10 @@ import { NewBookComponent } from './admin/book/new-book/new-book.component';
     DeleteBookComponent,
     EditBookComponent,
     NewBookComponent
+=======
+    AdminComponent,
+    LoginComponent
+>>>>>>> d7088d23fc2fe499d3c50db0311ee1a6b0cf7f34
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
@@ -68,7 +79,7 @@ import { NewBookComponent } from './admin/book/new-book/new-book.component';
     NgFor,
     HttpClientModule,
   ],
-  
+
   providers: [],
   bootstrap: [AppComponent]
 })

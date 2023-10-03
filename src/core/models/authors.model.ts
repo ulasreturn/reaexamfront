@@ -3,5 +3,4 @@ export interface Authors{
   AuthorsName: string;
   AuthorsSurname: string;
   GeneralInfo: string;
-  BooksID: number;
   }
