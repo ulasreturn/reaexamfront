@@ -1,0 +1,19 @@
+.new-car-section{
+    width: 100%;
+    height: auto;
+    padding: 10px;
+  }
+  
+  .info-area{
+    width: 50%;
+    margin-top: 10%;
+    padding: 10px;
+    display: block;
+  }
+  
+  @media (max-width:1024px){
+    .info-area{
+      display: none;
+    }
+  }
+  

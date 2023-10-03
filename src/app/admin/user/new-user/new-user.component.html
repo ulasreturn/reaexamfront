@@ -1,0 +1,25 @@
+<app-bar></app-bar>
+<div class="new-user-section">
+  <div style="float: left; margin-left: 10px;" class="flex-auto mt-2">
+    <p-inputMask mask="99999999999" [(ngModel)]="tc_no" placeholder="ID Number"></p-inputMask>
+  </div>
+  <div style="float: left; margin-left: 10px;" class="flex-auto mt-2">
+    <input placeholder="Name" type="text" pInputText [(ngModel)]="name" />
+  </div>
+  <div style="float: left; margin-left: 10px;" class="flex-auto mt-2">
+    <input placeholder="Email" type="text" pInputText [(ngModel)]="email" />
+  </div>
+  <div style="float: left; margin-left: 10px;" class="flex-auto mt-2">
+    <p-inputMask mask="(999) 999-9999" [(ngModel)]="phone" placeholder="Phone (5XX) XXX XXXX"></p-inputMask>
+  </div>
+  <div style="float: left; margin-left: 10px;" class="flex-auto mt-2">
+    <p-password placeholder="Password" [(ngModel)]="password"></p-password>
+  </div>
+  <!-- ROLE SELECT İLE SEÇİLECEK (ADMIN-USER) -->
+  <div style="float: left; margin-left: 10px;" class="flex-auto mt-2">
+    <input placeholder="Role" type="text" pInputText [(ngModel)]="role" />
+  </div>
+  <div style="float: left; margin-left: 10px;" class="flex-auto mt-2">
+    <button pButton pRipple label="Add" class="p-button-success"></button>
+  </div>
+</div>
