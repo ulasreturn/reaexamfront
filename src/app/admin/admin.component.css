@@ -1,0 +1,55 @@
+.container {
+	margin-top: 150px;
+  }
+  
+  .login-box {
+	border: 1px solid #e1e1e1;
+	padding: 20px;
+	box-shadow: 0px 0px 5px 0px;
+	background-color: #fff;
+  }
+  
+  .login-key {
+	height: 100px;
+	font-size: 80px;
+	color: #333;
+  }
+  
+  .login-title {
+	font-size: 18px;
+	margin-top: 25px;
+	color: #333;
+	text-align: center;
+  }
+  
+  .login-form {
+	margin-top: 30px;
+  }
+  
+  .form-control-label {
+	font-size: 14px;
+  }
+  
+  .form-control {
+	border: 1px solid #e1e1e1;
+  }
+  
+  .loginbttm {
+	margin-top: 15px;
+	text-align: right;
+  }
+  .login-success {
+	color: green;
+	text-align: center;
+	margin-top: 15px;
+  }
+  .error-message {
+	text-align: center;
+	margin-top: 15px;
+	color: red;
+  }
+  
+  .login-button {
+	text-align: right;
+  }
+  

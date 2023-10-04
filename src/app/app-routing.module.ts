@@ -21,7 +21,8 @@ import { EditBookComponent } from './admin/book/edit-book/edit-book.component';
 import { CommentsComponent } from './admin/comments/comments.component';
 import { ContactsComponent } from './admin/contacts/contacts.component';
 import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
-
+import { AdminComponent } from './admin/admin.component';
+import { AdminGuard } from './admin.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -35,16 +36,17 @@ const routes: Routes = [
   {path:'about',component:AboutComponent},
   {path:'footer', component:FooterComponent},
   {path:'navbar', component:NavbarComponent},
-   {path:'admin/home', component:AdminHomeComponent},
-  { path: 'admin/new-user', component: NewUserComponent},
-  { path: 'admin/edit-user', component: EditUserComponent },
-  { path: 'admin/delete-user', component: DeleteUserComponent },
-  { path: 'admin/new-book', component: NewBookComponent },
-  { path: 'admin/edit-book', component: EditBookComponent },
-  { path: 'admin/delete-book', component: DeleteBookComponent },
-  { path: 'admin/comments', component: CommentsComponent},
-  { path: 'admin/contacts', component: ContactsComponent},
-  { path: 'admin/profile', component: AdminProfileComponent},
+  {path:'admin',component:AdminComponent},
+   {path:'admin/home', component:AdminHomeComponent,canActivate: [AdminGuard]},
+  { path: 'admin/new-user', component: NewUserComponent,canActivate: [AdminGuard]},
+  { path: 'admin/edit-user', component: EditUserComponent,canActivate: [AdminGuard] },
+  { path: 'admin/delete-user', component: DeleteUserComponent,canActivate: [AdminGuard] },
+  { path: 'admin/new-book', component: NewBookComponent,canActivate: [AdminGuard] },
+  { path: 'admin/edit-book', component: EditBookComponent,canActivate: [AdminGuard] },
+  { path: 'admin/delete-book', component: DeleteBookComponent,canActivate: [AdminGuard] },
+  { path: 'admin/comments', component: CommentsComponent,canActivate: [AdminGuard]},
+  { path: 'admin/contacts', component: ContactsComponent,canActivate: [AdminGuard]},
+  { path: 'admin/profile', component: AdminProfileComponent,canActivate: [AdminGuard]},
 ];
 
 @NgModule({

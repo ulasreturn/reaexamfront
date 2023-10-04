@@ -18,13 +18,22 @@
                   <span [ngClass]="{'active': showLogin}" (click)="showLogin = true; updateIndicatorPosition()">Login</span>
                   <span [ngClass]="{'active': !showLogin}" (click)="showLogin = false; updateIndicatorPosition()">Register</span>
                   <div id="Indicator" [ngStyle]="{'transform': 'translateX(' + indicatorPosition + '%)'}"></div>
+                  
                 </div>
+                
                 <form *ngIf="showLogin" (submit)="login()">
+                      
+                  
                   <input [(ngModel)]="loginRequest.Email" name="UserName" [ngModelOptions]="{standalone: true}" type="email" placeholder="Email">
                   <input [(ngModel)]="loginRequest.PasswordSalt" name="Password" [ngModelOptions]="{standalone: true}" type="password" placeholder="Password">
                   <button (click)="login()" type="submit" class="btn">Login</button>
+
                   <a href="">Forget Password</a>
+                  <div *ngIf="loginSuccess" class="success-message">Giriş başarılı! Yönlendiriliyor...</div>
+                  <div *ngIf="loginError"class="error-message">Giriş bilgileri yanlış. Lütfen tekrar deneyin.</div>
+                  
                 </form>
+                <div *ngIf="registerSuccess" class="success-message" style="padding: 15px;">Başarıyla Kayıt Oldunuz! Yönlendiriliyorsunuz...</div>
                 <form *ngIf="!showLogin" (submit)="register()">
                     <input [(ngModel)]="registerRequest.UserName" name="UserName" [ngModelOptions]="{standalone: true}"  type="text" placeholder="Username">
                     <input [(ngModel)]="registerRequest.UserSurname" name="UserSurname" [ngModelOptions]="{standalone: true}"  type="text" placeholder="User Surname">
@@ -35,6 +44,7 @@
                     <input [(ngModel)]="registerRequest.Telephone" name="Telephone" [ngModelOptions]="{standalone: true}" type="text" placeholder="Telephone">
                     <button type="submit" class="btn">Register</button>
                 </form>
+       
               </div>
             </div>
           </div>
@@ -42,7 +52,6 @@
       </div>
 
     </div>
-
 
 
     <!-- Footer -->

@@ -13,11 +13,17 @@ import { RegisterRequest } from 'src/core/models/request/register-request.model'
 
   export class AccountComponent {
     showLogin: boolean = true;
-    countries: string[] = ['Ülke 1', 'Ülke 2', 'Ülke 3']; // Ülke verileri
-    cities: string[] = ['İl 1', 'İl 2', 'İl 3']; // İl verileri
+    countries: string[] = []; // Ülke verileri
+    cities: string[] = [];
+    loginSuccess: boolean = false; // Yeni değişken
+    loginError: boolean = false;
+    registerSuccess: boolean = false; // Yeni değişken // İl verileri
     indicatorPosition: number = 0;
 
-
+    updateIndicatorPosition() {
+      this.indicatorPosition = this.showLogin ? 0 : 100;
+    }
+    
     public loginRequest: LoginRequest = <LoginRequest>{};
 
   constructor(
@@ -34,14 +40,16 @@ import { RegisterRequest } from 'src/core/models/request/register-request.model'
     let status = await this.authService.login(this.loginRequest);
 
     if (status == ResponseStatus.Ok) {
-      await this.router.navigate(['']);
-    } else if (status == ResponseStatus.Invalid)
+      this.loginSuccess = true;
+      this.loginError = false;
+      // Başka bir sayfaya yönlendirme işlemi
+      await this.router.navigate(['']); // Burada yönlendirmeyi uygun bir sayfa yoluna göre güncelleyin
+    } else if (status == ResponseStatus.Invalid) {
+      this.loginError = true;
+      this.loginSuccess = false;
       this.loginRequest.PasswordSalt = '';
-  }
-
-    updateIndicatorPosition() {
-      this.indicatorPosition = this.showLogin ? 0 : 100;
     }
+  }
 
 
 
@@ -49,14 +57,14 @@ import { RegisterRequest } from 'src/core/models/request/register-request.model'
       const status = await this.authService.register(this.registerRequest);
 
       if (status === ResponseStatus.Ok) {
-        console.log('giriş başarılı');
-      } else {
-        console.log('giriş yapılamadı');
+        console.log('Kayıt başarılı! Yönlendiriliyorsunuz');
+        await this.router.navigate(['']);// Başka bir sayfaya yönlendirme işlemi // Örneğin: await this.router.navigate(['']);
       }
-    }
+        // Örneğin: await this.router.navigate(['']);
+      
 
 }
-
+    }
 
 
 

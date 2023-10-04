@@ -39,6 +39,7 @@ import { InputMaskModule } from 'primeng/inputmask';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { DropdownModule } from 'primeng/dropdown';
 import { CalendarModule } from 'primeng/calendar';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { CalendarModule } from 'primeng/calendar';
     NewUserComponent,
     DeleteBookComponent,
     EditBookComponent,
-    NewBookComponent
+    NewBookComponent,
+    AdminComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
