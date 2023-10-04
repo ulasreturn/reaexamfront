@@ -57,7 +57,7 @@ import { RegisterRequest } from 'src/core/models/request/register-request.model'
       const status = await this.authService.register(this.registerRequest);
 
       if (status === ResponseStatus.Ok) {
-        console.log('Kayıt başarılı! Yönlendiriliyorsunuz');
+        this.registerSuccess = true;
         await this.router.navigate(['']);// Başka bir sayfaya yönlendirme işlemi // Örneğin: await this.router.navigate(['']);
       }
         // Örneğin: await this.router.navigate(['']);
