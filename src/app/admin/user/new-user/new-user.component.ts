@@ -23,7 +23,6 @@ export class NewUserComponent implements OnInit{
   selectedUsers: userType[] = [];
   ngOnInit() {
 
-
     this.users = [
       { name: 'Admin' },
       { name: 'Authors' },

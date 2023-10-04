@@ -22,6 +22,7 @@ import { CommentsComponent } from './admin/comments/comments.component';
 import { ContactsComponent } from './admin/contacts/contacts.component';
 import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
 
+
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
@@ -35,15 +36,15 @@ const routes: Routes = [
   {path:'footer', component:FooterComponent},
   {path:'navbar', component:NavbarComponent},
    {path:'admin/home', component:AdminHomeComponent},
-  { path: 'admin/new-user', component: NewUserComponent },
+  { path: 'admin/new-user', component: NewUserComponent},
   { path: 'admin/edit-user', component: EditUserComponent },
   { path: 'admin/delete-user', component: DeleteUserComponent },
   { path: 'admin/new-book', component: NewBookComponent },
   { path: 'admin/edit-book', component: EditBookComponent },
   { path: 'admin/delete-book', component: DeleteBookComponent },
-  { path: 'admin/comments', component: CommentsComponent },
-  { path: 'admin/contacts', component: ContactsComponent },
-  { path: 'admin/profile', component: AdminProfileComponent },
+  { path: 'admin/comments', component: CommentsComponent},
+  { path: 'admin/contacts', component: ContactsComponent},
+  { path: 'admin/profile', component: AdminProfileComponent},
 ];
 
 @NgModule({
