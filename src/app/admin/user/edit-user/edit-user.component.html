@@ -1,1 +1,35 @@
 <app-bar></app-bar>
+<div class="new-user-section">
+  <div style="float: left; margin-left: 10px;" class="flex-auto mt-2">
+    <p-inputMask mask="9999" [(ngModel)]="Id" placeholder="ID Number"></p-inputMask>
+  </div>
+  <div style="float: left; margin-left: 10px;" class="flex-auto mt-2">
+    <input placeholder="Name" type="text" pInputText [(ngModel)]="UserName" />
+  </div>
+  <div style="float: left; margin-left: 10px;" class="flex-auto mt-2">
+    <input placeholder="SurName" type="text" pInputText [(ngModel)]="UserSurname" />
+  </div>
+  <div style="float: left; margin-left: 10px;" class="flex-auto mt-2">
+    <input placeholder="Email" type="text" pInputText [(ngModel)]="Email" />
+  </div>
+  <div style="float: left; margin-left: 10px;" class="flex-auto mt-2">
+    <input placeholder="City" type="text" pInputText [(ngModel)]="City" />
+  </div>
+  <div style="float: left; margin-left: 10px;" class="flex-auto mt-2">
+    <input placeholder="Country" type="text" pInputText [(ngModel)]="Country" />
+  </div>
+  <div style="float: left; margin-left: 10px;" class="flex-auto mt-2">
+    <p-inputMask mask="(999) 999-9999" [(ngModel)]="Telephone" placeholder="Phone (5XX) XXX XXXX"></p-inputMask>
+  </div>
+  <div style="float: left; margin-left: 10px;" class="flex-auto mt-2">
+    <p-password placeholder="Password" [(ngModel)]="Password"></p-password>
+  </div>
+  <div style="float: left; margin-left: 10px;" class="flex-auto mt-2">
+    <p-dropdown placeholder="Role" [options]="users" [(ngModel)]="selectedUsers" optionLabel="name"></p-dropdown>
+  </div>
+  <!-- ROLE SELECT İLE SEÇİLECEK (ADMIN-USER) -->
+  <div style="float: left; margin-left: 10px;" class="flex-auto mt-2">
+    <button pButton pRipple label="Güncelle" class="p-button-success"></button>
+  </div>
+</div>
+
