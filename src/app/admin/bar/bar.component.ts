@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { AuthService } from '../../../../src/core/services/auth/auth.service';
+import { User } from '../../../../src/core/models/user.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-bar',
@@ -8,8 +11,24 @@ import { MenuItem } from 'primeng/api';
 })
 export class BarComponent {
   items: MenuItem[] | undefined;
+  currentUser: User | null = null;
+
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+  ) { this.currentUser = null }
+
 
   ngOnInit() {
+
+    this.authService.currentUser.subscribe(user => {
+      this.currentUser = user;
+      if (this.currentUser?.UserType === 0 || this.currentUser == null) {
+        this.router.navigate(['/home']);
+      }
+    });
+
+  
     this.items = [
       {
         label: 'Home',
@@ -78,8 +97,12 @@ export class BarComponent {
       {
         label: 'Quit',
         icon: 'pi pi-fw pi-power-off',
-        routerLink: '/home',
+        command: () => this.logout(),
       }
     ];
   }
+  logout() {
+    return this.authService.logOut();
+  }
 }
+

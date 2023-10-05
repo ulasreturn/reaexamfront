@@ -40,6 +40,8 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { DropdownModule } from 'primeng/dropdown';
 import { CalendarModule } from 'primeng/calendar';
 import { AdminComponent } from './admin/admin.component';
+import { LoginComponent } from './account/login/login.component';
+import { RegisterComponent } from './account/register/register.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +68,9 @@ import { AdminComponent } from './admin/admin.component';
     DeleteBookComponent,
     EditBookComponent,
     NewBookComponent,
-    AdminComponent
+    AdminComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
