@@ -1,0 +1,65 @@
+body {
+    color: #797979;
+    background: #f1f2f7;
+    font-family: 'Open Sans', sans-serif;
+    padding: 0px !important;
+    margin: 0px !important;
+    font-size: 13px;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+}
+
+.panel {
+    display: flex;
+    justify-content: center;
+    max-width: 120vh;
+}
+
+.bio-graph-heading {
+    color: #fff;
+    text-align: center;
+    font-style: italic;
+    padding: 20px 110px;
+    /*border-radius: 4px 4px 0 0;
+    -webkit-border-radius: 4px 4px 0 0;*/
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.bio-row {
+    width: 50%;
+    float: left;
+    margin-bottom: 10px;
+    padding: 0 15px;
+}
+
+.bio-row p span {
+    width: 100px;
+    display: inline-block;
+}
+
+.card-header {
+    background-color: rgb(230, 128, 56);
+    height: 50px;
+    //padding-top: 10px; /* Üstten boşluk ayarı */
+    /*padding-left: 50px;   // Sol boşluk miktarını ayarlayın
+    padding-right: 50px;  // Sağ boşluk miktarını ayarlayın*/
+}
+
+.panel-body {
+    background-color: white;
+}
+
+#button {
+    position: absolute;
+    right: 0;
+    margin-top: 1%;
+
+}
+
+.form-container {
+    margin-left: 20vh;
+    margin-right: 20vh;
+    margin-top: 5vh;
+}

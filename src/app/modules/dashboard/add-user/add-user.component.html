@@ -1,0 +1,26 @@
+
+
+    <div class="registration-form">
+        <form>
+            <div class="form-icon">
+                <span><i class="fa fa-user-o" style="font-size:48px"></i></span>
+            </div>
+            <div class="form-group">
+                <input [(ngModel)]="registerRequest.UserName" [ngModelOptions]="{standalone: true}" type="text" class="form-control item" id="usernameAddUser" placeholder="Username">
+            </div>
+            <div class="form-group">
+                <input [(ngModel)]="registerRequest.fullName" [ngModelOptions]="{standalone: true}" type="text" class="form-control item" id="fullNameAddUser" placeholder="Full Name">
+            </div>
+            <div class="form-group">
+                <input [(ngModel)]="registerRequest.Email" [ngModelOptions]="{standalone: true}" type="text" class="form-control item" id="emailAddUser" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <input [(ngModel)]="registerRequest.Password" [ngModelOptions]="{standalone: true}" type="password" class="form-control item" id="passwordAddUser" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <button id="addUserBtn" type="button" class="btn btn-block create-account" (click)="register()">Add User</button>
+            </div>
+        </form>
+    
+    </div>
+ 

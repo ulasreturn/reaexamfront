@@ -1,0 +1,110 @@
+<div class="card mt-70 mb-50" id="card">
+    <div class="card-title mx-auto">
+        Payment Page
+    </div>
+    <!-- <div class="nav">
+        <ul class="mx-auto">
+            <li><a href="login">Account</a></li>
+            <li class="active"><a href="payment">Payment</a></li>
+        </ul>
+    </div> -->
+    <form>
+        <div>
+            <span id="card-header">Saved cards:</span>
+
+            <p-table #dt [value]="cards">
+                <ng-template pTemplate="header" style="width: 15rem;">
+                    <tr>
+                        <th style="width: 2rem;">
+
+                        </th>
+                        <th pSortableColumn="Id">Card Number<p-sortIcon field="cardNumber"></p-sortIcon></th>
+                        <th pSortableColumn="userName" style="min-width:10rem">Card Type<p-sortIcon
+                                field="cardType"></p-sortIcon>
+                        </th>
+
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" style="width: 50rem;" let-card>
+                    <tr>
+                        <td>
+
+                        </td>
+
+                        <td>{{ card.cardNumber }}</td>
+                        <td>{{ card.cardType }}</td>
+
+                        <!-- <div class="button-group">
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"
+                                (click)="deleteCard(card.cards)"></button>
+                        </div> -->
+
+                    </tr>
+                </ng-template>
+            </p-table>
+
+
+
+        </div>
+        <span id="card-header">Add new card:</span>
+        <div class="row-1">
+            <div class="col-2"><img class="img-fluid"
+                    src="https://img.icons8.com/color/48/000000/mastercard-logo.png" /></div>
+            <div class="col-7">
+                <input [(ngModel)]="addCardRequest.cardNumber" [ngModelOptions]="{standalone: true}" type="text"
+                    placeholder="**** **** **** 3193">
+            </div>
+
+
+            <div>
+                <div class="row-8">
+                    <div class="row row-2">
+                        <span id="card-inner">User Id</span>
+                    </div>
+                    <div class="row row-2">
+                        <input [(ngModel)]="addCardRequest.UserId" [ngModelOptions]="{standalone: true}" type="text"
+                            placeholder="id">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="row row-2">
+                    <span id="card-inner">Card holder name</span>
+                </div>
+                <div class="row row-2">
+                    <input [(ngModel)]="addCardRequest.cardHolderName" [ngModelOptions]="{standalone: true}" type="text"
+                        placeholder="Bojan Viner">
+                </div>
+            </div>
+        </div>
+        <div class="row three">
+            <div class="col-7">
+                <div class="row-1">
+                    <div class="row row-2">
+                        <span id="card-inner">Card number</span>
+                    </div>
+                    <div class="row row-2">
+                        <input [(ngModel)]="addCardRequest.cardNumber" [ngModelOptions]="{standalone: true}" type="text"
+                            placeholder="5134-5264-4543-5432">
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-2">
+                <input [(ngModel)]="addCardRequest.expirationDate" [ngModelOptions]="{standalone: true}" type="text"
+                    placeholder="Exp. date">
+            </div>
+            <div id="cvc" class="col-2">
+                <input [(ngModel)]="addCardRequest.cardCvc" [ngModelOptions]="{standalone: true}" type="text"
+                    placeholder="CVV">
+            </div>
+            <div id="cardtip" class="col-2">
+                <input [(ngModel)]="addCardRequest.cardType" [ngModelOptions]="{standalone: true}" type="text"
+                    placeholder="Card type">
+            </div>
+        </div>
+        <button class="btn d-flex mx-auto" style="background-color: blue;" (click)="onCreate(addCardRequest)"><b>Add
+                card</b></button>
+        <!-- <button class="btn d-flex mx-auto" style="background-color: red;"><b>Ödeme yap</b></button> -->
+    </form>
+</div>

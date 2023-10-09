@@ -23,7 +23,7 @@ export class BarComponent {
 
     this.authService.currentUser.subscribe(user => {
       this.currentUser = user;
-      if (this.currentUser?.UserType === 0 || this.currentUser == null) {
+      if (this.currentUser?.userType === 0 || this.currentUser == null) {
         this.router.navigate(['/home']);
       }
     });

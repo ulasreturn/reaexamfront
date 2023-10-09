@@ -6,7 +6,12 @@
                 <div class="col-2">
                     <h1>Kitaplarınızı Kolayca Satın! <br> </h1>
                     <p>İkinci el veya hiç kullanılmamış kitaplarınızı yükleyerek okurseverlerin satın almasına yardımcı olun!</p>
-                    <a href="./login" class="btn">Kitap Sat!</a>
+                    <ng-container *ngIf="canActivate();">
+                        <a routerLink="/login" class="btn">Kitap Sat!</a>
+                      </ng-container>
+                      <ng-container *ngIf="!canActivate();">
+                        <a routerLink="/sat" class="btn">Kitap Sat!</a>
+                      </ng-container>
                 </div>
                 <div class="col-2">
                     <img src="assets/images/image1.png">

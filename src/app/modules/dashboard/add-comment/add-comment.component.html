@@ -1,0 +1,132 @@
+<div class="card">
+    <p-toast></p-toast>
+    <p-toolbar styleClass="mb-4 gap-2">
+        <ng-template pTemplate="left">
+            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2"(click)="addNewComment()"></button>
+        </ng-template>
+        <ng-template pTemplate="right">
+            <div class="row">
+                <div class="col">
+                    <input type="text" [(ngModel)]="searchCommentName" placeholder="Search"
+                        (input)="searchComment(searchCommentName)" class="form-control">
+                </div>
+            </div>
+        </ng-template>
+    </p-toolbar>
+    <p-table #dt  [value]="filteredComment" [rows]="5" [paginator]="true" [tableStyle]="{ 'min-width': '5vh' }"
+        [rowHover]="true" dataKey="id" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [showCurrentPageReport]="true">
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="Id" style="min-width:5rem">Id</th>
+                <th pSortableColumn="CommentName" style="min-width:10rem">comment Header</th>
+                <th pSortableColumn="CommentAddres" style="min-width:10rem">User ID</th>
+                <th pSortableColumn="city" style="min-width:10rem">House ID</th>
+                <th pSortableColumn="country" style="min-width:10rem">Comment Text</th>
+                <th pSortableColumn="CommentPrice" style="min-width:10rem">Star Rating</th>
+                <th pSortableColumn="" style="min-width:10rem"></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-comment>
+            <tr>
+                
+               
+
+
+                <td>{{ comment.id }}</td>
+                <td>{{ comment.commentHeader }}</td>
+                <td>{{ comment.user_Id }}</td>
+                <td>{{ comment.house_Id }}</td>
+                <td>{{ comment.commentText }}</td>
+                <td>{{ comment.starRating }}</td> 
+                <td>
+                    <div class="button-group">
+                        <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"
+                        (click)="openEditDialog(comment.id)"></button>
+                        <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"
+                            (click)="deleteComment(comment.id)"></button>
+                        <div class="modal fade" tabindex="-1" [class.show]="openModel">
+                            <!--CSS'i düzenlemezsem çalışmaz-->
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <p>Bu Evi silmek istediğinize emin misiniz?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <p-button icon="pi pi-check" styleClass="p-button-success"
+                                            (click)="deleteComment(comment.Id)"></p-button> 
+                                        <p-button icon="pi pi-times" styleClass="p-button-danger"
+                                            (click)="closeModal()"></p-button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+
+                
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+
+<p-dialog class="modalReg" [(visible)]="CommentAddDialog" [style]="{ width: '450px' }" header="Comment Add" [modal]="true"
+styleClass="p-fluid">
+<div class="registration-form">
+    <form>
+
+        <div class="form-group">
+            <input [(ngModel)]="commentRequest.commentHeader" [ngModelOptions]="{standalone: true}" 
+            type="text" class="form-control item" id="usernameAddUser" placeholder="Comment Name">
+        </div>
+        <div class="form-group">
+            <input [(ngModel)]="commentRequest.user_Id" [ngModelOptions]="{standalone: true}" type="text" class="form-control item" id="fullNameAddUser" placeholder="User ID">
+        </div>
+        <div class="form-group">
+            <input [(ngModel)]="commentRequest.house_Id" [ngModelOptions]="{standalone: true}" type="text" class="form-control item" id="fullNameAddUser" placeholder="House ID">
+        </div>
+        <div class="form-group">
+            <input [(ngModel)]="commentRequest.commentText" [ngModelOptions]="{standalone: true}" type="text" class="form-control item" id="emailAddUser" placeholder="Comment Text">
+        </div>
+        <div class="form-group">
+            <input [(ngModel)]="commentRequest.starRating" [ngModelOptions]="{standalone: true}" type="text" class="form-control item" id="passwordAddUser" placeholder="Comment Rating">
+        </div>
+        
+
+        <div class="form-group">
+            <button id="addUserBtn" type="button" class="btn btn-block create-account" (click)="onCreate(commentRequest)"> Add Comment </button>
+        </div>
+    </form>
+</div>
+</p-dialog>
+
+
+
+<p-dialog class="modalReg" *ngIf="CommentToEdit" [(visible)]="CommentEditDialog" [style]="{ width: '450px' }" header="Comment Edit" [modal]="true"
+styleClass="p-fluid">
+<div class="registration-form">
+    <form>
+
+        <div class="form-group">
+            <input [(ngModel)]="CommentToEdit.commentHeader" [ngModelOptions]="{standalone: true}" 
+            type="text" class="form-control item" id="usernameAddUser" placeholder="Comment Name">
+        </div>
+        <div class="form-group">
+            <input [(ngModel)]="CommentToEdit.user_Id" [ngModelOptions]="{standalone: true}" type="text" class="form-control item" id="fullNameAddUser" placeholder="User ID">
+        </div>
+        <div class="form-group">
+            <input [(ngModel)]="CommentToEdit.house_Id" [ngModelOptions]="{standalone: true}" type="text" class="form-control item" id="fullNameAddUser" placeholder="House ID">
+        </div>
+        <div class="form-group">
+            <input [(ngModel)]="CommentToEdit.commentText" [ngModelOptions]="{standalone: true}" type="text" class="form-control item" id="emailAddUser" placeholder="Comment Text">
+        </div>
+        <div class="form-group">
+            <input [(ngModel)]="CommentToEdit.starRating" [ngModelOptions]="{standalone: true}" type="text" class="form-control item" id="passwordAddUser" placeholder="Comment Rating">
+        </div>
+        
+        <button pButton pRipple label="Update" icon="pi pi-check" class="p-button-text"
+        (click)="onUpdate(CommentToEdit.id, CommentToEdit)"></button>
+
+    </form>
+</div>
+</p-dialog>

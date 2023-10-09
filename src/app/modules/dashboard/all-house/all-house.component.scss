@@ -1,0 +1,29 @@
+.card {
+    max-width: 120vh; /* İstediğiniz genişlik değeri */
+    margin: 0 auto; /* Kartı yatay olarak ortala */
+    margin-left: 20vh;
+    margin-right: 20vh;
+    margin-top: 5vh;
+  }
+
+.w-full{
+    font-weight: 80%;
+}
+
+.p-input-icon-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .p-input-icon-left p-button {
+    margin-right: 5px; /* İstediğiniz boşluğu ayarlayın */
+  }
+
+  .button-group {
+    display: flex; /* Butonları yatay olarak hizalar */
+}
+
+.button-group button {
+    margin-right: 5px; /* Butonlar arasında bir boşluk bırakır */
+}
+

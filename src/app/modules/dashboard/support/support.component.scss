@@ -1,0 +1,43 @@
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+h1 {
+    margin-bottom: 40px;
+}
+
+label {
+    color: #333;
+}
+
+.btn-send {
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    width: 80%;
+    margin-left: 3px;
+    }
+.help-block.with-errors {
+    color: #ff5050;
+    margin-top: 5px;
+
+}
+
+.card{
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.card-body{
+    margin-left: 20vh;
+    margin-right: 20vh;
+    margin-top: 5vh;
+
+}
+
+.container{
+    margin-left: 20vh;
+    margin-right: 20vh;
+    margin-top: 5vh;
+    max-width: 120vh;
+}

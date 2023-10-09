@@ -22,14 +22,22 @@ import { CommentsComponent } from './admin/comments/comments.component';
 import { ContactsComponent } from './admin/contacts/contacts.component';
 import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
 import { AdminComponent } from './admin/admin.component';
-import { AdminGuard } from './admin.guard';
-import { LoginComponent } from './account/login/login.component';
-import { RegisterComponent } from './account/register/register.component';
+import { AdminGuard } from './guard/admin.guard';
+import { LoginComponent } from './modules/auth/login/login.component';
+import { RegisterComponent } from './modules/auth/register/register.component';
+import { SidebarComponent } from './modules/dashboard/sidebar/sidebar.component';
+import { ProfileComponent } from './modules/profile/profile.component';
+import { AuthGuard } from './guard/auth.guard';
+import { LoginGuard } from './guard/login.guard';
+import { ProfileInfoComponent } from './modules/dashboard/profile-info/profile-info.component';
+
+
+
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent,pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'cart', component: CartComponent },
+  { path: 'cart', component: CartComponent ,canActivate: [AuthGuard]},
   { path: 'product-details', component: ProductDetailsComponent },
   { path: 'products', component: ProductsComponent },
   {path:"account",component:AccountComponent},
@@ -49,8 +57,15 @@ const routes: Routes = [
   { path: 'admin/comments', component: CommentsComponent},
   { path: 'admin/contacts', component: ContactsComponent},
   { path: 'admin/profile', component: AdminProfileComponent},
-  {path:'login',component:LoginComponent},
-  {path:'register',component:RegisterComponent}
+  {path:'login',component:LoginComponent,canActivate:[LoginGuard]},
+  {path:'register',component:RegisterComponent,canActivate:[LoginGuard]},
+  { path: 'sidebar', component: SidebarComponent},
+  { path: 'profile', component: ProfileComponent },
+  {path: 'profileinfo', component: ProfileInfoComponent},
+  
+
+
+  
 ];
 
 @NgModule({

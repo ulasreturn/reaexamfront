@@ -1,4 +1,38 @@
 
+
+
+
+
+
+
+
+  button {
+    margin-top: 0vh;
+    background-color:rgba(121, 131, 134, 0.611);
+
+    border: none;
+    
+    border-radius: 1vh;
+    cursor: pointer;
+    font-size: 1vh;
+    
+  }
+  
+  button:hover {
+    background-color: #000000;
+  }
+
+
+
+ #homeAvatar {
+  margin-right: 1vh;
+ }
+
+ #dropdownBtn {
+  margin-left: 2vh;
+ }
+ 
+
 a {
     &:hover {
         color: #ffffff;
@@ -172,4 +206,3 @@ a {
       background-color: #555;
   }
 }
-

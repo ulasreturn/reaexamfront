@@ -3,12 +3,14 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/core/services/auth/auth.service';
 import { ResponseStatus } from 'src/core/models/response/base-response.model';
 import { RegisterRequest } from 'src/core/models/request/register-request.model';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
+  providers: [MessageService, ConfirmationService]
 })
 export class RegisterComponent {
   showLogin: boolean = false;
@@ -24,7 +26,8 @@ export class RegisterComponent {
 
 constructor(
   private readonly authService: AuthService,
-  private readonly router: Router
+  private readonly router: Router,
+  private messageService: MessageService,
 ) { }
 
 public registerRequest: RegisterRequest =<RegisterRequest>{};
@@ -33,15 +36,13 @@ ngOnInit(): void {
 }
 
 async register() {
-  const status = await this.authService.register(this.registerRequest);
-
-  if (status === ResponseStatus.Ok) {
-    this.registerSuccess = true;
-    await this.router.navigate(['/home']);// Başka bir sayfaya yönlendirme işlemi // Örneğin: await this.router.navigate(['']);
-  }
-    // Örneğin: await this.router.navigate(['']);
-
-
+  let status = await this.authService.register(this.registerRequest);
+  if (status == ResponseStatus.Ok) {
+    this.messageService.add({ severity: 'success', summary: 'Başarılı', detail: 'Kullanıcı başarılı bir şekilde eklendi', life: 3000 });
+    await this.router.navigate(['/login']);
+  } else if (status == ResponseStatus.Invalid)
+  this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Kullanıcı oluşturulamadı' });
+    this.registerRequest.Password = '';
 }
 }
 

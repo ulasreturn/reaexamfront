@@ -1,6 +1,7 @@
 <div class="header">
     <div class="container">
     <app-navbar></app-navbar>
+   
 
 
 
@@ -12,31 +13,35 @@
               </div>
               <!-- İstediğiniz diğer içerikler buraya gelebilir -->
             </div>
+            
     <div class="col-2">
+      
         <div class="form-container">
+          
           <div class="form-btn">
             <span [ngClass]="{'active': showLogin}" (click)="showLogin = false; updateIndicatorPosition()">Login</span>
                   <span [routerLink]="['/register']" [ngClass]="{'active': !showLogin}" (click)="showLogin = false; updateIndicatorPosition()">Register</span>
                   <div id="Indicator" [ngStyle]="{'transform': 'translateX(' + indicatorPosition + '%)'}"></div>
           </div>
           
+          
           <form *ngIf="showLogin" (submit)="login()">
                 
             
-            <input [(ngModel)]="loginRequest.Email" name="UserName" [ngModelOptions]="{standalone: true}" type="email" placeholder="Email">
-            <input [(ngModel)]="loginRequest.PasswordSalt" name="Password" [ngModelOptions]="{standalone: true}" type="password" placeholder="Password">
-            <button (click)="login()" type="submit" class="btn">Login</button>
-
+            <input [(ngModel)]="loginRequest.email" name="UserName" [ngModelOptions]="{standalone: true}" type="email" placeholder="Email">
+            <input [(ngModel)]="loginRequest.password" name="Password" [ngModelOptions]="{standalone: true}" type="password" placeholder="Password">
+            <button id="loginBtn" type="button" class="btn btn-primary btn-block mb-4" (click)="login()">Login</button>
             <a href="">Forget Password</a>
-            <div *ngIf="loginSuccess" class="success-message">Giriş başarılı! Yönlendiriliyor...</div>
-            <div *ngIf="loginError"class="error-message">Giriş bilgileri yanlış. Lütfen tekrar deneyin.</div>
+            
             
           </form>
+         
         </div>
     </div>
           </div>
         </div>
     </div>
-
+    
       
-          <app-footer></app-footer>        
+          <app-footer></app-footer> 
+          <p-toast position="top-right"></p-toast>       

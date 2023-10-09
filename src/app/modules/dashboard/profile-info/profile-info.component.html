@@ -1,0 +1,110 @@
+<div class="form-container">
+    <div id="formAccordion">
+        <div class="card">
+
+            <div class="card" id="card-nav">
+                <div class="card-header">Profile Detail</div>
+                <button type="button" id="button" class="btn btn-outline-warning" (click)="showDialog()"
+                    icon="pi pi-external-link" label="Show">Profile Edit</button>
+            </div>
+            <div class="panel-body bio-graph-info">
+                <div class="row">
+                    <div class="bio-row">
+                        <p><span>User Name </span>: GezToz</p>
+                    </div>
+                    <div class="bio-row">
+                        <p><span>First Name </span>: Gez</p>
+                    </div>
+                    <div class="bio-row">
+                        <p><span>Last Name </span>: Toz</p>
+                    </div>
+                    <div class="bio-row">
+                        <p><span>Email </span>: geztoz@gmail.com</p>
+                    </div>
+                    <div class="bio-row">
+                        <p><span>Phone </span>: 0555 555 55 55</p>
+                    </div>
+                    <div class="bio-row">
+                        <p><span>About </span>: Aliquam ac magna metus. Nam sed arcu non tellus fringilla
+                            fringilla ut vel
+                            ispum. Aliquam ac magna metus.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--<div class="bio-graph-heading">-->
+        <p-dialog header="Header" [(visible)]="visible" [style]="{ width: '50vw' }">
+            <ng-template pTemplate="header">
+                <span class="text-xl font-bold">Profile Edit</span>
+            </ng-template>
+            <div class="card-body">
+                <form>
+                    <h6 class="heading-small text-muted mb-4">User information</h6>
+                    <div class="pl-lg-4">
+                        <div class="form-group focused">
+                            <label>Profile Picture</label>
+                            <input type="file" id="input-profile-picture" class="form-control form-control-alternative">
+                        </div>
+                    </div>
+                    <div class="pl-lg-4">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group focused">
+                                    <label class="form-control-label" for="input-username">Username</label>
+                                    <input type="text" id="input-username" class="form-control form-control-alternative"
+                                        placeholder="Username" value="geztoz">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="input-email">Email address</label>
+                                    <input type="email" id="input-email" class="form-control form-control-alternative"
+                                        placeholder="geztoz@gmail.com">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group focused">
+                                    <label class="form-control-label" for="input-first-name">First name</label>
+                                    <input type="text" id="input-first-name"
+                                        class="form-control form-control-alternative" placeholder="First name"
+                                        value="gez">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group focused">
+                                    <label class="form-control-label" for="input-last-name">Last name</label>
+                                    <input type="text" id="input-last-name"
+                                        class="form-control form-control-alternative" placeholder="Last name"
+                                        value="toz">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group focused">
+                                    <label class="form-control-label" for="input-phone">Phone number</label>
+                                    <input type="phone" id="input-phone" class="form-control form-control-alternative"
+                                        placeholder="0555 555 55 55">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group focused">
+                                    <label class="form-control-label" for="input-password">Password</label>
+                                    <input type="password" id="input-password"
+                                        class="form-control form-control-alternative" placeholder="********">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <ng-template pTemplate="footer">
+                <button type="button" class="btn btn-outline-warning" icon="pi pi-check" (click)="visible = false"
+                    label="Ok" styleClass="p-button-text">Update</button>
+            </ng-template>
+        </p-dialog>
+    </div>
+</div>

@@ -13,10 +13,10 @@ import { FavouritesComponent } from './favourites/favourites.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AboutComponent } from './about/about.component';
 import { FooterComponent } from './footer/footer.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgFor} from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MessagesModule } from 'primeng/messages';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
@@ -40,8 +40,19 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { DropdownModule } from 'primeng/dropdown';
 import { CalendarModule } from 'primeng/calendar';
 import { AdminComponent } from './admin/admin.component';
-import { LoginComponent } from './account/login/login.component';
-import { RegisterComponent } from './account/register/register.component';
+import { LoginComponent } from './modules/auth/login/login.component';
+import { RegisterComponent } from './modules/auth/register/register.component';
+import { MenuModule } from 'primeng/menu';
+import { JwtInterceptor } from 'src/core/services/interceptor/jwt.interceptor';
+import { SidebarComponent } from './modules/dashboard/sidebar/sidebar.component';
+import { ProfileComponent } from './modules/profile/profile.component';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { TableModule } from 'primeng/table';
+import { ToolbarModule } from 'primeng/toolbar';
+import { DatePipe } from '@angular/common';
+import { ToastModule } from 'primeng/toast';
+import { ProfileInfoComponent } from './modules/dashboard/profile-info/profile-info.component';
+import { DialogModule } from 'primeng/dialog';
 
 @NgModule({
   declarations: [
@@ -70,12 +81,17 @@ import { RegisterComponent } from './account/register/register.component';
     NewBookComponent,
     AdminComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    SidebarComponent,
+    ProfileComponent,
+    ProfileInfoComponent
+
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     MenubarModule,
     FormsModule,
     ButtonModule,
@@ -90,15 +106,21 @@ import { RegisterComponent } from './account/register/register.component';
     InputMaskModule,
     InputNumberModule,
     DropdownModule,
-    CalendarModule
-
-
-   
+    CalendarModule,
+    MenuModule,
+    ConfirmDialogModule,
+    TableModule,
+    ToolbarModule,
+    DatePipe,
+    ReactiveFormsModule,
+    ToastModule,
+    DialogModule
+  
   
    
   ],
   
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

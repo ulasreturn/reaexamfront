@@ -1,0 +1,72 @@
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+<div class="wrapper d-flex align-items-stretch">
+  <nav id="sidebar" *ngIf=" currentUser">
+    <div class="custom-menu">
+    </div>
+    <div class="img bg-wrap text-center py-4" style="background-image: url(assets/images/dsblogo.jpg); opacity: .7;">
+      <div class="user-logo" style="z-index: 2;">
+        <div class="img" style="background-image: url(assets/images/profil.jpg);"></div>
+        <h1>{{currentUser.fullName}}</h1>
+      </div>
+    </div>
+    <ul class="list-unstyled components mb-5">
+      <li class="active">
+        <a href="#"><span class="fa fa-home mr-3"></span>Home</a>
+      </li>
+
+      <li>
+        <a routerLink="/profile/profileinfo" (click)="loadContent('profileinfo')"><span class="fa fa-info mr-3"></span>
+          Profile Info</a>
+      </li>
+      <li>
+        <a routerLink="/profile/payment" (click)="loadContent('payment')"><i class="fa fa-cc-visa mr-3"></i>Payment</a>
+      </li>
+      <li>
+        <a routerLink="/profile/adverts" (click)="loadContent('adverts')"><i class="fa fa-ship mr-3"></i>Advert</a>
+      </li>
+      <li>
+        <a *ngIf="!isAdmin" routerLink="/profile/Comment" (click)="loadContent('Comment')"><i class="fa fa-ship mr-3"></i>Add comment</a>
+      </li>
+      <li>
+        <a *ngIf="!isAdmin" routerLink="/profile/allUser" (click)="loadContent('allUser')"><i class="fa fa-user-circle mr-3"></i>All User</a>
+      </li>
+      <li>
+        <a *ngIf="!isAdmin" routerLink="/profile/allHouse" (click)="loadContent('allHouse')"><i class="fa fa-pencil-square mr-3"></i>All House</a>
+      </li>
+      <li>
+        <a  routerLink="/profile/support" (click)="loadContent('support')"><i class="fa fa-lock mr-3"></i>Support</a>
+      </li>
+      <li>
+        <a (click)="logOut()"><span class="fa fa-sign-out mr-3" style="cursor: pointer;"></span> Sign Out</a>
+      </li>
+    </ul>
+
+  </nav>
+
+  <!-- Page Content  -->
+  <div id="content" class="p-4 p-md-5 pt-5">
+    <ng-container *ngIf="content === 'profileinfo'">
+      <app-profile-info></app-profile-info>
+    </ng-container>
+    <ng-container *ngIf="content === 'payment'">
+      <app-payment></app-payment>
+    </ng-container>
+    <ng-container *ngIf="content === 'adverts'">
+      <app-adverts></app-adverts>
+    </ng-container>
+    <ng-container *ngIf="content === 'Comment'">
+      <app-add-comment></app-add-comment>
+    </ng-container>
+    <ng-container *ngIf="content === 'support'">
+      <app-support></app-support>
+    </ng-container>
+    <ng-container *ngIf="content === 'allUser'">
+      <app-all-user></app-all-user>
+    </ng-container>
+    <ng-container *ngIf="content === 'allHouse'">
+      <app-all-house></app-all-house>
+    </ng-container>
+  </div>
+</div>
