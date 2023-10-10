@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from "src/core/services/api/api.service";
 import { User } from 'src/core/models/user.model';
-import { UserRequest } from 'src/core/models/request/user-request.model';
 import { AuthService } from 'src/core/services/auth/auth.service';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
+  styleUrls: ['./sidebar.component.scss'],
+  encapsulation: ViewEncapsulation.ShadowDom // Global css'i engelleme
 })
 export class SidebarComponent implements OnInit {
   currentUser: User | null;
@@ -22,7 +22,7 @@ export class SidebarComponent implements OnInit {
 
   }
 
-  public userRequest: UserRequest = <UserRequest>{}
+
   users: User[] = [];
 
   ngOnInit(): void {
@@ -31,8 +31,15 @@ export class SidebarComponent implements OnInit {
       this.currentUser = user;
       if (this.currentUser?.userType === 0) {
         this.isAdmin = true;
+        // Admin girişi yapıldığında admin sayfasına yönlendirin
       }
-     
+        else {
+          // Kullanıcı girişi yapıldığında aynı sayfaya yönlendirin
+          this.router.navigate(['/admin/home']);
+        }
+        
+      
+
     });
 
   }

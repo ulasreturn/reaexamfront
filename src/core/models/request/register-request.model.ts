@@ -6,7 +6,4 @@ export interface RegisterRequest{
   Telephone: string;
   Country: string;
   City: string;
-
-
 }
-

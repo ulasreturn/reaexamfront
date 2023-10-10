@@ -16,8 +16,7 @@
                     <span   [ngClass]="{'active': showLogin}" [routerLink]="['/login']" (click)="showLogin = false; updateIndicatorPosition()">Login</span>
                     <span [ngClass]="{'active': !showLogin}"   (click)="showLogin = true; updateIndicatorPosition()">Register</span>
                     <div id="Indicator" [ngStyle]="{'transform': 'translateX(' + indicatorPosition + '%)'}"></div>
-                    </div>
-            <div *ngIf="registerSuccess" class="success-message" style="padding: 15px;">Başarıyla Kayıt Oldunuz! Yönlendiriliyorsunuz...</div>      
+                    </div>     
             <form *ngIf="!showLogin" (submit)="register()">
                 <input [(ngModel)]="registerRequest.UserName" name="UserName" [ngModelOptions]="{standalone: true}"  type="text" placeholder="Username">
                 <input [(ngModel)]="registerRequest.UserSurname" name="UserSurname" [ngModelOptions]="{standalone: true}"  type="text" placeholder="User Surname">

@@ -1,6 +1,5 @@
 <head>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-    
 </head>
         <div class="navbar">
             <div class="logo">
@@ -41,7 +40,7 @@
                                     <a class="nav-item nav-link dropdown-toggle user-action">
                                       <img id="homeAvatar" src="assets/images/logo.png" class="avatar" alt="Avatar"
                                         style="width: 4vh; height: 4vh;">
-                                      <strong style="color: rgb(48, 48, 48); font-size: 2vh;">{{currentUser?.fullName}}</strong>
+                                      <strong style="color: rgb(48, 48, 48); font-size: 2vh;">{{currentUser?.userName}}</strong>
                                       <button id="dropdownBtn" pButton type="button" (click)="menu.toggle($event)" icon="pi pi-angle-down"></button>
                                     </a>
                                     <p-menu #menu [model]="items" [popup]="true" [appendTo]="'body'" class="custom-dropdown-menu" ></p-menu>

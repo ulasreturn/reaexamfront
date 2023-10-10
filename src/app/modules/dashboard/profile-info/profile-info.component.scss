@@ -28,10 +28,11 @@ body {
 }
 
 .bio-row {
+    margin: 10px;
     width: 50%;
     float: left;
-    margin-bottom: 10px;
-    padding: 0 15px;
+    margin-bottom: 20px;
+    padding: 0 10px;
 }
 
 .bio-row p span {
@@ -63,3 +64,15 @@ body {
     margin-right: 20vh;
     margin-top: 5vh;
 }
+.profile-image {
+    display: block;
+    margin: 10px auto;
+    border: 5px solid #fff;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }

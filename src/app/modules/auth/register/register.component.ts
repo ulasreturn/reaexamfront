@@ -10,19 +10,17 @@ import { ConfirmationService, MessageService } from 'primeng/api';
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
-  providers: [MessageService, ConfirmationService]
+  providers: [MessageService]
 })
 export class RegisterComponent {
   showLogin: boolean = false;
-  countries: string[] = []; // Ülke verileri
-  cities: string[] = [];
   registerSuccess: boolean = false; // Yeni değişken // İl verileri
   indicatorPosition: number = 100;
   indicatorClass: string = 'register-inactive';
   updateIndicatorPosition() {
     this.indicatorPosition = this.showLogin ? 0 : 100;
   }
-  
+  public registerRequest: RegisterRequest =<RegisterRequest>{};
 
 constructor(
   private readonly authService: AuthService,
@@ -30,19 +28,23 @@ constructor(
   private messageService: MessageService,
 ) { }
 
-public registerRequest: RegisterRequest =<RegisterRequest>{};
 
-ngOnInit(): void {
-}
+
+
 
 async register() {
   let status = await this.authService.register(this.registerRequest);
   if (status == ResponseStatus.Ok) {
     this.messageService.add({ severity: 'success', summary: 'Başarılı', detail: 'Kullanıcı başarılı bir şekilde eklendi', life: 3000 });
-    await this.router.navigate(['/login']);
-  } else if (status == ResponseStatus.Invalid)
-  this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Kullanıcı oluşturulamadı' });
-    this.registerRequest.Password = '';
+    setTimeout(async () => {
+      await this.router.navigate(['./login']);
+    }, 2300); 
+  } else if (status == ResponseStatus.Invalid){
+  this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Kullanıcı oluşturulamadı' }); 
+  this.registerRequest.Password = '';
+  }
+  
 }
+
 }
 

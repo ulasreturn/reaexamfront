@@ -34,7 +34,7 @@ export class JwtInterceptor implements HttpInterceptor {
 
       request = this.setRequest(request);
     }
-    
+
     return next.handle(request);
   }
 

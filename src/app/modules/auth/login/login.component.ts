@@ -39,10 +39,10 @@ async login() {
 
   if (status == ResponseStatus.Ok) {
     this.messageService.add({ severity: 'success', summary: 'Başarılı', detail: 'Başarıyla giriş yaptınız!', life: 3000 });
-    await this.router.navigate(['./profile']); // Burada yönlendirmeyi uygun bir sayfa yoluna göre güncelleyin
+    await this.router.navigate(['./home']); // Burada yönlendirmeyi uygun bir sayfa yoluna göre güncelleyin
   } else if (status == ResponseStatus.Invalid) {
     this.messageService.add({ severity: 'error', summary: 'Hata', detail: 'E-posta veya şifre hatalı' });
-    this.loginRequest.password = '';    
+    this.loginRequest.PasswordSalt = '';    
   }
 }
 ngOnInit() {

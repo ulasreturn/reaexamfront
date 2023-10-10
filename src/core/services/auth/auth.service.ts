@@ -102,9 +102,7 @@ public async register(request: RegisterRequest): Promise<ResponseStatus> {
   let status = registerResponse!.status;
 
   if (status == ResponseStatus.Ok) {
-    this.setToken(registerResponse!.data);
-    sessionStorage.setItem('current_user', JSON.stringify({}));
-    this.currentUserSubject.next({} as User);
+
   }
 
   return status;
@@ -136,5 +134,18 @@ public async register(request: RegisterRequest): Promise<ResponseStatus> {
   async logOut() {
     sessionStorage.clear();
     this.currentUserSubject.next(null);
+  }
+  
+  // Kullanıcı profil bilgilerini güncelleme işlevi
+  async updateProfileInfo() {
+    const profileResponse = await this.apiService.getProfileInfo().toPromise();
+    const status = profileResponse!.status;
+
+    if (status === ResponseStatus.Ok) {
+      sessionStorage.setItem('current_user', JSON.stringify(profileResponse!.data));
+      this.currentUserSubject.next(profileResponse!.data);
+    } else {
+      await this.logOut();
+    }
   }
 }

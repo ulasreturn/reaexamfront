@@ -1,6 +1,9 @@
 export interface UserRequest {
-  userName: string ;
-  fullName: string ;
-  email: string ;
+  Email: string;
+  UserName: string;
+  UserSurname: string;
+  Telephone: string;
+  Country: string;
+  City: string;
 }
 
