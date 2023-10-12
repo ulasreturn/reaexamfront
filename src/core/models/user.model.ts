@@ -14,6 +14,7 @@ export class User{
   city: string="";
   email: string="";
   telephone: string="";
+  userPhoto?: string;
   basketId: number=0;
   userType?: UserType;
   comment: Comment[]=[]
@@ -23,7 +24,7 @@ export class User{
   orders?: Orders[]=[]
   address?: Address[]=[]
   contact?: Contact[]=[]
-  userPhoto?: string;
+  
 }
 export enum UserType {
     Admin,

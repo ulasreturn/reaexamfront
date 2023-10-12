@@ -40,7 +40,9 @@ constructor(
   private readonly userService: UserService,
   private readonly http: HttpClient
 ) { }
-public registerRequest: RegisterRequest =<RegisterRequest>{};
+public registerRequest: RegisterRequest =<RegisterRequest>{
+  UserPhoto: '',
+};
  //user: User[]=[];
  user:any
  userId = 5;
@@ -48,15 +50,30 @@ isLoggedIn: boolean = false; // Oturum durumunu takip eden değişken
   currentUser: User | null = null; // Mevcut kullanıcı bilgilerini tutan değişken
   openPanel: boolean = false;
   ngOnInit() {
+    this.getRandomImageURL().then((imageURL) => {
+    });
     const userId = 6; // Replace with the ID of the user you want to fetch
 
     // Make the HTTP GET request to your backend API
     this.http.get(environment.api_url+'/User/GetById?id=' + userId).subscribe((data) => {
       this.user = data; // Store the retrieved user data in the 'user' property
     });
-  }
+    
+ 
 }
 
+
+async getRandomImageURL(): Promise<string | null> {
+  // Lorem Picsum servisinden rastgele bir resim URL'si almak
+  const response = await fetch('https://picsum.photos/200/300');
+  if (response.ok) {
+    const imageURL = response.url;
+    return imageURL;
+  } else {
+    return null; // Resim alınamazsa null döner
+  }
+}
+}
   /*this.route.paramMap.subscribe({
     next: (params)=> {
       const id= params.get('id');
