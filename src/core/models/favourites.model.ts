@@ -1,5 +1,6 @@
-export interface Favourites{
-  CategoryID: number,
-  BookID: number,
-  UserID: number
+export class Favourites{
+  id?: number;
+  bookId?: number;
+  userId?: number
 }
+

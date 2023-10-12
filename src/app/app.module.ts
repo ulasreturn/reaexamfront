@@ -18,7 +18,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgFor} from '@angular/common';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MessagesModule } from 'primeng/messages';
-import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
 import { BarComponent } from './admin/bar/bar.component';
 import { CommentsComponent } from './admin/comments/comments.component';
@@ -68,7 +67,6 @@ import { DialogModule } from 'primeng/dialog';
     NavbarComponent,
     AboutComponent,
     FooterComponent,
-    AdminHomeComponent,
     AdminProfileComponent,
     BarComponent,
     CommentsComponent,

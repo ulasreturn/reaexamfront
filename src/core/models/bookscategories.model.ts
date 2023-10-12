@@ -1,4 +1,5 @@
-export interface bookscategories{
-  BooksID: number,
-  CategoryID: number
+export class bookscategories{
+  booksId?: number;
+  categoryId?: number
 }
+

@@ -1,23 +1,28 @@
 <div class="header">
   <div class="container">
   <app-navbar></app-navbar>
-      
+
 
 <div class="projcard-container">
-  
-  <div class="projcard projcard-blue">
+ <!-- <tr *ngFor="let item of authors">
+    <td class="text-center p-2">{{ item.authorsID }}</td>
+    <td class="text-center p-2">{{ item.authorsName }}</td>
+    <td class="text-center p-2">{{ item.authorsSurname }}</td>
+    <td class="text-center p-2">{{ item.generalInfo }}</td>
+  </tr>-->
+  <div class="projcard projcard-blue" *ngFor="let item of authors">
     <div class="projcard-innerbox">
-      <img class="projcard-img" src="https://img1-kidega.mncdn.com/UPLOAD/yazarlar/sait-faik-abasiyanik-kidega-Ab.jpg" />
+      <img class="projcard-img" src={{item.authorsPhoto}}/>
       <div class="projcard-textbox">
-        <div class="projcard-title">Sait Faik Abasıyanık</div>
+        <div class="projcard-title">{{ item.authorsName }} {{ item.authorsSurname }}</div>
         <div class="projcard-bar"></div>
-        <div class="projcard-description">Sait Faik Abasıyanık, Türk hikâye ve roman yazarı, şair. Türk hikâyeciliğinin önde gelen yazarlarından birisi olan Sait Faik, çağdaş hikâyeciliğe yaptığı katkılar nedeniyle Türk edebiyatının köşe taşlarından biri olarak kabul edilir.</div>
+        <div class="projcard-description">{{item.generalInfo}}</div>
         <div class="projcard-tagbox">
         </div>
       </div>
     </div>
   </div>
-  
+<!--
   <div class="projcard projcard-red">
     <div class="projcard-innerbox">
       <img class="projcard-img" src="https://www.suleymanpasa.bel.tr/icerikresimleri/img/namikkemalkapak.jpg" />
@@ -30,7 +35,7 @@
       </div>
     </div>
   </div>
-  
+
   <div class="projcard projcard-green">
     <div class="projcard-innerbox">
       <img class="projcard-img" src="https://admin.biyografya.com/_docs/photos/d2e1012370f74d236a48e5483710a411.jpg" />
@@ -43,7 +48,7 @@
       </div>
     </div>
   </div>
-  
+
   <div class="projcard projcard-customcolor" style="--projcard-color: #F5AF41;">
     <div class="projcard-innerbox">
       <img class="projcard-img" src="https://www.turkedebiyatcilar.net/wp-content/uploads/2021/10/20211026_200416.jpg" />
@@ -56,6 +61,7 @@
       </div>
     </div>
   </div>
+  -->
   </div>
   </div>
 

@@ -25,6 +25,7 @@
                 <input [(ngModel)]="registerRequest.Email" name="Email" [ngModelOptions]="{standalone: true}" type="email" placeholder="Email">
                 <input [(ngModel)]="registerRequest.Password" name="Password" [ngModelOptions]="{standalone: true}" type="password" placeholder="Password">
                 <input [(ngModel)]="registerRequest.Telephone" name="Telephone" [ngModelOptions]="{standalone: true}" type="text" placeholder="Telephone">
+                <input [(ngModel)]="registerRequest.UserPhoto" name="UserPhoto" [ngModelOptions]="{standalone: true}" type="text" placeholder="Photo" style="display: none;">
                 <button id="signUpBtn" type="button" class="btn btn-primary btn-block mb-4" (click)="register()">Kayıt Ol</button>
             </form>
         </div>

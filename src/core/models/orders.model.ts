@@ -1,8 +1,8 @@
-export interface Orders {
-  OrderID: number,
-  OrderDate: number,
-  PaymentMethod: string,
-  AddressID: number,
-  OrderPiece: number,
-  UserID: number
+export class Orders {
+  id?: number;
+  orderDate?: number;
+  paymentMethod?: string;
+  addressId?: number;
+  orderPiece?: number;
+  userId?: number
 }

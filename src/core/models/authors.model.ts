@@ -1,6 +1,7 @@
-export interface Authors{
-  AuthorsID: number;
-  AuthorsName: string;
-  AuthorsSurname: string;
-  GeneralInfo: string;
+export class Authors{
+  id?: number;
+  authorsName?: string;
+  authorsSurname?: string;
+  generalInfo?: string;
+  authorsPhoto?: string;
   }

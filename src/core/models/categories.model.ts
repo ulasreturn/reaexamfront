@@ -1,6 +1,6 @@
 import { Books } from "./books.model";
-export interface Categories{
-  CategoryID: number,
-  CategoryName: string,
-  Books: Books[]
+export class Categories{
+  id?: number;
+  categoryName?: string
+  Books?: Books[]
 }

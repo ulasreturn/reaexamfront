@@ -1,4 +1,5 @@
 export interface RegisterRequest{
+  UserID:string;
   Email: string;
   UserName: string;
   UserSurname: string;
@@ -6,4 +7,5 @@ export interface RegisterRequest{
   Telephone: string;
   Country: string;
   City: string;
+  UserPhoto: string;
 }

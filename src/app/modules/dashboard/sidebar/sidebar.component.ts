@@ -35,7 +35,7 @@ export class SidebarComponent implements OnInit {
       }
         else {
           // Kullanıcı girişi yapıldığında aynı sayfaya yönlendirin
-          this.router.navigate(['/admin/home']);
+          this.router.navigate(['/admin']);
         }
         
       

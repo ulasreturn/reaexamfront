@@ -1,8 +1,9 @@
 import {Books} from "./books.model"
-export interface Basket{
-  BasketID: number;
-  TotalPrice: string;
-  TotalPiece: string;
-  UserID: string;
-  books: Books[];
+export class Basket{
+  id?: number;
+  totalPrice?: number;
+  piece?: number;
+  userId?: number;
+  bookId?: number;
+  books?: Books[];
   }

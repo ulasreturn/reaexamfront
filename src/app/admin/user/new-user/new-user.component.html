@@ -1,32 +1,36 @@
 <app-bar></app-bar>
 <div class="new-user-section">
+  <form (submit)="addUser()">
   <div style="float: left; margin-left: 10px;" class="flex-auto mt-2">
-    <input placeholder="UserName" type="text" pInputText [(ngModel)]="UserName" />
+    <input  [(ngModel)]="registerRequest.UserName" name="UserName" [ngModelOptions]="{standalone: true}"  placeholder="UserName" type="text" pInputText  />
   </div>
   <div style="float: left; margin-left: 10px;" class="flex-auto mt-2">
-    <input placeholder="SurName" type="text" pInputText [(ngModel)]="UserSurname" />
+    <input  [(ngModel)]="registerRequest.UserSurname" name="UserSurname" [ngModelOptions]="{standalone: true}"   placeholder="SurName" type="text" pInputText  />
   </div>
   <div style="float: left; margin-left: 10px;" class="flex-auto mt-2">
-    <input placeholder="Email" type="text" pInputText [(ngModel)]="Email" />
+    <input  [(ngModel)]="registerRequest.Email" name="Email" [ngModelOptions]="{standalone: true}"   placeholder="Email" type="text" pInputText  />
   </div>
   <div style="float: left; margin-left: 10px;" class="flex-auto mt-2">
-    <input placeholder="City" type="text" pInputText [(ngModel)]="City" />
+    <input  [(ngModel)]="registerRequest.City" name="City" [ngModelOptions]="{standalone: true}"   placeholder="City" type="text" pInputText />
   </div>
   <div style="float: left; margin-left: 10px;" class="flex-auto mt-2">
-    <input placeholder="Country" type="text" pInputText [(ngModel)]="Country" />
+    <input  [(ngModel)]="registerRequest.Country" name="Country" [ngModelOptions]="{standalone: true}"   placeholder="Country" type="text" pInputText />
   </div>
   <div style="float: left; margin-left: 10px;" class="flex-auto mt-2">
-    <p-inputMask mask="(999) 999-9999" [(ngModel)]="Telephone" placeholder="Phone (5XX) XXX XXXX"></p-inputMask>
+    <p-inputMask  [(ngModel)]="registerRequest.Telephone" name="Phone" [ngModelOptions]="{standalone: true}"   mask="(999) 999-9999" placeholder="Phone (5XX) XXX XXXX"></p-inputMask>
   </div>
   <div style="float: left; margin-left: 10px;" class="flex-auto mt-2">
-    <p-password placeholder="Password" [(ngModel)]="Password"></p-password>
+    <p-password  [(ngModel)]="registerRequest.Password" name="Password" [ngModelOptions]="{standalone: true}"   placeholder="Password" ></p-password>
   </div>
+  <!--
   <div style="float: left; margin-left: 10px;" class="flex-auto mt-2">
     <p-dropdown placeholder="Role" [options]="users" [(ngModel)]="selectedUsers" optionLabel="name"></p-dropdown>
   </div>
+-->
   <!-- ROLE SELECT İLE SEÇİLECEK (ADMIN-USER) -->
   <div style="float: left; margin-left: 10px;" class="flex-auto mt-2">
-    <button pButton pRipple label="Ekle" class="p-button-success"></button>
+    <button pButton pRipple label="Ekle" type="submit" class="p-button-success"></button>
   </div>
+</form>
 </div>
-
+<p-toast position="top-right"></p-toast> 

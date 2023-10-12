@@ -1,7 +1,9 @@
-export interface Sale {
-  SaleID: number,
-  PaymentMethod: string,
-  Buyer: string,
-  SalesInfo: string,
-  UserID: number
+import { Books } from "./books.model"
+export class Sale {
+  id?: number;
+  paymentMethod?: string;
+  buyer?: string;
+  salesInfo?: string;
+  userId?: number;
+  Books?: Books[]
 }

@@ -11,7 +11,6 @@ import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { NewUserComponent } from './admin/user/new-user/new-user.component';
 import { DeleteUserComponent } from './admin/user/delete-user/delete-user.component';
 import { EditUserComponent } from './admin/user/edit-user/edit-user.component';
@@ -47,7 +46,6 @@ const routes: Routes = [
   {path:'footer', component:FooterComponent},
   {path:'navbar', component:NavbarComponent},
   {path:'admin',component:AdminComponent},
-   {path:'admin/home', component:AdminHomeComponent},
   { path: 'admin/new-user', component: NewUserComponent},
   { path: 'admin/edit-user', component: EditUserComponent },
   { path: 'admin/delete-user', component: DeleteUserComponent },

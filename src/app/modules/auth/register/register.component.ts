@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { Router } from '@angular/router'; 
 import { AuthService } from 'src/core/services/auth/auth.service';
 import { ResponseStatus } from 'src/core/models/response/base-response.model';
@@ -12,15 +12,19 @@ import { ConfirmationService, MessageService } from 'primeng/api';
   styleUrls: ['./register.component.css'],
   providers: [MessageService]
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit  {
   showLogin: boolean = false;
   registerSuccess: boolean = false; // Yeni değişken // İl verileri
   indicatorPosition: number = 100;
   indicatorClass: string = 'register-inactive';
+
+  
   updateIndicatorPosition() {
     this.indicatorPosition = this.showLogin ? 0 : 100;
   }
-  public registerRequest: RegisterRequest =<RegisterRequest>{};
+  public registerRequest: RegisterRequest =<RegisterRequest>{
+    UserPhoto: '',
+  };
 
 constructor(
   private readonly authService: AuthService,
@@ -28,8 +32,22 @@ constructor(
   private messageService: MessageService,
 ) { }
 
-
-
+ngOnInit() {
+  // Sayfa yüklendiğinde, rastgele bir internet resmi URL'sini alın ve registerRequest.UserPhoto'ya atayın
+  this.getRandomImageURL().then((imageURL) => {
+    
+  });
+}
+async getRandomImageURL(): Promise<string | null> {
+  // Lorem Picsum servisinden rastgele bir resim URL'si almak
+  const response = await fetch('https://picsum.photos/200/300');
+  if (response.ok) {
+    const imageURL = response.url;
+    return imageURL;
+  } else {
+    return null; // Resim alınamazsa null döner
+  }
+}
 
 
 async register() {

@@ -5,5 +5,6 @@ export interface UserRequest {
   Telephone: string;
   Country: string;
   City: string;
+  UserPhoto:string;
 }
 

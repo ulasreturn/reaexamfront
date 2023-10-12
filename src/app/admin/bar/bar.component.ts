@@ -33,7 +33,7 @@ export class BarComponent {
       {
         label: 'Home',
         icon: 'pi pi-home',
-        routerLink: '/admin/home',
+        routerLink: '/home',
       },
       {
         label: 'User',
@@ -60,16 +60,6 @@ export class BarComponent {
         label: 'Book',
         icon: 'pi pi-book',
         items: [
-          {
-            label: 'New',
-            icon: 'pi pi-fw pi-plus',
-            routerLink: '/admin/new-book',
-          },
-          {
-            label: 'Edit',
-            icon: 'pi pi-fw pi-user-edit',
-            routerLink: '/admin/edit-book',
-          },
           {
             label: 'Delete',
             icon: 'pi pi-fw pi-trash',

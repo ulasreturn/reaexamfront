@@ -148,4 +148,26 @@ public async register(request: RegisterRequest): Promise<ResponseStatus> {
       await this.logOut();
     }
   }
+  public async addUser(request: RegisterRequest): Promise<ResponseStatus> {
+    const registerResponse = await this.apiService.register(request).toPromise();
+    let status = registerResponse!.status;
+
+    if (status === ResponseStatus.Ok) {
+      this.router.navigate(['/admin/admin-profile']);
+      this.setToken(registerResponse!.data);
+
+      // Kayıt işlemi başarılıysa, kullanıcının profil bilgilerini almak için apiService.getProfileInfo işlevini çağırın.
+      const profileResponse = await this.apiService.getProfileInfo().toPromise();
+      status = profileResponse!.status;
+
+      if (status === ResponseStatus.Ok) {
+        // Profil bilgilerini kaydedin ve kullanıcıyı oturum açık olarak işaretleyin.
+
+      } else {
+        await this.logOut();
+      }
+    }
+
+    return status;
+  }
 }
