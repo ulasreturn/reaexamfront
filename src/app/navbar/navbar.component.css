@@ -1,4 +1,15 @@
+.user-action {
+    display: flex;
+    align-items: center; /* Vertically align the items */
+}
 
+.avatar {
+    width: 4vh;
+    height: 4vh;
+    margin-right: 10px;
+    border-radius: 10%; 
+    margin-bottom: -6px;/* Add margin to separate avatar from username */
+}
 
 
 

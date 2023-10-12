@@ -14,6 +14,7 @@ export class SidebarComponent implements OnInit {
   currentUser: User | null;
   content: string = '';
   isAdmin: boolean = false;
+  user: User | null = null;
 
 
   
@@ -26,6 +27,9 @@ export class SidebarComponent implements OnInit {
   users: User[] = [];
 
   ngOnInit(): void {
+    this.authService.currentUser.subscribe((user: User | null) => {
+      this.user = user;
+    });
     this.initializeScripts();
     this.authService.currentUser.subscribe(user => {
       this.currentUser = user;

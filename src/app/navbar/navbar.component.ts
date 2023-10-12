@@ -18,10 +18,14 @@ export class NavbarComponent implements OnInit {
   items: MenuItem[] | undefined;
   currentUser: User | null = null;
   isLoggedIn: boolean = false;
+  user: User | null = null;
 
   constructor(private authService: AuthService, private router: Router, private readonly apiService: ApiService, private messageService: MessageService) { }
   ngOnInit() {
-
+    
+      this.authService.currentUser.subscribe((user: User | null) => {
+        this.user = user;
+      });
     this.authService.currentUser.subscribe(user => {
       this.currentUser = user;
       this.isLoggedIn = user !== null;

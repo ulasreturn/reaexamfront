@@ -26,7 +26,7 @@
                             <input type="text" id="search" placeholder="Ara...">
                             <button id="search-button"><i class="fas fa-search"></i></button>
                         </div></li>
-                        <li *ngIf="isLoggedIn"><a style="margin-right: 0.9%;" [routerLink]="['/cart']"><img src="assets/images/cart.png" width="30px" height="30px"></a></li>
+                        <li *ngIf="isLoggedIn"><a style="margin-right: 0.9%;" [routerLink]="['/cart']"><img src="assets/images/cart.png" width="30px" height="30px" style="vertical-align: middle; margin-top: -10px;" ></a></li>
                             
                                 <li class="nav-item mx-1">
                                   <a class="nav-link" href="/login">
@@ -34,20 +34,19 @@
                                     </i>
                                   </a>
                                 </li>
-                        
-                                <li  *ngIf="isLoggedIn" class="nav-item mx-1">
+                               
+                                <li *ngIf="isLoggedIn" class="nav-item mx-1">
                                   <div class="nav-item dropdown">
-                                    <a class="nav-item nav-link dropdown-toggle user-action">
-                                      <img id="homeAvatar" src="assets/images/logo.png" class="avatar" alt="Avatar"
-                                        style="width: 4vh; height: 4vh;">
-                                      <strong style="color: rgb(48, 48, 48); font-size: 2vh;">{{currentUser?.userName}}</strong>
-                                      <button id="dropdownBtn" pButton type="button" (click)="menu.toggle($event)" icon="pi pi-angle-down"></button>
-                                    </a>
-                                    <p-menu #menu [model]="items" [popup]="true" [appendTo]="'body'" class="custom-dropdown-menu" ></p-menu>
-                        
+                                      <a class="nav-item nav-link dropdown-toggle user-action">
+                                          <div class="user-info">
+                                              <img id="homeAvatar" src="{{ user?.userPhoto }}" class="avatar" alt="Avatar">
+                                              <strong style="color: rgb(48, 48, 48); font-size: 2vh;">{{ currentUser?.userName }}</strong>
+                                          </div>
+                                          <button id="dropdownBtn" pButton type="button" (click)="menu.toggle($event)" icon="pi pi-angle-down"></button>
+                                      </a>
+                                      <p-menu #menu [model]="items" [popup]="true" [appendTo]="'body'" class="custom-dropdown-menu"></p-menu>
                                   </div>
-                              
-                            </li>
+                              </li>
                            
                 </ul>
             </nav>
