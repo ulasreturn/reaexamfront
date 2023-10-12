@@ -22,6 +22,7 @@
   <div style="float: left; margin-left: 10px;" class="flex-auto mt-2">
     <p-password  [(ngModel)]="registerRequest.Password" name="Password" [ngModelOptions]="{standalone: true}"   placeholder="Password" ></p-password>
   </div>
+  <input [(ngModel)]="registerRequest.UserPhoto" name="UserPhoto" [ngModelOptions]="{standalone: true}" type="text" placeholder="Photo" style="display: none;">
   <!--
   <div style="float: left; margin-left: 10px;" class="flex-auto mt-2">
     <p-dropdown placeholder="Role" [options]="users" [(ngModel)]="selectedUsers" optionLabel="name"></p-dropdown>

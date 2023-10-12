@@ -23,7 +23,7 @@ export class User{
   orders?: Orders[]=[]
   address?: Address[]=[]
   contact?: Contact[]=[]
-  
+  userPhoto?: string;
 }
 export enum UserType {
     Admin,

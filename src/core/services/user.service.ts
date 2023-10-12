@@ -32,7 +32,14 @@ export class UserService {
       `${environment.api_url}/${this.url}`,
       user
     );
+    
   }
-
+  updateUserPhoto(id: number, photoUrl: string): Observable<User> {
+    return this.http.put<User>(`${this.url}/${id}`, { userPhoto: photoUrl });
+  }
+  getCurrentUser(): Observable<User> {
+    // Aktif kullanıcı bilgilerini getirme işlemleri
+    return this.http.get<User>(`${this.url}/current`);
+  }
 
 }

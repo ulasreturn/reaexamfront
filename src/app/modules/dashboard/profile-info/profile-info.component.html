@@ -10,7 +10,7 @@ rel="stylesheet">
             <div class="card" id="card-nav">
                 <div class="card-header">Profile Detail</div>
             </div>
-             <img src="assets/images/linkedin1.png" alt="Profile Image" class="profile-image" style="float: right; margin: 10px 10px 0 0;" />
+             <img src=" {{ user?.userPhoto }}" alt="Profile Image" class="profile-image" style="float: right; margin: 10px 10px 0 0;" />
             <div class="panel-body bio-graph-info">
                 
                 <div class="row">
@@ -32,7 +32,7 @@ rel="stylesheet">
                     <div class="bio-row">
                         <p><span>Telefon </span>: {{ user?.telephone}} </p>
                     </div>
-
+                    
                     
                     <!-- Diğer kullanıcı bilgilerini buraya ekleyin -->
                 </div>

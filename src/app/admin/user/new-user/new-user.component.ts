@@ -14,7 +14,7 @@ interface userType {
   styleUrls: ['./new-user.component.css'],
   providers: [MessageService]
 })
-export class NewUserComponent {
+export class NewUserComponent implements OnInit{
 /*  UserName!: string;
   UserSurname!: string;
   Email!: string;
@@ -27,28 +27,32 @@ export class NewUserComponent {
   //users: userType[] = [];
 
   //selectedUsers: userType[] = [];
-  ngOnInit() {
 
-
-
-   /* this.users = [
-=======
-    this.users = [
->>>>>>> 6df817133c788bfa2550c0b5d9771f81e367563e
-      { name: 'Admin' },
-      { name: 'Authors' },
-      { name: 'User' },
-    ];
-*/
-
-  }
   constructor(
     private readonly authService: AuthService,
     private readonly router: Router,
     private messageService: MessageService,
   ) { }
 
-  public registerRequest: RegisterRequest =<RegisterRequest>{};
+  public registerRequest: RegisterRequest =<RegisterRequest>{
+    UserPhoto: '',
+  };
+  ngOnInit() {
+    // Sayfa yüklendiğinde, rastgele bir internet resmi URL'sini alın ve registerRequest.UserPhoto'ya atayın
+    this.getRandomImageURL().then((imageURL) => {
+      
+    });
+  }
+  async getRandomImageURL(): Promise<string | null> {
+    // Lorem Picsum servisinden rastgele bir resim URL'si almak
+    const response = await fetch('https://picsum.photos/200/300');
+    if (response.ok) {
+      const imageURL = response.url;
+      return imageURL;
+    } else {
+      return null; // Resim alınamazsa null döner
+    }
+  }
 
   async addUser() {
     const status = await this.authService.addUser(this.registerRequest);
