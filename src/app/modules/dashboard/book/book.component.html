@@ -111,7 +111,7 @@ styleClass="p-fluid">
             <input [(ngModel)]="booksRequest.saleId" [ngModelOptions]="{standalone: true}" type="text" class="form-control item" id="passwordAddUser" placeholder="saleId">
         </div>
         <div class="form-group">
-            <input [(ngModel)]="booksRequest.userId" [ngModelOptions]="{standalone: true}" type="text" class="form-control item" id="passwordAddUser" placeholder="userId">
+            <input [(ngModel)]="booksRequest.userId" [ngModelOptions]="{standalone: true}" type="text" class="form-control item" id="passwordAddUser" [placeholder]="loggedInUserId" readonly [value]="loggedInUserId" disabled>
         </div>
         <div class="form-group">
             <input [(ngModel)]="booksRequest.coverPhoto" [ngModelOptions]="{standalone: true}" type="text" class="form-control item" id="passwordAddUser" placeholder="İmage Path ( URL )">
@@ -153,11 +153,12 @@ styleClass="p-fluid">
                     <input [(ngModel)]="BooksToEdit.piece" [ngModelOptions]="{standalone: true}" type="text" class="form-control item" id="passwordAddUser" placeholder="piece">
                 </div>
                 <div class="form-group">
-                    <input [(ngModel)]="BooksToEdit.saleId" [ngModelOptions]="{standalone: true}" type="text" class="form-control item" id="passwordAddUser" placeholder="saleId">
+                    <input [(ngModel)]="BooksToEdit.saleId" [ngModelOptions]="{standalone: true}" type="text" class="form-control item" id="passwordAddUser" placeholder="saleId" disabled>
                 </div>
                 <div class="form-group">
-                    <input [(ngModel)]="BooksToEdit.userId" [ngModelOptions]="{standalone: true}" type="text" class="form-control item" id="passwordAddUser" placeholder="userId">
-                </div>
+                    <input [(ngModel)]="BooksToEdit.userId" [ngModelOptions]="{standalone: true}" type="text" class="form-control item" id="passwordAddUser" placeholder="userId" readonly [value]="loggedInUserId">
+                  </div>
+                  
                 <div class="form-group">
                     <input [(ngModel)]="BooksToEdit.coverPhoto" [ngModelOptions]="{standalone: true}" type="text" class="form-control item" id="passwordAddUser" placeholder="İmage Path ( URL )">
                 </div>

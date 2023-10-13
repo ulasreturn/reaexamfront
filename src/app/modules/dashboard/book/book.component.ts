@@ -41,8 +41,9 @@ export class BookComponent implements OnInit {
   books: Books[] = [];
   userBooks: Books[] = [];
  
-  loggedInUserId: number | null = null; 
+  loggedInUserId?: number | null = null; 
   filteredBooks: Books[] = [];
+  
   ngOnInit() {
     
     this.refresh();
@@ -60,6 +61,13 @@ export class BookComponent implements OnInit {
         const booksData: Books[] = response.data; // API'den gelen veriyi al
         this.books = booksData;
         this.filteredBooks = this.books.filter(book => book.userId === this.loggedInUserId)
+        if (this.loggedInUserId !== null && this.loggedInUserId !== undefined) {
+          this.booksRequest.userId = this.loggedInUserId;
+        } else {
+          // this.loggedInUserId, null veya undefined ise, booksRequest.userId'i nasıl ayarlamak istediğinizi belirtmelisiniz.
+          // Örnek olarak:
+          // this.booksRequest.userId = 0; // veya herhangi bir varsayılan değer
+        }
       });
       
       console.log('Kullanıcı Kimliği:', this.loggedInUserId);
@@ -91,7 +99,7 @@ searchbooks(searchKey: string) {
     this.createEntity<BooksRequest>(entity, 'Books').then(response => {
       if (response?.status == ResponseStatus.Ok) {
         this.refresh();
-        this.messageService.add({ severity: 'success', summary: 'Başarılı', detail: 'Ev ekleme başarılı', life: 3000 });
+        this.messageService.add({ severity: 'success', summary: 'Başarılı', detail: 'Kitap ekleme başarılı', life: 3000 });
       }
     });
   }
@@ -125,7 +133,7 @@ searchbooks(searchKey: string) {
     this.delete(id).then(response => {
       if (response?.status == ResponseStatus.Ok) {
         this.refresh();
-        this.messageService.add({ severity: 'success', summary: 'Başarılı', detail: 'Kullanıcı başarı ile silindi', life: 3000 });
+        this.messageService.add({ severity: 'success', summary: 'Başarılı', detail: 'Kitap başarı ile silindi', life: 3000 });
       }
     })
   }
@@ -145,10 +153,10 @@ searchbooks(searchKey: string) {
         this.BooksToEdit = response.data;
          // API'den alınan aracı carToEdit değişkenine atıyoruz
       } else {
-        console.error('Ev bulunamadı veya alınırken bir hata oluştu.');
+        console.error('Kitap bulunamadı veya alınırken bir hata oluştu.');
       }
     }).catch((error) => {
-      console.error('Ev alınırken bir hata oluştu:', error);
+      console.error('Kitap alınırken bir hata oluştu:', error);
     });
   }
 
@@ -156,7 +164,7 @@ searchbooks(searchKey: string) {
     this.update(id, updatedBook).then(response => {
       if (response?.status == ResponseStatus.Ok) {
         this.refresh();
-        this.messageService.add({ severity: 'success', summary: 'Başarılı', detail: 'Ev güncelleme başarılı', life: 3000 });
+        this.messageService.add({ severity: 'success', summary: 'Başarılı', detail: 'Kitap güncelleme başarılı', life: 3000 });
         this.hideDialog(); // Güncelleme işlemi tamamlandığında dialogu gizle
       }
     }).catch((error) => {
