@@ -35,8 +35,14 @@ constructor(
 ngOnInit() {
   // Sayfa yüklendiğinde, rastgele bir internet resmi URL'sini alın ve registerRequest.UserPhoto'ya atayın
   this.getRandomImageURL().then((imageURL) => {
-    
+    if (imageURL) {
+      this.registerRequest.UserPhoto = imageURL;
+      console.log("Rastgele resim URL'si başarıyla alındı: " + imageURL);
+    } else {
+      console.error("Rastgele resim alınamadı.");
+    }
   });
+
 }
 async getRandomImageURL(): Promise<string | null> {
   // Lorem Picsum servisinden rastgele bir resim URL'si almak

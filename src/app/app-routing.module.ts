@@ -29,6 +29,8 @@ import { ProfileComponent } from './modules/profile/profile.component';
 import { AuthGuard } from './guard/auth.guard';
 import { LoginGuard } from './guard/login.guard';
 import { ProfileInfoComponent } from './modules/dashboard/profile-info/profile-info.component';
+import { SupportComponent } from './modules/dashboard/support/support.component';
+import { BookComponent } from './modules/dashboard/book/book.component';
 
 
 
@@ -57,13 +59,8 @@ const routes: Routes = [
   { path: 'admin/profile', component: AdminProfileComponent},
   {path:'login',component:LoginComponent,canActivate:[LoginGuard]},
   {path:'register',component:RegisterComponent,canActivate:[LoginGuard]},
-  { path: 'sidebar', component: SidebarComponent},
   { path: 'profile', component: ProfileComponent },
-  {path: 'profileinfo', component: ProfileInfoComponent},
-  
 
-
-  
 ];
 
 @NgModule({

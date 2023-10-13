@@ -33,6 +33,7 @@ export class AuthService {
   public get currentUserValue(): User | null {
     return this.currentUserSubject.value;
   }
+  
       //prettier-ignore
       public async login(request: LoginRequest): Promise<ResponseStatus> {
         const loginResponse = await this.apiService.login(request).toPromise();
@@ -170,4 +171,13 @@ public async register(request: RegisterRequest): Promise<ResponseStatus> {
 
     return status;
   }
+  getCurrentUser(): User | null {
+    // Kullanıcının oturum bilgilerini alın (örneğin, sessionStorage'dan)
+    const userData = sessionStorage.getItem('current_user');
+    if (userData) {
+      return JSON.parse(userData) as User;
+    }
+    return null;
+  }
 }
+

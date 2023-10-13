@@ -36,7 +36,7 @@ rel="stylesheet">
         <a *ngIf="!isAdmin" routerLink="/profile/allUser" (click)="loadContent('allUser')"><i class="fa fa-user-circle mr-3"></i>All User</a>
       </li>
       <li>
-        <a *ngIf="!isAdmin" routerLink="/profile/allHouse" (click)="loadContent('allHouse')"><i class="fa fa-pencil-square mr-3"></i>All House</a>
+        <a  routerLink="/profile/book" (click)="loadContent('book')"><i class="fa fa-book mr-3"></i>Book</a>
       </li>
       <li>
         <a  routerLink="/profile/support" (click)="loadContent('support')"><i class="fa fa-lock mr-3"></i>Support</a>
@@ -68,8 +68,8 @@ rel="stylesheet">
     <ng-container *ngIf="content === 'allUser'">
       <app-all-user></app-all-user>
     </ng-container>
-    <ng-container *ngIf="content === 'allHouse'">
-      <app-all-house></app-all-house>
+    <ng-container *ngIf="content === 'book'">
+      <app-book></app-book>
     </ng-container>
   </div>
 </div>

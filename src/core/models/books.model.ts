@@ -10,10 +10,9 @@ export class Books{
   bookStatus?: string;
   statement?: string;
   saleId?: string;
-  basketId?: string;
   userId?: number;
   Comment?: Comment[];
   Categories?: Categories[];
   Favourites?: Favourites[]
-  
+
 }

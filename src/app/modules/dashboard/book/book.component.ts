@@ -1,65 +1,94 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { ApiService } from "../../../../core/services/api/api.service";
-import { House } from 'src/core/models/house.model';
+import { Books } from 'src/core/models/books.model';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { HouseRequest } from '../../../../../src/core/models/request/addHouse-request.model';
+import { BooksRequest } from '../../../../core/models/request/books-request.model';
 import { ResponseStatus } from 'src/core/models/response/base-response.model';
+import { AuthService } from 'src/core/services/auth/auth.service';
+import { UserService } from 'src/core/services/user.service';
 
 @Component({
-  selector: 'app-all-house',
-  templateUrl: './all-house.component.html',
-  styleUrls: ['./all-house.component.scss'],
+  selector: 'app-book',
+  templateUrl: './book.component.html',
+  styleUrls: ['./book.component.css'],
   providers: [MessageService, ConfirmationService]
 })
-export class AllHouseComponent implements OnInit {
-  public houseRequest: HouseRequest = <HouseRequest>{}
+export class BookComponent implements OnInit {
+  public booksRequest: BooksRequest = <BooksRequest>{}
 
-  houseAddDialog: boolean = false;
-  houseEditDialog: boolean = false;
+  booksAddDialog: boolean = false;
+  booksEditDialog: boolean = false;
   openModel: boolean = false;
 
-  HouseToEdit: House | null = null;
+  BooksToEdit: Books | null = null;
 
-  filteredHouses: House[] = [];
-  public searchHouseName: string = '';
+  
+  public searchBooksName: string = '';
 
   constructor(private readonly apiService: ApiService,
     private router: Router,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
+    private readonly authService: AuthService,
+    private userService: UserService
 
   ) { }
 
 
-  searchHouse(searchKey: string) {
-    this.filteredHouses = this.houses.filter((house) => {
-      const targetKey = house.id + ' ' + house.houseName;
-      return targetKey.includes(searchKey);
-    });
-  }
+  
 
-  houses: House[] = [];
+  books: Books[] = [];
+  userBooks: Books[] = [];
+ 
+  loggedInUserId: number | null = null; 
+  filteredBooks: Books[] = [];
   ngOnInit() {
-    this.refresh()
+    
+    this.refresh();
+     
   }
   //bu kod bize evlerin ekrana gelmesini sağlayan kod yapısı...
   refresh() {
-    this.apiService.getAllEntities(House).subscribe((response) => {
-      this.houses = response.data;
-      this.filteredHouses=this.houses;
-      console.log(this.houses)
-    });
-    //console.log(this.users)
 
-  }
+    const user = this.authService.getCurrentUser();
+
+    if (user) {
+      this.loggedInUserId = user.id ?? null;
+
+      this.apiService.getAllEntities<Books>(Books).subscribe((response) => {
+        const booksData: Books[] = response.data; // API'den gelen veriyi al
+        this.books = booksData;
+        this.filteredBooks = this.books.filter(book => book.userId === this.loggedInUserId)
+      });
+      
+      console.log('Kullanıcı Kimliği:', this.loggedInUserId);
+      // Kullanıcının kimliği ile kitapları getirin
+      // userId 2 ol/ userId 2 olan kitapları al
+      }
+}
+
+searchbooks(searchKey: string) {
+  
+  if (this.loggedInUserId !== null) {
+    this.filteredBooks = this.books.filter(book => {
+      return book.userId === this.loggedInUserId && (book.id + ' ' + book.bookName).includes(searchKey);
+    });
+  
+}
+}
+
+
+
+
+    //console.log(this.users)
 
 
   
 
 
-  onCreate(entity: HouseRequest) {
-    this.createEntity<HouseRequest>(entity, 'House').then(response => {
+  onCreate(entity: BooksRequest) {
+    this.createEntity<BooksRequest>(entity, 'Books').then(response => {
       if (response?.status == ResponseStatus.Ok) {
         this.refresh();
         this.messageService.add({ severity: 'success', summary: 'Başarılı', detail: 'Ev ekleme başarılı', life: 3000 });
@@ -88,11 +117,11 @@ export class AllHouseComponent implements OnInit {
     }
   }
 
-  addNewHouse() {
-    this.houseAddDialog = true;
+  addNewBook() {
+    this.booksAddDialog = true;
   }
 
-  deleteHouse(id: number) {
+  deleteBook(id: number) {
     this.delete(id).then(response => {
       if (response?.status == ResponseStatus.Ok) {
         this.refresh();
@@ -102,7 +131,7 @@ export class AllHouseComponent implements OnInit {
   }
 
   delete(id: number) {
-    return this.apiService.deleteEntity(id, House);
+    return this.apiService.deleteEntity(id, Books);
   }
 
   // editHouse() {
@@ -110,10 +139,11 @@ export class AllHouseComponent implements OnInit {
   // }
 
   openEditDialog(id: number) {
-    this.apiService.getEntityById<House>(id, House).then((response) => {
+    this.apiService.getEntityById<Books>(id, Books).then((response) => {
       if (response && response.data) {
-        this.houseEditDialog = true;
-        this.HouseToEdit = response.data; // API'den alınan aracı carToEdit değişkenine atıyoruz
+        this.booksEditDialog = true;
+        this.BooksToEdit = response.data;
+         // API'den alınan aracı carToEdit değişkenine atıyoruz
       } else {
         console.error('Ev bulunamadı veya alınırken bir hata oluştu.');
       }
@@ -122,8 +152,8 @@ export class AllHouseComponent implements OnInit {
     });
   }
 
-  onUpdate(id: number, updatedHouse: House) {
-    this.update(id, updatedHouse).then(response => {
+  onUpdate(id: number, updatedBook: Books) {
+    this.update(id, updatedBook).then(response => {
       if (response?.status == ResponseStatus.Ok) {
         this.refresh();
         this.messageService.add({ severity: 'success', summary: 'Başarılı', detail: 'Ev güncelleme başarılı', life: 3000 });
@@ -134,8 +164,8 @@ export class AllHouseComponent implements OnInit {
     });
   }
 
-  update(id: number, updatedHouse: House) {
-    return this.apiService.updateEntity(id, updatedHouse, House);
+  update(id: number, updatedBook: Books) {
+    return this.apiService.updateEntity(id, updatedBook, Books);
   }
 
   hideDialog() {

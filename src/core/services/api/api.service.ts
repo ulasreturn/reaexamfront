@@ -12,6 +12,7 @@ import { LoginRequest } from '../../models/request/login-request.model';
 import { RegisterRequest } from '../../models/request/register-request.model';
 import { User } from '../../models/user.model';
 import { BaseResponse } from 'src/core/models/response/base-response.model';
+import { Books } from 'src/core/models/books.model';
 
 @Injectable({
   providedIn: 'root',
@@ -123,6 +124,31 @@ export class ApiService {
   getAllEntities<TEntity>(entityType: Type<TEntity>) {
     return this.http.request<BaseDataResponse<TEntity[]>>
       ("get", environment.api_url + "/" + entityType.name + "/GetAll").pipe(share());
+      
+  }
+  
+  getBooksByUserId(userId: number): Observable<Books[]> {
+    // Burada API'ye kullanıcı kimliği ile bir istek gönderin ve kitapları döndürün.
+    // Örnek olarak:
+    return this.http.get<Books[]>(`/api/books/user/${userId}`);
+  }
+  
+
+  // Kullanıcıya ait kitapları getir
+  getUserBooks(userId?: number): Observable<Books[]> {
+    return this.http.get<Books[]>(`/api/books/user/${userId}`);
+  }
+  
+  
+
+  getBookInfo(): Observable<BaseDataResponse<Books>> {
+    return this.http
+      .get<BaseDataResponse<Books>>(this.endpoint + '/Auth/GetBookInfo')
+      .pipe(
+        map((result) => {
+          return result;
+        })
+      );
   }
 
 

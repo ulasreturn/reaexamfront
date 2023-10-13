@@ -52,6 +52,8 @@ import { DatePipe } from '@angular/common';
 import { ToastModule } from 'primeng/toast';
 import { ProfileInfoComponent } from './modules/dashboard/profile-info/profile-info.component';
 import { DialogModule } from 'primeng/dialog';
+import { SupportComponent } from './modules/dashboard/support/support.component';
+import { BookComponent } from './modules/dashboard/book/book.component';
 
 @NgModule({
   declarations: [
@@ -82,7 +84,9 @@ import { DialogModule } from 'primeng/dialog';
     RegisterComponent,
     SidebarComponent,
     ProfileComponent,
-    ProfileInfoComponent
+    ProfileInfoComponent,
+    SupportComponent,
+    BookComponent
 
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -112,7 +116,8 @@ import { DialogModule } from 'primeng/dialog';
     DatePipe,
     ReactiveFormsModule,
     ToastModule,
-    DialogModule
+    DialogModule,
+  
   
   
    
