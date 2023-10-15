@@ -54,6 +54,7 @@ import { ProfileInfoComponent } from './modules/dashboard/profile-info/profile-i
 import { DialogModule } from 'primeng/dialog';
 import { SupportComponent } from './modules/dashboard/support/support.component';
 import { BookComponent } from './modules/dashboard/book/book.component';
+import { AddCommentComponent } from './modules/dashboard/add-comment/add-comment.component';
 
 @NgModule({
   declarations: [
@@ -86,7 +87,8 @@ import { BookComponent } from './modules/dashboard/book/book.component';
     ProfileComponent,
     ProfileInfoComponent,
     SupportComponent,
-    BookComponent
+    BookComponent,
+    AddCommentComponent
 
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

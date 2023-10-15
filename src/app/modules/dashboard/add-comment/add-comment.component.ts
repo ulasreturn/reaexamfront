@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { ApiService } from "../../../../core/services/api/api.service";
 import { ResponseStatus } from 'src/core/models/response/base-response.model';
-import { CommentRequest } from '../../../../../src/core/models/request/addComponent-request.model';
+import { CommentRequest } from 'src/core/models/request/comment-request.model';
+
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Comment } from 'src/core/models/comment.model';
-
 
 @Component({
   selector: 'app-add-comment',
@@ -16,11 +16,14 @@ import { Comment } from 'src/core/models/comment.model';
 })
 export class AddCommentComponent implements OnInit {
 
-  public commentRequest: CommentRequest = <CommentRequest>{}
-  
+  public commentRequest: CommentRequest = {
+    commentDate: new Date()
+  };
+
   
   filteredComment: Comment[] = [];
   public searchCommentName: string = '';
+  commentDate:string='';
   CommentToEdit: Comment | null = null;
   CommentAddDialog: boolean = false;
   CommentEditDialog: boolean = false;
@@ -30,19 +33,26 @@ export class AddCommentComponent implements OnInit {
     private router: Router,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
+    
 
     
-  ) { }
+  ) {  }
+
 
   searchComment(searchKey: string) {
     this.filteredComment = this.comments.filter((comment) => {
-      const targetKey = comment.id + ' ' + comment.commentHeader;
+      const targetKey = comment.id + ' ' + comment.commentText;
       return targetKey.includes(searchKey);
     });
   }
-
+Comments: Comment[] = [];
   comments: Comment[] = [];
+  
   ngOnInit() {
+     // Otomatik olarak tarihi inputa eklemek için ngOnInit() içinde aşağıdaki kodu kullanabilirsin   
+     // Yorum tarihini input alanına yerleştirin
+    
+
     this.refresh()
   }
 
@@ -86,14 +96,15 @@ export class AddCommentComponent implements OnInit {
 
   //bu kod bize evlerin ekrana gelmesini sağlayan kod yapısı...
   refresh() {
-    this.apiService.getAllEntities(Comment).subscribe((response) => {
-      this.comments = response.data;
-      this.filteredComment=this.comments;
-      console.log(this.comments)
+    
+    this.apiService.getAllEntitiesComments('Comment/GetAllComments').subscribe((response: any) => {
+      const comments: Comment[] = response.$values;  // Verileri comments dizisine atama işlemi
+      this.comments = comments;
+      this.filteredComment = this.comments;
+      console.log(this.comments);
     });
-    //console.log(this.users)
-
   }
+  
 
   modelOpen() {
     this.openModel = true;
@@ -132,7 +143,6 @@ export class AddCommentComponent implements OnInit {
   }
   
 }
-
 
 
 

@@ -30,7 +30,7 @@ rel="stylesheet">
         <a routerLink="/profile/adverts" (click)="loadContent('adverts')"><i class="fa fa-ship mr-3"></i>Advert</a>
       </li>
       <li>
-        <a *ngIf="!isAdmin" routerLink="/profile/Comment" (click)="loadContent('Comment')"><i class="fa fa-ship mr-3"></i>Add comment</a>
+        <a routerLink="/profile/Comment" (click)="loadContent('Comment')"><i class="fa fa-ship mr-3"></i>Add comment</a>
       </li>
       <li>
         <a *ngIf="!isAdmin" routerLink="/profile/allUser" (click)="loadContent('allUser')"><i class="fa fa-user-circle mr-3"></i>All User</a>

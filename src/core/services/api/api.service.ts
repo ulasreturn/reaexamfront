@@ -13,6 +13,7 @@ import { RegisterRequest } from '../../models/request/register-request.model';
 import { User } from '../../models/user.model';
 import { BaseResponse } from 'src/core/models/response/base-response.model';
 import { Books } from 'src/core/models/books.model';
+import { CommentRequest } from 'src/core/models/request/comment-request.model';
 
 @Injectable({
   providedIn: 'root',
@@ -126,6 +127,9 @@ export class ApiService {
       ("get", environment.api_url + "/" + entityType.name + "/GetAll").pipe(share());
       
   }
+  getAllEntitiesComments(endpoint: string): Observable<Comment[]> {
+    return this.http.get<Comment[]>(environment.api_url + '/' + endpoint);
+  }
   
   getBooksByUserId(userId: number): Observable<Books[]> {
     // Burada API'ye kullanıcı kimliği ile bir istek gönderin ve kitapları döndürün.
@@ -140,6 +144,15 @@ export class ApiService {
   }
   
   
+  addComment(comment: CommentRequest) {
+    // Sunucuya yeni yorum eklemek için HTTP POST isteği yapın.
+    return this.http.post('/api/Comment/Create', comment);
+  }
+
+  getComments() {
+    // Sunucudan yorumları almak için HTTP GET isteği yapın.
+    return this.http.get<Comment[]>('/api/Comment');
+  }
 
   getBookInfo(): Observable<BaseDataResponse<Books>> {
     return this.http
