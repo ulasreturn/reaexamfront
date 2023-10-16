@@ -55,6 +55,7 @@ import { DialogModule } from 'primeng/dialog';
 import { SupportComponent } from './modules/dashboard/support/support.component';
 import { BookComponent } from './modules/dashboard/book/book.component';
 import { AddCommentComponent } from './modules/dashboard/add-comment/add-comment.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -97,7 +98,7 @@ import { AddCommentComponent } from './modules/dashboard/add-comment/add-comment
     AppRoutingModule,
     HttpClientModule,
     MenubarModule,
-    FormsModule,
+    [FormsModule],
     ButtonModule,
     MessagesModule,
     BrowserAnimationsModule,
@@ -119,6 +120,7 @@ import { AddCommentComponent } from './modules/dashboard/add-comment/add-comment
     ReactiveFormsModule,
     ToastModule,
     DialogModule,
+    NgxPaginationModule
   
   
   

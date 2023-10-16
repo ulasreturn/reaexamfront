@@ -45,7 +45,7 @@
         <a [routerLink]="['/products']"><h2 class="title">Products</h2></a>
         <div class="row" style="display: flex; flex-wrap: wrap;">
           <div *ngFor="let item of books" class="col-4" style=" margin-bottom: 20px; height: 100%;">
-            <a [routerLink]="['/product-details']">
+            <a [routerLink]="['/product-details', item.id]"> 
               <img [src]="item.coverPhoto || defaultImageUrl">
             </a>
             <h4>{{item.bookName}}</h4>

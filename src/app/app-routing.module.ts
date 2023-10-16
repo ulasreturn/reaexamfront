@@ -60,7 +60,7 @@ const routes: Routes = [
   {path:'login',component:LoginComponent,canActivate:[LoginGuard]},
   {path:'register',component:RegisterComponent,canActivate:[LoginGuard]},
   { path: 'profile', component: ProfileComponent },
-  { path: 'product-details/:booksId', component: ProductDetailsComponent },
+  { path: 'product-details/:bookId', component: ProductDetailsComponent },
 
 ];
 

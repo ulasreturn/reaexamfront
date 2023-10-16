@@ -19,6 +19,7 @@ import { CommentRequest } from 'src/core/models/request/comment-request.model';
   providedIn: 'root',
 })
 export class ApiService {
+
   private endpoint = environment.api_url;
 
   constructor(private readonly http: HttpClient) { }
@@ -142,6 +143,9 @@ export class ApiService {
   getUserBooks(userId?: number): Observable<Books[]> {
     return this.http.get<Books[]>(`/api/books/user/${userId}`);
   }
+  getBooksComments(bookId?: number): Observable<Books[]> {
+    return this.http.get<Books[]>(`/api/books/comments/${bookId}`);
+  }
   
   
   addComment(comment: CommentRequest) {
@@ -152,6 +156,10 @@ export class ApiService {
   getComments() {
     // Sunucudan yorumları almak için HTTP GET isteği yapın.
     return this.http.get<Comment[]>('/api/Comment');
+  }
+  getCommentsByBookId(bookId: number): Observable<Comment[]> {
+    // API'den belirli bir bookId'ye sahip yorumları getiren HTTP isteği yapın
+    return this.http.get<Comment[]>(`/api/Comment/GetAllComments/`);
   }
 
   getBookInfo(): Observable<BaseDataResponse<Books>> {
