@@ -4,31 +4,38 @@
   
   
   <!-- Single Produc -->
-  <div class="small-container single-product">
+
+    <div class="small-container single-product"*ngIf="selectedBook">
       <div class="row">
-          <div class="col-2">
-              <a href="" class="product-link">
-                <img src="assets/images/book2.webp" width="100%" id="ProductImg">
-                <span class="heart-icon"><i class="bi bi-heart-fill w-50"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
-                  <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-                </svg></i></span>
-              </a>
-          </div>
-          <div class="col-2">
-              <p>Home / Kitaplar</p>
-              <h1>Rüyadan Daha Derin</h1>
-              <h4>$50.00</h4>
-  
-              <input type="number" value="1">
-              <a href="/product-details" class="btn">Add To Cart</a>
-  
-              <h3>Book Details <i class="fa fa-indent"></i></h3>
-              <br>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, eos!
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia tempora veniam harum quisquam et ad!</p>
-          </div>
+        <div class="col-2">
+          <a href="" class="product-link">
+            <img [src]="selectedBook.coverPhoto || defaultImageUrl" width="100%" id="ProductImg">
+          </a>
+        </div>
+        <div class="col-2">
+          <p>Books Details:</p>
+          <h1>{{ selectedBook.bookName || 'Kitap Bulunamadı' }}</h1>
+          <h4>{{ selectedBook.price || 'Fiyat Bilgisi Yok' }} ₺</h4>
+          <input type="number" value="1">
+          <a href="/product-details" class="btn">Add To Cart</a>
+          
+          <h3>Book Details <i class="fa fa-indent"></i></h3>
+          <br>
+          <p>{{ selectedBook.bookStatus || 'No details!' }}</p>
       </div>
-  </div>
+
+        </div>
+      </div>
+  
+ 
+
+ 
+     
+           
+           
+
+  
+  
   <!-- title -->
   <div class="small-container">
       <div class="row row-2">

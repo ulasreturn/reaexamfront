@@ -22,10 +22,21 @@
                           </li>
                         <li><a [routerLink]="['/products']">Products</a></li>
                         <li><a [routerLink]="['/authors']">Yazarlar</a></li> 
-                        <li> <div class="search-container">                           
-                            <input type="text" id="search" placeholder="Ara...">
-                            <button id="search-button"><i class="fas fa-search"></i></button>
-                        </div></li>
+                        <li> <div class="search-container">
+                          <input type="text" id="search" [(ngModel)]="searchKey" placeholder="Ara..." (input)="onSearchKeyChange()">
+                          <button id="search-button" (click)="searchBooks()">
+                            <i class="fas fa-search"></i>
+                          </button>
+                        </div>
+                        <div class="search-results" *ngIf="searchResults.length > 0">
+                          <ul>
+                            <li *ngFor="let book of searchResults">
+                              <a [routerLink]="['/product-details', book.id]">{{ book.bookName }}</a>
+                            </li>
+                          </ul>
+                        
+                        </div>
+                        </li>
                         <li *ngIf="isLoggedIn"><a style="margin-right: 0.9%;" [routerLink]="['/cart']"><img src="assets/images/cart.png" width="30px" height="30px" style="vertical-align: middle; margin-top: -10px;" ></a></li>
                             
                                 <li class="nav-item mx-1">

@@ -8,6 +8,7 @@ import { TokenResponse } from '../../models/response/token-response.model';
 import { User } from '../../models/user.model';
 import { Router } from '@angular/router';
 import { RegisterRequest } from 'src/core/models/request/register-request.model';
+import { BookRequest } from 'src/core/models/request/books-request.model';
 
 
 
@@ -60,7 +61,27 @@ export class AuthService {
   
         return status;
       }
-  
+      public async addFavourites(request: BookRequest): Promise<ResponseStatus> {
+        const bookResponse = await this.apiService.AddFavourites(request).toPromise();
+        let status = bookResponse!.status;
+      
+        if (status === ResponseStatus.Ok) {
+          this.router.navigate(['/favourites']);
+          this.setToken(bookResponse!.data);
+      
+          // Kayıt işlemi başarılıysa, kullanıcının profil bilgilerini almak için apiService.getProfileInfo işlevini çağırın.
+          const profileResponse = await this.apiService.getProfileInfo().toPromise();
+          status = profileResponse!.status;
+      
+          if (status === ResponseStatus.Ok) {
+            // Profil bilgilerini kaydedin ve kullanıcıyı oturum açık olarak işaretleyin.
+      
+          } else {
+            await this.logOut();
+          }
+        }
+        return status;
+      }
 
   //prettier-ignore
   // public async login(request: LoginRequest): Promise<ResponseStatus> {    

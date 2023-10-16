@@ -12,6 +12,7 @@ import { LoginRequest } from '../../models/request/login-request.model';
 import { RegisterRequest } from '../../models/request/register-request.model';
 import { User } from '../../models/user.model';
 import { BaseResponse } from 'src/core/models/response/base-response.model';
+import { BookRequest } from 'src/core/models/request/books-request.model';
 import { Books } from 'src/core/models/books.model';
 import { CommentRequest } from 'src/core/models/request/comment-request.model';
 
@@ -19,7 +20,6 @@ import { CommentRequest } from 'src/core/models/request/comment-request.model';
   providedIn: 'root',
 })
 export class ApiService {
-
   private endpoint = environment.api_url;
 
   constructor(private readonly http: HttpClient) { }
@@ -70,6 +70,40 @@ export class ApiService {
         })
       );
   }
+
+
+  AddBook(
+    request: BookRequest
+  ): Observable<BaseDataResponse<TokenResponse>> {
+    return this.http
+      .post<BaseDataResponse<TokenResponse>>(
+        //ENDPOINT DEĞİŞECEK (/signin olacak)
+        this.endpoint + '/Books/Create',
+        request
+      )
+      .pipe(
+        map((result) => {
+          return result;
+        })
+      );
+  }
+
+  AddFavourites(
+    request: BookRequest
+  ): Observable<BaseDataResponse<TokenResponse>> {
+    return this.http
+      .post<BaseDataResponse<TokenResponse>>(
+        //ENDPOINT DEĞİŞECEK (/signin olacak)
+        this.endpoint + '/Favourites/Create',
+        request
+      )
+      .pipe(
+        map((result) => {
+          return result;
+        })
+      );
+  }
+
 
 
 
@@ -126,23 +160,33 @@ export class ApiService {
   getAllEntities<TEntity>(entityType: Type<TEntity>) {
     return this.http.request<BaseDataResponse<TEntity[]>>
       ("get", environment.api_url + "/" + entityType.name + "/GetAll").pipe(share());
-      
+
   }
-  getAllEntitiesComments(endpoint: string): Observable<Comment[]> {
-    return this.http.get<Comment[]>(environment.api_url + '/' + endpoint);
-  }
-  
+
   getBooksByUserId(userId: number): Observable<Books[]> {
     // Burada API'ye kullanıcı kimliği ile bir istek gönderin ve kitapları döndürün.
     // Örnek olarak:
     return this.http.get<Books[]>(`/api/books/user/${userId}`);
   }
-  
+
 
   // Kullanıcıya ait kitapları getir
   getUserBooks(userId?: number): Observable<Books[]> {
     return this.http.get<Books[]>(`/api/books/user/${userId}`);
   }
+
+
+
+
+  getAllEntitiesComments(endpoint: string): Observable<Comment[]> {
+    return this.http.get<Comment[]>(environment.api_url + '/' + endpoint);
+  }
+  
+
+  
+
+  // Kullanıcıya ait kitapları getir
+
   getBooksComments(bookId?: number): Observable<Books[]> {
     return this.http.get<Books[]>(`/api/books/comments/${bookId}`);
   }
@@ -162,15 +206,16 @@ export class ApiService {
     return this.http.get<Comment[]>(`/api/Comment/GetAllComments/`);
   }
 
-  getBookInfo(): Observable<BaseDataResponse<Books>> {
+  getBookInfo(bookId: number): Observable<BaseDataResponse<Books>> {
     return this.http
-      .get<BaseDataResponse<Books>>(this.endpoint + '/Auth/GetBookInfo')
+      .get<BaseDataResponse<Books>>(`${this.endpoint}/Books/GetById?Id=${bookId}`)
       .pipe(
         map((result) => {
           return result;
         })
       );
   }
+
 
 
 }

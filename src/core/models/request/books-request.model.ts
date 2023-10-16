@@ -1,4 +1,4 @@
-export interface BooksRequest {
+export interface BookRequest {
     id?: number;
     coverPhoto?: string;
     bookName?: string;

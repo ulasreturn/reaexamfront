@@ -12,7 +12,55 @@
 }
 
 
+.search-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .search-results {
+  
+    display: flex;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    z-index: 1;
+    
+    
+  }
+  
+  .search-results ul {
+    background-color: white;
+    position:absolute;
+    display: grid;
+    list-style: none;
+    padding: 10px;
+    margin-top: 2px;
+    margin-left: 15px; /* Yan boşlukları kaldır */
+  }
+  
+  .search-results li {
+    
+    padding: 20px;
+    border-bottom: 1px solid #ccc;
+    text-align: right;
+  }
+  
+  .search-results a {
+    text-decoration: none;
 
+   
+  }
+  
+  .search-results a:hover {
+    color: #000000;
+   
+  }
+  
+  .search-container:focus-within .search-results {
+    display: block; /* Arama kutusu odaklandığında sonuçları göster */
+  }
+  
 
 
 

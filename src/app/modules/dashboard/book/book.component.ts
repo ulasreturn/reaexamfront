@@ -3,7 +3,7 @@ import { Router } from "@angular/router";
 import { ApiService } from "../../../../core/services/api/api.service";
 import { Books } from 'src/core/models/books.model';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { BooksRequest } from '../../../../core/models/request/books-request.model';
+import { BookRequest } from '../../../../core/models/request/books-request.model';
 import { ResponseStatus } from 'src/core/models/response/base-response.model';
 import { AuthService } from 'src/core/services/auth/auth.service';
 import { UserService } from 'src/core/services/user.service';
@@ -15,7 +15,7 @@ import { UserService } from 'src/core/services/user.service';
   providers: [MessageService, ConfirmationService]
 })
 export class BookComponent implements OnInit {
-  public booksRequest: BooksRequest = <BooksRequest>{}
+  public booksRequest: BookRequest = <BookRequest>{}
 
   booksAddDialog: boolean = false;
   booksEditDialog: boolean = false;
@@ -95,8 +95,8 @@ searchbooks(searchKey: string) {
   
 
 
-  onCreate(entity: BooksRequest) {
-    this.createEntity<BooksRequest>(entity, 'Books').then(response => {
+  onCreate(entity: BookRequest) {
+    this.createEntity<BookRequest>(entity, 'Books').then(response => {
       if (response?.status == ResponseStatus.Ok) {
         this.refresh();
         this.messageService.add({ severity: 'success', summary: 'Başarılı', detail: 'Kitap ekleme başarılı', life: 3000 });
