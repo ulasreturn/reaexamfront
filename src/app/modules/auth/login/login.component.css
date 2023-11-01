@@ -6,7 +6,9 @@
     overflow-x:hidden;
     }
 
-    
+    .hidden-button {
+      display: none;
+    }
     /* Başarı ve hata mesajları */
   
     

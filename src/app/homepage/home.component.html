@@ -1,74 +1,48 @@
 <div class="header">
-    <div class="container">
-        <app-navbar></app-navbar>
-
-            <div class="row">
-                <div class="col-2">
-                    <h1>Kitaplarınızı Kolayca Satın! <br> </h1>
-                    <p>İkinci el veya hiç kullanılmamış kitaplarınızı yükleyerek okurseverlerin satın almasına yardımcı olun!</p>
-                    <ng-container *ngIf="canActivate();">
-                        <a routerLink="/login" class="btn">Kitap Sat!</a>
-                      </ng-container>
-                      <ng-container *ngIf="!canActivate();">
-                        <a routerLink="/sat" class="btn">Kitap Sat!</a>
-                      </ng-container>
-                </div>
-                <div class="col-2">
-                    <img src="assets/images/image1.png">
-                </div>
-            </div>
-        </div>
-      </div>
-
-      <!-- Feadtued Categories -->
-
-      <div class="categories">
-        <div class="small-container">
-          <div class="row" style="margin-left: 30px;">
-            <div class="col-3">
-              <img [src]="books[1] ? books[1].coverPhoto : defaultImageUrl" style="max-width: 100%;">
-            </div>
-            <div class="col-3">
-              <img [src]="books[0] ? books[0].coverPhoto : defaultImageUrl" style="max-width: 100%;">
-            </div>
-            <div class="col-3">
-              <img [src]="books[0] ? books[0].coverPhoto : defaultImageUrl" style="max-width: 100%;">
-            </div>
+  <div class="container">
+     <app-navbar></app-navbar>
+      <div class="row">
+          <div class="col-2">
+              <h1> Rea Bank! Hayallerinizi gerçekleştirmek için en iyisi!</h1> 
+              <p>Her zaman sizin için buradayız ve sizi başarıya taşımak için elimizden gelenin en iyisini yapmak için sabırsızlanıyoruz!</p>
+              <ng-container *ngIf="canActivate();">
+                  <a routerLink="/login" class="btn">Banka Hesabı Oluştur!</a>
+                </ng-container>
+                <ng-container *ngIf="!canActivate();">
+                  <a routerLink="/profile" class="btn">Banka Hesabı Oluştur!</a>
+                </ng-container>
           </div>
-        </div>
-      </div>
-      
-
-      <!-- Featured Products -->
-     
-      <div class="small-container">
-        <a [routerLink]="['/products']"><h2 class="title">Products</h2></a>
-        <div class="row" style="display: flex; flex-wrap: wrap;">
-          <div *ngFor="let item of books" class="col-4" style=" margin-bottom: 20px; height: 100%;">
-            <a [routerLink]="['/product-details', item.id]"> 
-              <img [src]="item.coverPhoto || defaultImageUrl">
-            </a>
-            <h4>{{item.bookName}}</h4>
-            <div class="rating">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star-o"></i>
-            </div>
-            <p>{{item.price}}</p>
+          <div class="col-2">
+              <img src="assets/images/image1.png">
           </div>
-        </div>
       </div>
-      
-      
-            
-        <a [routerLink]="['/products']"><h2  class="title">More Products For Click!</h2></a>
-     
-   
-    
+  </div>
+</div>
+
+
+<h2 class="title margin-top" >Çalışanlarımız</h2>
+  <div class="small-container">
+<div class="row">
+  <div *ngFor="let item of employee" class="col-6 col-md-4 col-lg-3">
+    <a [routerLink]="['/details', item.id]">
+      <img src="{{item.user?.userPhoto}}" alt="Product Image">
+    </a>
+    <h4>{{item.user?.userName}}</h4>
+    <div class="rating">
+      <i class="fa fa-star"></i>
+      <i class="fa fa-star"></i>
+      <i class="fa fa-star"></i>
+      <i class="fa fa-star"></i>
+      <i class="fa fa-star-o"></i>
+    </div>
+    <p>{{item.uzmanlikAlani}}</p>
+
+  </div>
+</div>
+  </div>
 
 
 
-      <!-- Footer -->
-  <app-footer></app-footer>
+<!-- Feadtued Categories -->
+
+<app-footer></app-footer>

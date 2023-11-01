@@ -18,6 +18,7 @@
                     <div id="Indicator" [ngStyle]="{'transform': 'translateX(' + indicatorPosition + '%)'}"></div>
                     </div>     
             <form *ngIf="!showLogin" (submit)="register()">
+              <input [(ngModel)]="registerRequest.TcKimlikNo" name="TcKimlikNo" [ngModelOptions]="{standalone: true}"  type="text" placeholder="TcKimlikNo">
                 <input [(ngModel)]="registerRequest.UserName" name="UserName" [ngModelOptions]="{standalone: true}"  type="text" placeholder="Username">
                 <input [(ngModel)]="registerRequest.UserSurname" name="UserSurname" [ngModelOptions]="{standalone: true}"  type="text" placeholder="User Surname">
                 <input [(ngModel)]="registerRequest.City" name="City" [ngModelOptions]="{standalone: true}" type="text" placeholder="City">

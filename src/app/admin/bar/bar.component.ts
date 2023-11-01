@@ -26,6 +26,7 @@ export class BarComponent {
       if (this.currentUser?.userType === 0 || this.currentUser == null) {
         this.router.navigate(['/home']);
       }
+      
     });
 
   
@@ -38,34 +39,15 @@ export class BarComponent {
       {
         label: 'User',
         icon: 'pi pi-user-edit',
-        items: [
-          {
-            label: 'New',
-            icon: 'pi pi-fw pi-user-plus',
-            routerLink: '/admin/new-user',
-          },
-          {
-            label: 'Edit',
-            icon: 'pi pi-fw pi-user-edit',
-            routerLink: '/admin/edit-user',
-          },
-          {
-            label: 'Delete',
-            icon: 'pi pi-fw pi-user-minus',
-            routerLink: '/admin/delete-user',
-          }
-        ]
+        routerLink: '/admin/user'
+        
       },
       {
-        label: 'Book',
-        icon: 'pi pi-book',
-        items: [
-          {
-            label: 'Delete',
-            icon: 'pi pi-fw pi-trash',
-            routerLink: '/admin/delete-book',
-          },
-        ]
+        label: 'Transactions',
+        icon: 'pi pi-user-plus',
+        routerLink: '/admin/transaction',
+          
+        
       },
 
       
@@ -74,11 +56,7 @@ export class BarComponent {
         icon: 'pi pi-comments',
         routerLink: '/admin/comments',
       },
-      {
-        label: 'Contacts',
-        icon: 'pi pi-envelope',
-        routerLink: '/admin/contacts',
-      },
+   
       {
         label: 'Profile',
         icon: 'pi pi-fw pi-user',

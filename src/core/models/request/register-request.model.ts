@@ -1,4 +1,5 @@
 export interface RegisterRequest{
+ TcKimlikNo:string;
   UserID:string;
   Email: string;
   UserName: string;

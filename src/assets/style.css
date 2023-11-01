@@ -1,5 +1,6 @@
 
 
+
 body{
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -11,7 +12,7 @@ body{
 {
     display: flex;
     align-items: center;
-    padding: 0px;
+    padding: 5px;
 }
 
 nav{
@@ -449,7 +450,8 @@ form a{
 }
 
 /* Media query for menu */
-@media only screen and (max-width: 768px){
+/* Media query for menu */
+@media only screen and (max-width: 800px){
 
     nav ul{
         position: absolute;
@@ -474,7 +476,6 @@ form a{
         cursor: pointer;
     }
 }
-
 
 /* Media query for 600 screen size */
 @media only screen and (max-width: 600px){

@@ -13,9 +13,10 @@ import { AuthService } from 'src/core/services/auth/auth.service';
 export class SidebarComponent implements OnInit {
   currentUser: User | null;
   content: string = '';
-  isAdmin: boolean = false;
+ 
   user: User | null = null;
-
+  isEmployee: boolean = true;
+  isUser:boolean = false;
 
   
   constructor(private router: Router, private readonly apiService: ApiService, private authService: AuthService) {
@@ -33,13 +34,24 @@ export class SidebarComponent implements OnInit {
     this.initializeScripts();
     this.authService.currentUser.subscribe(user => {
       this.currentUser = user;
-      if (this.currentUser?.userType === 0) {
-        this.isAdmin = true;
+      if (this.currentUser?.userType === 1) {
+        
+        this.router.navigate(['/admin']);
+        
         // Admin girişi yapıldığında admin sayfasına yönlendirin
       }
-        else {
+        else if (this.currentUser?.userType === 0) {
+          this.isUser = false;
+          
           // Kullanıcı girişi yapıldığında aynı sayfaya yönlendirin
-          this.router.navigate(['/admin']);
+          
+        }
+        else if (this.currentUser?.userType === 2) {
+        
+          this.isEmployee = false;
+          this.isUser = true;
+          // Kullanıcı girişi yapıldığında aynı sayfaya yönlendirin
+          
         }
         
       

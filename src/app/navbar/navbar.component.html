@@ -1,65 +1,33 @@
-<head>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-</head>
-        <div class="navbar">
-            <div class="logo">
-                <a [routerLink]="['']"><img src="assets/images/logo.png" alt="logo" width="125px"></a>
-            </div>
-            <nav>
-                <ul id="MenuItems">
-                        <li><a [routerLink]="['']">Anasayfa</a></li>
-                        <li class="dropdown">
-                            <a href="#">Kategoriler <i class="fas fa-caret-down"></i></a>
-                            <div class="dropdown-content">
-                              <a [routerLink]="['/roman']">Roman</a>
-                              <a [routerLink]="['/bilimkurgu']">Bilim Kurgu</a>
-                              <a [routerLink]="['/kurgu']">Korku</a>
-                              <a [routerLink]="['/polisiye']">Polisiye</a>
-                              <a [routerLink]="['/fantastik']">Fantastik</a>
-                              <a [routerLink]="['/macera']">Macera</a>
-                              <!-- Diğer kategorileri burada listele -->
-                            </div>
-                          </li>
-                        <li><a [routerLink]="['/products']">Products</a></li>
-                        <li><a [routerLink]="['/authors']">Yazarlar</a></li> 
-                        <li> <div class="search-container">
-                          <input type="text" id="search" [(ngModel)]="searchKey" placeholder="Ara..." (input)="onSearchKeyChange()">
-                          <button id="search-button" (click)="searchBooks()">
-                            <i class="fas fa-search"></i>
-                          </button>
+<div class="navbar">
+  <div class="logo">
+    <a [routerLink]="['']"><img src="assets/images/logo.png" alt="logo" width="100px"></a>
+</div>
+  <nav>
+    <ul id="MenuItems" [ngClass]="status ? 'show' : 'hide'">
+      <li><a [routerLink]="['']">Home</a></li>
+      <li><a [routerLink]="['/about']">About</a></li>
+      <li><a [routerLink]="['/contact']">Contact</a></li>                        
+                      <li>
+                        <a class="nav-link" href="/login">
+                          <i *ngIf="!isLoggedIn" class="fa fa-user" style="font-size:4vh; color: rgb(0, 0, 0); vertical-align: middle; margin-top: -7px;">
+                          </i>
+                        </a>
+                      </li>
+                     
+                      <li *ngIf="isLoggedIn" class="nav-item mx-1">
+                        <div>
+                            <a class="nav-item nav-link dropdown-toggle user-action">
+                                <div class="user-info">
+                                    <img id="homeAvatar" src="{{ user?.userPhoto }}" style="max-width:30px ;" class="avatar" alt="Avatar">
+                                    <strong style=" font-size: 2vh;">{{ currentUser?.userName }}</strong>
+                                </div>
+                                <button id="dropdownBtn" pButton type="button" (click)="menu.toggle($event)" icon="pi pi-angle-down" style="width: 35px;"></button>
+                            </a>
+                            <p-menu #menu [model]="items" [popup]="true" [appendTo]="'body'" class="custom-dropdown-menu"></p-menu>
                         </div>
-                        <div class="search-results" *ngIf="searchResults.length > 0">
-                          <ul>
-                            <li *ngFor="let book of searchResults">
-                              <a [routerLink]="['/product-details', book.id]">{{ book.bookName }}</a>
-                            </li>
-                          </ul>
-                        
-                        </div>
-                        </li>
-                        <li *ngIf="isLoggedIn"><a style="margin-right: 0.9%;" [routerLink]="['/cart']"><img src="assets/images/cart.png" width="30px" height="30px" style="vertical-align: middle; margin-top: -10px;" ></a></li>
-                            
-                                <li class="nav-item mx-1">
-                                  <a class="nav-link" href="/login">
-                                    <i *ngIf="!isLoggedIn" class="fa fa-user" style="font-size:4vh; color: rgb(0, 0, 0); vertical-align: middle; margin-top: -7px;">
-                                    </i>
-                                  </a>
-                                </li>
-                               
-                                <li *ngIf="isLoggedIn" class="nav-item mx-1">
-                                  <div class="nav-item dropdown">
-                                      <a class="nav-item nav-link dropdown-toggle user-action">
-                                          <div class="user-info">
-                                              <img id="homeAvatar" src="{{ user?.userPhoto }}" class="avatar" alt="Avatar">
-                                              <strong style="color: rgb(48, 48, 48); font-size: 2vh;">{{ currentUser?.userName }}</strong>
-                                          </div>
-                                          <button id="dropdownBtn" pButton type="button" (click)="menu.toggle($event)" icon="pi pi-angle-down"></button>
-                                      </a>
-                                      <p-menu #menu [model]="items" [popup]="true" [appendTo]="'body'" class="custom-dropdown-menu"></p-menu>
-                                  </div>
-                              </li>
-                           
-                </ul>
-            </nav>
-        
-        </div>
+                    </li>
+                 
+      </ul>
+  </nav>
+  <img src="assets/images/menu.png" class="menu-icon" id="menutoggle" (click)="menutoggle()">
+</div>

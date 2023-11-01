@@ -1,267 +1,67 @@
 .user-action {
-    display: flex;
-    align-items: center; /* Vertically align the items */
+  display: flex;
+  align-items: center; /* Vertically align the items */
+
 }
 
 .avatar {
-    width: 4vh;
-    height: 4vh;
-    margin-right: 10px;
-    border-radius: 10%; 
-    margin-bottom: -6px;/* Add margin to separate avatar from username */
+   max-width: 30px;
+  width: 4vh;
+  height: 4vh;
+  margin-right: 10px;
+  border-radius: 10%; 
+  margin-bottom: -6px;/* Add margin to separate avatar from username */
+  
+}
+
+#MenuItems.show .user-info, #MenuItems.show #dropdownBtn {
+ 
+  
+  margin-left: 100px;
+  transform: translateX(100%); /* Move them to the right */
+  transition: transform 0.3s ease; /* Add a transition for smooth movement */
 }
 
 
-.search-container {
-    position: relative;
-    display: inline-block;
-  }
+button {
+  margin-top: 0vh;
+  background-color:rgba(121, 131, 134, 0.611);
+
+  border: none;
   
-  .search-results {
+  border-radius: 1vh;
+  cursor: pointer;
+  font-size: 1vh;
   
-    display: flex;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background-color: white;
-    z-index: 1;
-    
-    
-  }
-  
-  .search-results ul {
-    background-color: white;
-    position:absolute;
-    display: grid;
-    list-style: none;
-    padding: 10px;
-    margin-top: 2px;
-    margin-left: 15px; /* Yan boşlukları kaldır */
-  }
-  
-  .search-results li {
-    
-    padding: 20px;
-    border-bottom: 1px solid #ccc;
-    text-align: right;
-  }
-  
-  .search-results a {
-    text-decoration: none;
+}
 
-   
-  }
-  
-  .search-results a:hover {
-    color: #000000;
-   
-  }
-  
-  .search-container:focus-within .search-results {
-    display: block; /* Arama kutusu odaklandığında sonuçları göster */
-  }
-  
+button:hover {
+  background-color: #000000;
+}
 
 
 
+#homeAvatar {
+margin-right: 1vh;
+}
 
-  button {
-    margin-top: 0vh;
-    background-color:rgba(121, 131, 134, 0.611);
+#dropdownBtn {
+margin-left: 2vh;
+}
 
-    border: none;
-    
-    border-radius: 1vh;
-    cursor: pointer;
-    font-size: 1vh;
-    
-  }
-  
-  button:hover {
-    background-color: #000000;
-  }
-
-
-
- #homeAvatar {
-  margin-right: 1vh;
- }
-
- #dropdownBtn {
-  margin-left: 2vh;
- }
- 
 
 a {
-    &:hover {
-        color: #ffffff;
-    }
- 
+  &:hover {
+      color: #ffffff;
+  }
+
 }
 /* cart ve account öğeleri üzerine gelindiğinde beyaz olacak */
 
-.link-container {
-  display:contents;
-  position: absolute;
 
-}
-
-
-/* Dropdown menüyü başlangıçta gizle */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #fff; /* Arka plan rengi */
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    font-size: 14px; /* Gölge efekti */
-    z-index: 5;
-  }
-  
-  /* Kategoriye hover yapıldığında alt menüyü göster */
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-  /* Alt menüyü stilize etmek için gereken diğer stiller */
-  .dropdown-content a {
-   
-    color: #333; /* Metin rengi */
-    padding: 12px 16px;
-    text-decoration: none;
-    display:grid;
-  }
-  
-  .dropdown-content a:hover {
-    background-color: #f2f2f2;
-    max-height: fit-content ; /* Hover efekti için arka plan rengi */
-  }
-  .dropdown i {
-    transform: scaleY(-1);
-    transition: transform 0.3s;
-}
-
-/* Okun üstüne geldiğinizde dönmesini sağlayacak CSS kodu. */
-.dropdown:hover i {
-    transform: scaleY(1);
-}
-  
-  
-  
-/* Genel arama kutusu container */
-/* Arama kutusu stilleri */
-/* Arama kutusu stilleri */
-.search-container {
-    display: flex;
-    align-items: center;
-    max-width: 100%;
-    background-color: #f1f1f1;
-    border-radius: 25px;
-    padding: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-#search {
-    flex: 1;
-    border: none;
-    outline: none;
-    padding: 8px; /* Daha küçük padding değeri */
-    background-color: transparent;
-    font-size: 14px; /* Daha küçük font boyutu */
-    width: 100%;
-}
-
-#search-button {
-    background-color: #585858;
-    border: none;
-    color: #fff;
-    border-radius: 15px; /* Butonun köşelerini daha yuvarlak hale getiriyoruz */
-    padding: 6px 10px; /* Daha küçük padding değeri */
-    cursor: pointer;
-    font-size: 12px; /* Daha küçük font boyutu */
-}
-
-/* Arama butonu hover efekti */
-#search-button:hover {
-    background-color: #000000;
-}
 /* Ekran genişliği 768 piksel veya daha küçükse, navbarı responsive hale getir */
 
 /* Bu kısmı değiştirmeyin */
 
 /* Ekran genişliği 768 piksel veya daha küçükse, navbarı responsive hale getir */
-@media screen and (max-width: 768px) {
-  .link-container {
-      padding-left: 0;
-      margin-left: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-  }
-  
-  /* Dropdown menüsünü tam genişlik yap */
-  .dropdown-content {
-      width: 100%;
-  }
-  
-  /* Genel arama kutusu container'ı tam genişlik yap */
-  .search-container {
-      width: 100%;
-      padding: 10px 0;
-      justify-content: center;
-  }
-  
-  /* Arama kutusu ve butonlarının stillerini ayarla */
-  #search {
-      width: 70%;
-  }
-  
-  #search-button {
-      width: 30%;
-      margin-top: 10px;
-  }
 
-  .menu-icon {
-      display: block;
-      text-align: right;
-      cursor: pointer;
-      font-size: 24px;
-  }
-
-  .menu-icon i {
-      transform: scaleY(-1);
-  }
-
-  #menu-toggle {
-      display: none;
-  }
-
-  #menu-toggle:checked + .menu-icon i {
-      transform: scaleY(1);
-  }
-
-  #menu-toggle:checked ~ nav ul {
-      display: block;
-  }
-
-  nav ul {
-      display: none;
-      background: #333;
-      width: 100%;
-      position: absolute;
-      top: 56px;
-      left: 0;
-  }
-
-  nav ul li {
-      display: block;
-      text-align: center;
-      padding: 10px 0;
-  }
-
-  nav ul li a {
-      color: #fff;
-  }
-
-  nav ul li a:hover {
-      background-color: #555;
-  }
-}

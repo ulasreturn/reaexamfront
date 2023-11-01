@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { ApiService } from 'src/core/services/api/api.service';
 import { AuthService } from 'src/core/services/auth/auth.service';
-import { Books } from 'src/core/models/books.model';
 import { HttpClient } from '@angular/common/http';
 import { Router,CanActivate } from '@angular/router';
 import { Injectable } from '@angular/core';
+import { Employee } from 'src/core/models/employee.model';
+import { User } from 'src/core/models/user.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -25,22 +26,26 @@ defaultImageUrl: string = 'https://upload.wikimedia.org/wikipedia/commons/thumb/
 
 
 constructor(private readonly authService: AuthService,private readonly apiservice: ApiService,private readonly httpClient: HttpClient,private router: Router ){}
-books: Books[]=[];
+employee: Employee[]=[];
+users: User[]=[]
+
 
 ngOnInit() {
-  this.getBooks();
+  this.getDoktor();
 }
 
-getBooks() {
-  this.apiservice.getAllEntities(Books).subscribe((response) => {
-    this.books = response.data;
-    console.log(this.books);
-
-    if (this.books.length === 0) {
-      // Eğer kitaplar dizisi boşsa, varsayılan resmi kullan
-      this.books.push({ coverPhoto: this.defaultImageUrl });
-    }
+getDoktor() {
+  this.apiservice.getAllEntities(Employee).subscribe((response) => {
+    this.employee = response.data;
+    console.log("Employees",this.employee);
+    console.log(this.employee[0].user?.userPhoto);
+ 
+  
+    
   });
+
+  
+ 
 }
 
 

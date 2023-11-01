@@ -1,0 +1,236 @@
+<app-bar></app-bar>
+<div class="card">
+  <p-toast></p-toast>
+  <p-toolbar styleClass="mb-4 gap-2">
+      <ng-template pTemplate="left">
+          <button pButton pRipple label="New" icon="pi pi-user" class="p-button-success mr-2"
+              (click)="register()"></button>
+      </ng-template>
+      <ng-template pTemplate="center">
+        <button pButton pRipple label="Employee Ekle" icon="pi pi-user" class="p-button-success mr-2"
+            (click)="employeeekle(employeeRequest)"></button>
+    </ng-template>
+
+      <ng-template pTemplate="right">
+          <div class="row">
+              <div class="col">
+                  <input type="text" [(ngModel)]="searchName" placeholder="İsim ara"
+                      (input)="searchPerson(searchName)" class="form-control">
+              </div>
+          </div>
+      </ng-template>
+
+  </p-toolbar>
+
+  <p-table #dt [value]="filteredUsers" [rows]="5" [paginator]="true" [tableStyle]="{ 'min-width': '50rem' }"
+      [rowHover]="true" dataKey="id" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [showCurrentPageReport]="true">
+      <ng-template pTemplate="header" style="width: 50rem;">
+          <tr>
+              <th style="width: 4rem;"></th>
+              <th pSortableColumn="Id">User Id</th>
+              <th pSortableColumn="Id">TC<p-sortIcon field="Id"></p-sortIcon></th>
+              <th pSortableColumn="userName" style="min-width:10rem">User Name <p-sortIcon field="name"></p-sortIcon>
+              </th>
+              <th pSortableColumn="fullname" style="min-width:10rem">Full Name <p-sortIcon
+                      field="fullname"></p-sortIcon></th>
+                    
+              <th pSortableColumn="email" style="min-width:10rem">Email <p-sortIcon field="email"></p-sortIcon></th>
+              <th pSortableColumn="coverPhoto" style="min-width:10rem text-">İmage Path</th>
+              <th pSortableColumn="userType" style="min-width:10rem">Role <p-sortIcon
+                      field="userType"></p-sortIcon></th>
+             
+        <th pSortableColumn="" style="min-width:10rem"></th>
+          </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" style="width: 50rem;" let-user>
+          <tr>
+              <td></td>
+             
+              <td>{{ user.id }}</td>
+              <td>{{ user.tcKimlikNo }}</td>
+              <td>{{ user.userName }}</td>
+              <td>{{ user.userSurname }}</td>        
+              <td>{{ user.email }}</td>
+              <td><img class="img-fluid" style="width:100px; height:50px display=flex;" src="{{user.userPhoto}}" alt=""></td>
+              
+              <td>
+                <ng-container *ngIf="user.userType === 0; then userBlock1 else 
+                user.userType === 1 ? userBlock2 : userBlock3">
+</ng-container>
+
+<ng-template #userBlock1>
+Customer
+</ng-template>
+<ng-template #userBlock2>
+Admin
+</ng-template>
+<ng-template #userBlock3>
+Employee
+</ng-template>
+
+              </td>
+              
+              
+              <td>
+                  <div class="button-group">
+
+
+
+
+                      <button pButton pRipple icon="pi pi-lock" class="p-button-rounded p-button-help mr-2"
+                          (click)="updateToAdmin(user.id)">Admin/User!</button>
+
+                          <button pButton pRipple icon="pi pi-lock" class="p-button-rounded p-button-help mr-2"
+                          (click)="updateToEmployee(user.id)">Employee/User</button>
+
+
+
+
+
+
+                      <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-help mr-2"
+                          (click)="editUsers(user.id)">Edit</button>
+                      <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"
+                          (click)="deleteUsers(user.id)">Delete</button>
+                      <div class="modal fade" tabindex="-1" [class.show]="openModel">
+                          <!--CSS'i düzenlemezsem çalışmaz-->
+                        
+                      </div>
+                  </div>
+              </td>
+          </tr>
+      </ng-template>
+  </p-table>
+</div>
+
+<!--User Edit sayfası-->
+<p-dialog *ngIf="UserToEdit" [(visible)]="userEditDialog" [style]="{ width: '450px' }" header="User Details"
+  [modal]="true" styleClass="p-fluid">
+  <ng-template pTemplate="content">
+    <div class="field">
+        <label for="name">TcKimlikNo</label>
+        <input [(ngModel)]="UserToEdit.tcKimlikNo" [ngModelOptions]="{standalone: true}" type="text"
+            class="form-control item" id="usernameAddUser" placeholder="TcKimlikNo">
+    </div>
+      <div class="field">
+          <label for="name">User Name</label>
+          <input [(ngModel)]="UserToEdit.userName" [ngModelOptions]="{standalone: true}" type="text"
+              class="form-control item" id="usernameAddUser" placeholder="Username">
+      </div>
+      <div class="field">
+          <label for="email">User Email</label>
+          <input [(ngModel)]="UserToEdit.email" [ngModelOptions]="{standalone: true}" type="text"
+              class="form-control item" id="emailAddUser" placeholder="Email">
+      </div>
+
+      <!-- <div class="field">
+          <label for="password">User Password</label>
+          <input [(ngModel)]="UserToEdit.password" [ngModelOptions]="{standalone: true}" type="password"
+              class="form-control item" id="passwordAddUser" placeholder="Password">
+      </div> -->
+
+      <div class="field">
+          <label for="phone">User FullName</label>
+          <input [(ngModel)]="UserToEdit.userSurname" [ngModelOptions]="{standalone: true}" type="text"
+              class="form-control item" id="fullNameAddUser" placeholder="Full Name">
+      </div>
+
+      <!-- <div class="field">
+          <label for="type">User Type</label>
+          <input type="text" pInputText id="type" required autofocus />
+      </div> -->
+  </ng-template>
+  <ng-template pTemplate="footer">
+      <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+      <button pButton pRipple label="Update" icon="pi pi-check" class="p-button-text"
+          (click)="onUpdate(UserToEdit.id ?? 0, UserToEdit)"></button>
+  </ng-template>
+</p-dialog>
+
+<!--User Add Sayfası-->
+<p-dialog class="modalReg" [(visible)]="userAddDialog" [style]="{ width: '450px' }" header="User Add" [modal]="true"
+  styleClass="p-fluid">
+  <div class="registration-form">
+      <form>
+          <div class="form-icon">
+              <span><i class="fa fa-user-o" style="font-size:48px"></i></span>
+          </div>
+          <div class="form-group">
+            <input [(ngModel)]="registerRequest.TcKimlikNo" [ngModelOptions]="{standalone: true}" type="text"
+                class="form-control item" id="usernameAddUser" placeholder="TcKimlikNo">
+        </div>
+          <div class="form-group">
+              <input [(ngModel)]="registerRequest.UserName" [ngModelOptions]="{standalone: true}" type="text"
+                  class="form-control item" id="usernameAddUser" placeholder="Username">
+          </div>
+          <div class="form-group">
+              <input [(ngModel)]="registerRequest.UserSurname" [ngModelOptions]="{standalone: true}" type="text"
+                  class="form-control item" id="fullNameAddUser" placeholder="Full Name">
+          </div>
+          <div class="form-group">
+              <input [(ngModel)]="registerRequest.Email" [ngModelOptions]="{standalone: true}" type="text"
+                  class="form-control item" id="emailAddUser" placeholder="Email">
+          </div>
+          <div class="form-group">
+              <input [(ngModel)]="registerRequest.Password" [ngModelOptions]="{standalone: true}" type="password"
+                  class="form-control item" id="passwordAddUser" placeholder="Password">
+          </div>
+          <div class="form-group">
+            <input [(ngModel)]="registerRequest.City" [ngModelOptions]="{standalone: true}" type="text"
+                class="form-control item" id="passwordAddUser" placeholder="City">
+        </div>
+        <div class="form-group">
+          <input [(ngModel)]="registerRequest.Country" [ngModelOptions]="{standalone: true}" type="text"
+              class="form-control item" id="passwordAddUser" placeholder="Country">
+      </div>
+      <div class="form-group">
+        <input [(ngModel)]="registerRequest.Telephone" [ngModelOptions]="{standalone: true}" type="text"
+            class="form-control item" id="passwordAddUser" placeholder="Telephone">
+    </div>
+      <div class="form-group">
+        <input [(ngModel)]="registerRequest.UserPhoto" [ngModelOptions]="{standalone: true}" type="text"
+            class="form-control item" id="passwordAddUser" laceholder="Photo" style="display: none;">
+    </div>
+          <div class="form-group">
+              <button id="addUserBtn" type="button" class="btn btn-block create-account"
+                  (click)="userAddDialog = false; register()">Add User</button>
+          </div>
+      </form>
+  </div>
+</p-dialog>
+<p-dialog class="modalReg" [(visible)]="employeeAddDialog" [style]="{ width: '450px' }" header="User Add" [modal]="true"
+  styleClass="p-fluid">
+  <div class="registration-form">
+      <form>
+          <div class="form-icon">
+              <span><i class="fa fa-user-o" style="font-size:48px"></i></span>
+          </div>
+          <div class="form-group">
+            <input [(ngModel)]="employeeRequest.cinsiyet" [ngModelOptions]="{standalone: true}" type="text"
+                class="form-control item" id="usernameAddUser" placeholder="cinsiyet">
+        </div>
+      <div class="form-group">
+        <input [(ngModel)]="employeeRequest.dogumTarihi" [ngModelOptions]="{standalone: true}" type="text"
+            class="form-control item" id="passwordAddUser" placeholder="DateTime">
+    </div>
+      <div class="form-group">
+        <input [(ngModel)]="employeeRequest.uzmanlikAlani" [ngModelOptions]="{standalone: true}" type="text"
+            class="form-control item" id="passwordAddUser" Placeholder="uzmanlikAlani" >
+    </div>
+    <div class="form-group">
+        <input [(ngModel)]="employeeRequest.userId" [ngModelOptions]="{standalone: true}" type="text"
+            class="form-control item" id="passwordAddUser" Placeholder="UserId" >
+    </div>
+  
+          <div class="form-group">
+              <button id="addUserBtn" type="button" class="btn btn-block create-account"
+                  (click)="employeeAddDialog = false; employeeekle(employeeRequest)">Employee Ekle</button>
+          </div>
+       
+      </form>
+  </div>
+</p-dialog>
+
+<p-confirmDialog [style]="{ width: '450px' }"></p-confirmDialog>

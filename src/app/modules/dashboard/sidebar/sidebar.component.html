@@ -8,7 +8,7 @@ rel="stylesheet">
   <nav id="sidebar" *ngIf=" currentUser">
     <div class="custom-menu">
     </div>
-    <div class="img bg-wrap text-center py-4" style="background-image: url(assets/images/book.png);">
+    <div class="img bg-wrap text-center py-4" style="background-image: url(assets/images/bank.png);">
       <div class="user-logo" style="z-index: 2;">
         <img src="{{ user?.userPhoto }}" alt="Profile Image" class="img">
         <h1>{{currentUser.userName}}</h1>
@@ -24,23 +24,16 @@ rel="stylesheet">
           Profile Info</a>
       </li>
       <li>
-        <a routerLink="/profile/payment" (click)="loadContent('payment')"><i class="fa fa-cc-visa mr-3"></i>Payment</a>
+      <li>
+        <a *ngIf="!isUser" routerLink="/profile/transactionuser" (click)="loadContent('transactionuser')"><span class="fa fa-book mr-3"></span>Transfer Yap!</a>
       </li>
       <li>
-        <a routerLink="/profile/adverts" (click)="loadContent('adverts')"><i class="fa fa-ship mr-3"></i>Advert</a>
+        <a *ngIf="!isEmployee" routerLink="/profile/transactionemployee" (click)="loadContent('transactionemployee')"><span class="fa fa-book mr-3"></span>Transfer Yap!</a>
       </li>
       <li>
-        <a routerLink="/profile/Comment" (click)="loadContent('Comment')"><i class="fa fa-ship mr-3"></i>Add comment</a>
+        <a *ngIf="!isEmployee" routerLink="/profile/bankaccounts" (click)="loadContent('bankaccounts')"><span class="fa fa-book mr-3"></span>Banka Hesapları</a>
       </li>
-      <li>
-        <a *ngIf="!isAdmin" routerLink="/profile/allUser" (click)="loadContent('allUser')"><i class="fa fa-user-circle mr-3"></i>All User</a>
-      </li>
-      <li>
-        <a  routerLink="/profile/book" (click)="loadContent('book')"><i class="fa fa-book mr-3"></i>Book</a>
-      </li>
-      <li>
-        <a  routerLink="/profile/support" (click)="loadContent('support')"><i class="fa fa-lock mr-3"></i>Support</a>
-      </li>
+  
       <li>
         <a (click)="logOut()"><span class="fa fa-sign-out mr-3" ></span> Sign Out</a>
       </li>
@@ -53,23 +46,16 @@ rel="stylesheet">
     <ng-container *ngIf="content === 'profileinfo'">
       <app-profile-info></app-profile-info>
     </ng-container>
-    <ng-container *ngIf="content === 'payment'">
-      <app-payment></app-payment>
+    <ng-container *ngIf="content === 'transactionuser'">
+      <app-transactionuser></app-transactionuser>
     </ng-container>
-    <ng-container *ngIf="content === 'adverts'">
-      <app-adverts></app-adverts>
+      <ng-container *ngIf="content === 'transactionemployee'">
+        <app-transactionemployee></app-transactionemployee>
     </ng-container>
-    <ng-container *ngIf="content === 'Comment'">
-      <app-add-comment></app-add-comment>
-    </ng-container>
-    <ng-container *ngIf="content === 'support'">
-      <app-support></app-support>
-    </ng-container>
-    <ng-container *ngIf="content === 'allUser'">
-      <app-all-user></app-all-user>
-    </ng-container>
-    <ng-container *ngIf="content === 'book'">
-      <app-book></app-book>
-    </ng-container>
+    <ng-container *ngIf="content === 'bankaccounts'">
+      <app-bankaccounts></app-bankaccounts>
+  </ng-container>
+    
+
   </div>
 </div>

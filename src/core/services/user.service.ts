@@ -3,10 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user.model';
 import { Observable, share } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Address } from '../models/address.model';
-import { AddressRequest } from '../models/request/address-request.model';
 import { ActivatedRoute } from '@angular/router';
 import { BaseDataResponse } from '../models/response/base-data-response.model';
+import { map } from 'rxjs/operators';
+import { EmailRequest } from '../models/request/email-request.model';
 
 @Injectable({
   providedIn: 'root',
@@ -41,5 +41,11 @@ export class UserService {
     // Aktif kullanıcı bilgilerini getirme işlemleri
     return this.http.get<User>(`${this.url}/current`);
   }
+   getUserEmail(): Observable<string[]> {
+    return this.http.get<string[]>(`${this.url}/EmailInfo/GetAll`);
+  }
+  resetPassword(emailRequest: EmailRequest): Observable<any> {
+    return this.http.put(`${this.url}/User/ChangePassword`, emailRequest);
+  }
+  }
 
-}

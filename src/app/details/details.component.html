@@ -1,0 +1,82 @@
+<div class="header">
+    <div class="container">
+    <app-navbar></app-navbar>
+    
+    
+    <!-- Single Produc -->
+  
+      <div class="small-container single-product"*ngIf="selectedDoktor">
+        <div class="row">
+          <div class="col-2">
+            <a href="" class="product-link">
+              <img [src]="selectedDoktor.user?.userPhoto || defaultImageUrl" width="100%" id="ProductImg">
+            </a>
+          </div>
+          <div class="col-2">
+            <p>Doktor Details:</p>
+            <h1>{{ selectedDoktor.user?.userName }} {{ selectedDoktor.user?.userSurname }}</h1>
+            <h4>{{ selectedDoktor.uzmanlikAlani || 'Fiyat Bilgisi Yok' }} </h4>
+  
+            
+            
+            <br>
+           
+        </div>
+  
+          </div>
+        </div>
+    
+   
+  
+   
+       
+             
+             
+  
+    
+    
+    <!-- title -->
+    <div class="small-container">
+        <div class="row row-2">
+          <h2 class="comments-title">Comments</h2>
+        </div>
+    
+    <!-- Products -->
+    <div class="comments-list">
+      <div class="comment" *ngFor="let comment of filteredComment | paginate: config">
+        <div class="user-info">
+          <!-- Profil fotoğrafı eklemek için bir <img> etiketi ve src özelliği kullanın -->
+          <img [src]="comment.userPhoto" alt="Profil Fotoğrafı" class="profile-image">
+          <span class="user-name">{{comment.userName}}</span>
+          <span class="comment-date">{{comment.commentDate | date}}</span>
+        </div>
+        <div class="comment-text" style="margin-left: 60px">{{comment.commentText}}</div>
+      </div>
+     
+    </div>
+    <pagination-controls (pageChange)="onPageChange($event)" id="advanced"></pagination-controls>
+  
+  </div>
+  
+  
+    
+  
+    <div class="small-container margin-bottom" *ngIf="isLoggedIn">
+      <form class="comment-form"(submit)="onCreate(commentRequest)" *ngIf="isLoggedIn">
+       
+  
+          <input [(ngModel)]="commentRequest.commentDate" [ngModelOptions]="{standalone: true}" type="text" class="form-control item" id="emailAddUser" placeholder="DateTime" disabled style="display: none;">
+          <input type="text" class="form-control-item" id="userId" [(ngModel)]="commentRequest.userId" [ngModelOptions]="{standalone: true}"[placeholder]="loggedInUserId" readonly [value]="loggedInUserId" disabled style="display: none;">
+          <input type="text" class="form-control" id="booksId" [(ngModel)]="commentRequest.employeeId" [ngModelOptions]="{standalone: true}"disabled style="display: none;">
+        <div class="form-group form-padding">
+          <label for="commentText">Yorum</label>
+          <input type="text" class="form-control" id="commentText" [(ngModel)]="commentRequest.commentText" [ngModelOptions]="{standalone: true}"  placeholder="Yorumunuzu girin">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block mb-4" style="width: min-content;">Yorum Ekle</button>
+      </form>
+    </div>
+    </div>
+    <footer><app-footer></app-footer></footer>
+    <!-- Footer -->
+  
+  <p-toast position="top-right"></p-toast> 

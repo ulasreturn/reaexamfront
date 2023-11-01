@@ -12,9 +12,9 @@ import { LoginRequest } from '../../models/request/login-request.model';
 import { RegisterRequest } from '../../models/request/register-request.model';
 import { User } from '../../models/user.model';
 import { BaseResponse } from 'src/core/models/response/base-response.model';
-import { BookRequest } from 'src/core/models/request/books-request.model';
-import { Books } from 'src/core/models/books.model';
 import { CommentRequest } from 'src/core/models/request/comment-request.model';
+import { ContactRequest } from 'src/core/models/request/contact-request.model';
+import { Employee } from 'src/core/models/employee.model';
 
 @Injectable({
   providedIn: 'root',
@@ -72,37 +72,9 @@ export class ApiService {
   }
 
 
-  AddBook(
-    request: BookRequest
-  ): Observable<BaseDataResponse<TokenResponse>> {
-    return this.http
-      .post<BaseDataResponse<TokenResponse>>(
-        //ENDPOINT DEĞİŞECEK (/signin olacak)
-        this.endpoint + '/Books/Create',
-        request
-      )
-      .pipe(
-        map((result) => {
-          return result;
-        })
-      );
-  }
 
-  AddFavourites(
-    request: BookRequest
-  ): Observable<BaseDataResponse<TokenResponse>> {
-    return this.http
-      .post<BaseDataResponse<TokenResponse>>(
-        //ENDPOINT DEĞİŞECEK (/signin olacak)
-        this.endpoint + '/Favourites/Create',
-        request
-      )
-      .pipe(
-        map((result) => {
-          return result;
-        })
-      );
-  }
+
+
 
 
 
@@ -125,6 +97,7 @@ export class ApiService {
       (environment.api_url + "/" + entityType.name + "/Delete?id=" + id)
       .pipe(share()).toPromise();
   }
+
 
   updateEntity<TEntity>(id: number, newEntity: TEntity, entityType: Type<TEntity>) {
     return this.http.put<BaseDataResponse<TEntity[]>>
@@ -163,17 +136,9 @@ export class ApiService {
 
   }
 
-  getBooksByUserId(userId: number): Observable<Books[]> {
-    // Burada API'ye kullanıcı kimliği ile bir istek gönderin ve kitapları döndürün.
-    // Örnek olarak:
-    return this.http.get<Books[]>(`/api/books/user/${userId}`);
-  }
 
 
-  // Kullanıcıya ait kitapları getir
-  getUserBooks(userId?: number): Observable<Books[]> {
-    return this.http.get<Books[]>(`/api/books/user/${userId}`);
-  }
+
 
 
 
@@ -187,9 +152,7 @@ export class ApiService {
 
   // Kullanıcıya ait kitapları getir
 
-  getBooksComments(bookId?: number): Observable<Books[]> {
-    return this.http.get<Books[]>(`/api/books/comments/${bookId}`);
-  }
+
   
   
   addComment(comment: CommentRequest) {
@@ -206,16 +169,34 @@ export class ApiService {
     return this.http.get<Comment[]>(`/api/Comment/GetAllComments/`);
   }
 
-  getBookInfo(bookId: number): Observable<BaseDataResponse<Books>> {
+  
+  
+  getEmployeeInfo(id: number): Observable<BaseDataResponse<Employee>> {
     return this.http
-      .get<BaseDataResponse<Books>>(`${this.endpoint}/Books/GetById?Id=${bookId}`)
+      .get<BaseDataResponse<Employee>>(`${this.endpoint}/Employee/GetById?Id=${id}`)
+      .pipe(
+        map((result) => {
+          return result;
+        })
+      );
+
+     
+  }
+
+  sendMail(
+    request: ContactRequest
+  ): Observable<BaseDataResponse<TokenResponse>> {
+    return this.http
+      .post<BaseDataResponse<TokenResponse>>(
+        this.endpoint + '/Mail/',
+        request
+      )
       .pipe(
         map((result) => {
           return result;
         })
       );
   }
-
 
 
 }

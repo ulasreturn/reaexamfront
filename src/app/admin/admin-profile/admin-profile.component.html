@@ -1,33 +1,146 @@
 <app-bar></app-bar>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<div class="container mt-4">
-  <table class="table table-bordered table-hover mt-5 ">
-    <thead class="thead-light">
-      <tr>
-        <th class="text-center p-2">User ID</th>
-        <th class="text-center p-2">User Name</th>
-        <th class="text-center p-2">User Surname</th>
-        <th class="text-center p-2">City</th>
-        <th class="text-center p-2">Country</th>
-        <th class="text-center p-2">Email</th>
-        <th class="text-center p-2">Telephone</th>
-        <th>edit</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of user">
-        <td class="text-center p-2">{{ item.id }}</td>
-        <td class="text-center p-2">{{ item.userName }}</td>
-        <td class="text-center p-2">{{ item.userSurname }}</td>
-        <td class="text-center p-2">{{ item.city }}</td>
-        <td class="text-center p-2">{{ item.country }}</td>
-        <td class="text-center p-2">{{ item.email }}</td>
-        <td class="text-center p-2">{{ item.telephone }}</td>
-        <td><a class="btn" [routerLink]="['/admin/user/edit-user']"> update</a><a class="btn" [routerLink]="['/admin/user/delete-user']"> delete</a><a class="btn" [routerLink]="['/admin/user/edit-user']"> Edit</a></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<div class="container bootstrap snippets bootdey">
+  <div class="panel-body inf-content">
+      <div class="row">
+          <div class="col-md-4">
+              <img alt="" style="width:300px;" title="" class="img-circle img-thumbnail isTooltip" src="{{ user?.userPhoto}}" data-original-title="Usuario"> 
+              <ul title="Ratings" class="list-inline ratings text-center">
+                  <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
+                  <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
+                  <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
+                  <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
+                  <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
+              </ul>
+          </div>
+          <div class="col-md-6">
+              <strong>Information</strong><br>
+              <div class="table-responsive">
+              <table class="table table-user-information">
+                  <tbody>
+                    <tr>        
+                        <td>
+                          
+                            <strong>
+                                <span class="glyphicon glyphicon-asterisk text-primary"></span>
+                                TC Kimlik No                                               
+                            </strong>
+                        </td>
+                        <td class="text-primary">
+                          {{ user?.tcKimlikNo}}   
+                        </td>
+                    </tr>
+                    <tr>    
+                      <tr>        
+                          <td>
+                            
+                              <strong>
+                                  <span class="glyphicon glyphicon-asterisk text-primary"></span>
+                                  Name                                               
+                              </strong>
+                          </td>
+                          <td class="text-primary">
+                            {{ user?.userName}}   
+                          </td>
+                      </tr>
+                      <tr>    
+                          <td>
+                              <strong>
+                                  <span class="glyphicon glyphicon-user  text-primary"></span>    
+                                  SurName                                                
+                              </strong>
+                          </td>
+                          <td class="text-primary">
+                            {{ user?.userSurname}}    
+                          </td>
+                      </tr>
+                      <tr>        
+                          <td>
+                              <strong>
+                                  <span class="glyphicon glyphicon-cloud text-primary"></span>  
+                                  Email                                                
+                              </strong>
+                          </td>
+                          <td class="text-primary">
+                            {{ user?.email}}  
+                          </td>
+                      </tr>
+  
+                      <tr>        
+                          <td>
+                              <strong>
+                                  <span class="glyphicon glyphicon-bookmark text-primary"></span> 
+                                  City                                                
+                              </strong>
+                          </td>
+                          <td class="text-primary">
+                            {{ user?.city}}
+                          </td>
+                      </tr>
+  
+  
+                      <tr>        
+                          <td>
+                              <strong>
+                                  <span class="glyphicon glyphicon-eye-open text-primary"></span> 
+                                  Country                                               
+                              </strong>
+                          </td>
+                          <td class="text-primary">
+                            {{ user?.country}}
+                          </td>
+                      </tr>
+                      <tr>        
+                          <td>
+                              <strong>
+                                  <span class="glyphicon glyphicon-envelope text-primary"></span> 
+                                  Telephone                                               
+                              </strong>
+                          </td>
+                          <td class="text-primary">
+                            {{ user?.telephone}}
+                          </td>
+                      </tr>
+                      <tr>        
+                          <td>
+                              <strong>
+                                  <span class="glyphicon glyphicon-calendar text-primary"></span>
+                                  Id                                               
+                              </strong>
+                          </td>
+                          <td class="text-primary">
+                            {{ user?.id}}
+                          </td>
+                      </tr>
+                      <tr>        
+                          <td>
+                              <strong>
+                                  <span class="glyphicon glyphicon-calendar text-primary"></span>
+                                  Role                                               
+                              </strong>
+                          </td>
+                          <td class="text-primary">
+                            
+                            <ng-container *ngIf="user.userType === 0; then userBlock1 else 
+                            user.userType === 1 ? userBlock2 : userBlock3">
+            </ng-container>
+            
+            <ng-template #userBlock1>
+            Hasta
+            </ng-template>
+            <ng-template #userBlock2>
+            Admin
+            </ng-template>
+            <ng-template #userBlock3>
+            Doktor
+            </ng-template>
+            
+                          </td>
+                          
+                      </tr>                                    
+                  </tbody>
+              </table>
+              </div>
+          </div>
+      </div>
+  </div>
+  </div>      

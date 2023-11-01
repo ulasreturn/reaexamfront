@@ -1,0 +1,142 @@
+<div class="card">
+    <p-toast></p-toast>
+    <p-toolbar styleClass="mb-4 gap-2">
+        <ng-template pTemplate="left">
+            <button pButton pRipple label="Transfer Yap!" icon="pi pi-plus" class="p-button-success mr-2"(click)="addNewTransactions()"></button>
+        </ng-template>
+        <ng-template pTemplate="right">
+            <div class="row">
+                <div class="col">
+                    <input type="text" [(ngModel)]="searchRandevuName" placeholder="Search"
+                        (input)="searchrandevular(searchRandevuName)" class="form-control">
+                </div>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="center">
+            <button pButton pRipple label="Bank Account Ekle" icon="pi pi-user" class="p-button-success mr-2"
+                (click)="bankaccountadd(bankaccountRequest)"></button>
+        </ng-template>
+    </p-toolbar>
+    <p-table #dt  [value]="filteredRandevu" [rows]="5" [paginator]="true" [tableStyle]="{ 'min-width': '5vh' }"
+        [rowHover]="true" dataKey="id" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [showCurrentPageReport]="true">
+        <ng-template pTemplate="header">
+            <tr style="text-align:center;">
+                <th pSortableColumn="Id" style="min-width:5rem" >BankAccountId</th>
+                <th pSortableColumn="bookName" style="min-width:10rem">Gönderen Ad</th>
+                <!-- <th pSortableColumn="BookDescription" style="min-width:10rem">Book Description <p-sortIcon field="BookDescription"></p-sortIcon></th> -->
+                <th pSortableColumn="booksStatus" style="min-width:10rem">Gönderen Soyad</th>
+                <th pSortableColumn="Price" style="min-width:10rem">Gönderen TC</th>
+                <th pSortableColumn="Price" style="min-width:10rem">Para Tutarı</th>
+                <th pSortableColumn="Price" style="min-width:10rem">Açıklama</th>
+                <!-- <th pSortableColumn="zipCode" style="min-width:10rem">Zip Code <p-sortIcon field="zipCode"></p-sortIcon></th> -->
+                
+                <!-- <th pSortableColumn="roomCount" style="min-width:10rem">Room Count <p-sortIcon field="roomCount"></p-sortIcon></th> -->
+               
+                <!-- <th pSortableColumn="popularity" style="min-width:10rem">Popularity <p-sortIcon field="popularity"></p-sortIcon></th> -->
+                <th pSortableColumn="saleId" style="min-width:10rem">Alıcı Adı</th>
+                <th pSortableColumn="userId" style="min-width:10rem">Alıcı SoyAdı</th>
+                <th pSortableColumn="userId" style="min-width:10rem">Alıcı Kimlik</th>
+                <!-- <th pSortableColumn="popularity" style="min-width:10rem">Popularity <p-sortIcon field="popularity"></p-sortIcon></th> -->
+                <th pSortableColumn="saleId" style="min-width:10rem">Gönderim Tarihi</th>
+
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-transactions>
+            <tr>
+                <td>{{ transactions.bankAccountId }}</td>
+                <td>{{ transactions.senderCustomer.userName }}</td>
+                <td>{{ transactions.senderCustomer.userSurname }}</td>
+                <td>{{ transactions.senderCustomer.tcKimlikNo }}</td>
+                <td>{{ transactions.amount }} ₺</td>
+                <td>{{ transactions.aciklama }} ₺</td>
+
+                <td>{{  transactions.receiverCustomer.userName }}</td>
+                <td>{{  transactions.receiverCustomer.userSurname }}</td>
+                <td>{{  transactions.receiverCustomer.tcKimlikNo }}</td>
+                <td>{{ transactions.transactionDate }}</td>
+
+
+                
+                <!-- <td>{{ Book.BookImg }}</td> -->
+                
+                
+                <!-- <td>{{ Book.roomCount }}</td> -->
+            
+                
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+
+
+<p-dialog class="modalReg" [(visible)]="transactionsAddDialog" [style]="{ width: '450px' }" header="Transfer Ekle" [modal]="true"
+styleClass="p-fluid">
+<div class="registration-form">
+    <form>
+
+        <div class="form-group">
+            <input [(ngModel)]="transactionsRequest.bankAccountId" [ngModelOptions]="{standalone: true}" 
+            type="text" class="form-control item" id="usernameAddUser" placeholder="BankAccountId">
+        </div>
+        <div class="form-group">
+            <input [(ngModel)]="transactionsRequest.amount" [ngModelOptions]="{standalone: true}" 
+            type="text" class="form-control item" id="usernameAddUser" placeholder="Miktar">
+        </div>
+        <div class="form-group">
+            <input [(ngModel)]="transactionsRequest.aciklama" [ngModelOptions]="{standalone: true}" type="text" class="form-control item" id="fullNameAddUser" placeholder="aciklama">
+        </div>
+        <div class="form-group">
+            <input [(ngModel)]="transactionsRequest.senderCustomerId" [ngModelOptions]="{standalone: true}" type="text" class="form-control item" id="fullNameAddUser"[placeholder]="loggedInUserId" readonly [value]="loggedInUserId">
+        </div>
+        <div class="form-group">
+            <input [(ngModel)]="transactionsRequest.receiverCustomerId" [ngModelOptions]="{standalone: true}" type="text" class="form-control item" id="fullNameAddUser" placeholder="Alıcı Id">
+        </div>
+        <div class="form-group">
+            <input [(ngModel)]="transactionsRequest.transactionDate" [ngModelOptions]="{standalone: true}" type="text" class="form-control item" id="fullNameAddUser" placeholder="DateTime">
+        </div>
+
+
+
+        <div class="form-group">
+            <button id="addUserBtn" type="button" class="btn btn-block create-account" (click)="onCreate(transactionsRequest)"> Transfer Ekle </button>
+        </div>
+
+
+      
+
+
+
+     
+
+
+    </form>
+</div>
+</p-dialog>
+
+
+    <p-dialog class="modalReg" [(visible)]="bankaccountAddDialog" [style]="{ width: '450px' }" header="User Add" [modal]="true"
+    styleClass="p-fluid">
+    <div class="registration-form">
+        <form>
+            <div class="form-icon">
+                <span><i class="fa fa-user-o" style="font-size:48px"></i></span>
+            </div>
+            <div class="form-group">
+              <input [(ngModel)]="bankaccountRequest.accountNumber" [ngModelOptions]="{standalone: true}" type="text"
+                  class="form-control item" id="usernameAddUser" placeholder="Account Number">
+          </div>
+          <div class="form-group">
+              <input [(ngModel)]="bankaccountRequest.customerId" [ngModelOptions]="{standalone: true}" type="text"
+                  class="form-control item" id="usernameAddUser" [placeholder]="loggedInUserId" readonly [value]="loggedInUserId">
+          </div>
+    
+            <div class="form-group">
+                <button id="addUserBtn" type="button" class="btn btn-block create-account"
+                    (click)="bankaccountAddDialog = false; bankaccountadd(bankaccountRequest)">Employee Ekle</button>
+            </div>
+         
+        </form>
+    </div>
+  </p-dialog>
